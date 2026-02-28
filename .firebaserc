@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "zatsit-dsi-externalsites-dev"
+  },
+  "targets": {
+    "zatsit-dsi-externalsites-dev": {
+      "hosting": {
+        "zatsit-tech-watcher-6b087": [
+          "zatsit-tech-watcher-6b087"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

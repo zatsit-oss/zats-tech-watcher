@@ -1,0 +1,11 @@
+{
+    "hosting": {
+        "target": "zatsit-tech-watcher-6b087",
+        "public": "dist",
+        "ignore": [
+            "firebase.json",
+            "**/.*",
+            "**/node_modules/**"
+        ]
+    }
+}

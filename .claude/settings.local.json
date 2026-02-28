@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:zatsit-corporate-dev--pr8-feat-new-corporate-kedfyh4q.web.app)",
+      "WebFetch(domain:blog.zatsit.fr)",
+      "WebFetch(domain:sustainability.zatsit.fr)",
+      "Bash(file:*)",
+      "WebFetch(domain:github.com)",
+      "Bash(gh:*)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:zatsit.fr)",
+      "Bash(ls:*)",
+      "Bash(npm install:*)",
+      "Bash(npx tsc:*)",
+      "Bash(npm run:*)",
+      "Bash(grep:*)",
+      "Bash(npx skills:*)",
+      "Bash(git add:*)"
+    ]
+  }
+}

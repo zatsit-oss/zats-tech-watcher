@@ -44,7 +44,7 @@ async function init(): Promise<void> {
   } catch (err) {
     setState({
       loading: false,
-      error: err instanceof Error ? err.message : "Failed to load data",
+      error: err instanceof Error ? err.message : "Failed to load data, please check the data file.",
     });
   }
 

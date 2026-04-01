@@ -1,0 +1,340 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { loadEntries } from "../data/load-entries.ts";
+import { renderCardItem } from "../components/card-item.ts";
+import { renderListItem } from "../components/list-item.ts";
+import { renderTagBadge } from "../components/tag-badge.ts";
+const entries = loadEntries();
+const allTags = [...new Set(entries.flatMap((e) => e.tags))].sort();
+const contributors = [...new Set(entries.map((e) => e.contributor))].sort();
+---
+
+<Layout title="Zatsit Tech Watch">
+  <div class="page-enter">
+    <!-- Header section -->
+    <div class="mb-8">
+      <h1 class="text-3xl font-bold gradient-text mb-2">Veille Technologique</h1>
+      <p class="text-content-muted text-sm">
+        <span id="result-count">{entries.length}</span> ressource{entries.length > 1 ? "s" : ""} trouvée{entries.length > 1 ? "s" : ""}
+      </p>
+    </div>
+
+    <!-- Search + Sort + View toggle -->
+    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3 mb-6">
+      <div class="relative flex-1 max-w-md">
+        <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-content-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+        </svg>
+        <input
+          id="search-input"
+          type="text"
+          placeholder="Rechercher…"
+          aria-label="Rechercher dans les ressources"
+          class="w-full pl-10 pr-4 py-2 text-sm rounded-lg glass border border-edge text-content placeholder:text-content-muted focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-30 bg-transparent"
+        />
+      </div>
+      <div class="flex items-center gap-3">
+        <button id="discover-btn" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg glass border border-edge text-sm text-content hover:bg-bg-alt transition-colors" aria-label="Découvrir une ressource au hasard">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+          </svg>
+          <span class="hidden sm:inline">Découvrir</span>
+        </button>
+        <div class="flex items-center gap-2">
+          <label for="sort-select" class="text-xs text-content-muted whitespace-nowrap">Trier :</label>
+          <select id="sort-select" class="glass border border-edge text-content bg-transparent text-sm rounded-lg px-2 py-1.5 cursor-pointer focus:outline-none focus:ring-1 focus:ring-primary">
+            <option value="recent">Plus récent</option>
+            <option value="oldest">Plus ancien</option>
+            <option value="alpha">A-Z sujet</option>
+            <option value="contributor">Contributeur</option>
+            <option value="tags">Nb. de tags</option>
+          </select>
+        </div>
+        <div class="flex items-center gap-1 glass rounded-lg p-1">
+          <button data-view="grid" class="view-toggle-btn p-1.5 rounded-md transition-colors bg-primary text-white" aria-label="Vue grille">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/>
+            </svg>
+          </button>
+          <button data-view="list" class="view-toggle-btn p-1.5 rounded-md transition-colors text-content-muted hover:text-content" aria-label="Vue liste">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filters -->
+    <div class="mb-6">
+      <div class="flex flex-col gap-4">
+        <div>
+          <h4 class="text-xs font-semibold text-content-muted uppercase tracking-wider mb-2">Tags</h4>
+          <div id="tag-filters" class="flex flex-wrap gap-1.5">
+            {allTags.map((t) => <Fragment set:html={renderTagBadge(t, false)} />)}
+          </div>
+        </div>
+        <div class="flex flex-wrap gap-3 items-center">
+          <select id="contributor-filter" aria-label="Filtrer par contributeur" class="text-sm rounded-lg px-3 py-2 glass border border-edge text-content bg-transparent focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-30">
+            <option value="">Tous les contributeurs</option>
+            {contributors.map((c) => <option value={c}>{c}</option>)}
+          </select>
+          <button id="clear-filters" class="text-xs text-primary hover:underline hidden">Effacer les filtres</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div id="entries-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {entries.map((e) => <Fragment set:html={renderCardItem(e)} />)}
+    </div>
+    <div id="entries-list" class="glass rounded-xl divide-y divide-edge hidden">
+      {entries.map((e, i) => <Fragment set:html={renderListItem(e, i)} />)}
+    </div>
+    <div id="empty-state" class="glass rounded-xl p-12 text-center hidden">
+      <svg class="w-16 h-16 mx-auto text-content-muted mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+      </svg>
+      <h3 class="text-lg font-semibold text-content-muted mb-2">Aucun résultat</h3>
+      <p class="text-sm text-content-muted">Essayez de modifier vos filtres ou votre recherche.</p>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  // Client-side filtering, sorting, view toggle — all data in DOM
+  interface EntryData {
+    el: HTMLElement;
+    listEl: HTMLElement;
+    subject: string;
+    url: string;
+    domain: string;
+    contributor: string;
+    tags: string[];
+    date: number;
+    dateStr: string;
+  }
+
+  const gridContainer = document.getElementById('entries-grid')!;
+  const listContainer = document.getElementById('entries-list')!;
+  const emptyState = document.getElementById('empty-state')!;
+  const searchInput = document.getElementById('search-input') as HTMLInputElement;
+  const sortSelect = document.getElementById('sort-select') as HTMLSelectElement;
+  const resultCount = document.getElementById('result-count')!;
+  const clearBtn = document.getElementById('clear-filters')!;
+  const contributorFilter = document.getElementById('contributor-filter') as HTMLSelectElement;
+
+  // Parse entries from DOM
+  const gridItems = Array.from(gridContainer.children) as HTMLElement[];
+  const listItems = Array.from(listContainer.children) as HTMLElement[];
+
+  const entries: EntryData[] = gridItems.map((el, i) => {
+    const tags = Array.from(el.querySelectorAll('.tag-badge')).map(b => b.textContent?.trim() ?? '');
+    const contributorLink = el.querySelector('a[href^="/contributors/"]') as HTMLAnchorElement;
+    const contributor = contributorLink?.textContent?.trim() ?? '';
+    const externalLink = el.querySelector('a[target="_blank"]') as HTMLAnchorElement;
+    const url = externalLink?.href ?? '';
+    const dateStr = el.querySelector('.text-xs.text-content-muted')?.textContent?.trim() ?? '';
+    const subject = el.querySelector('h3')?.textContent?.trim() ?? '';
+    const domain = el.querySelectorAll('.text-xs.text-content-muted')[1]?.textContent?.trim() ?? '';
+
+    // Parse DD/MM/YYYY
+    const parts = dateStr.split('/');
+    const date = parts.length === 3 ? new Date(+parts[2], +parts[1] - 1, +parts[0]).getTime() : 0;
+
+    return {
+      el,
+      listEl: listItems[i],
+      subject: subject.toLowerCase(),
+      url: url.toLowerCase(),
+      domain: domain.toLowerCase(),
+      contributor,
+      tags,
+      date,
+      dateStr,
+    };
+  });
+
+  let viewMode: 'grid' | 'list' = 'grid';
+  let activeTags: string[] = [];
+  let searchQuery = '';
+  let selectedContributor = '';
+  let sortBy = 'recent';
+
+  function applyFilters() {
+    let visible = entries;
+
+    if (activeTags.length > 0) {
+      visible = visible.filter(e => activeTags.some(t => e.tags.includes(t)));
+    }
+    if (selectedContributor) {
+      visible = visible.filter(e => e.contributor === selectedContributor);
+    }
+    if (searchQuery) {
+      const q = searchQuery.toLowerCase();
+      visible = visible.filter(e =>
+        e.subject.includes(q) || e.url.includes(q) || e.domain.includes(q) ||
+        e.tags.some(t => t.toLowerCase().includes(q))
+      );
+    }
+
+    // Sort
+    const sorted = [...visible];
+    switch (sortBy) {
+      case 'recent': sorted.sort((a, b) => b.date - a.date); break;
+      case 'oldest': sorted.sort((a, b) => a.date - b.date); break;
+      case 'alpha': sorted.sort((a, b) => a.subject.localeCompare(b.subject)); break;
+      case 'contributor': sorted.sort((a, b) => a.contributor.localeCompare(b.contributor)); break;
+      case 'tags': sorted.sort((a, b) => b.tags.length - a.tags.length); break;
+    }
+
+    // Update visibility
+    const visibleSet = new Set(sorted);
+
+    // Grid
+    for (const e of entries) {
+      e.el.style.display = visibleSet.has(e) ? '' : 'none';
+      e.listEl.style.display = visibleSet.has(e) ? '' : 'none';
+    }
+
+    // Reorder DOM
+    if (viewMode === 'grid') {
+      for (const e of sorted) gridContainer.appendChild(e.el);
+    } else {
+      for (const e of sorted) listContainer.appendChild(e.listEl);
+    }
+
+    const count = sorted.length;
+    resultCount.textContent = String(count);
+    emptyState.classList.toggle('hidden', count > 0);
+    gridContainer.classList.toggle('hidden', count === 0 || viewMode !== 'grid');
+    listContainer.classList.toggle('hidden', count === 0 || viewMode !== 'list');
+
+    // Clear button
+    clearBtn.classList.toggle('hidden', activeTags.length === 0 && !selectedContributor && !searchQuery);
+
+    // Tag active states
+    document.querySelectorAll('#tag-filters .tag-badge').forEach(btn => {
+      const tag = btn.textContent?.trim() ?? '';
+      btn.classList.toggle('active', activeTags.includes(tag));
+    });
+  }
+
+  // Debounce helper
+  let searchTimer: ReturnType<typeof setTimeout>;
+  searchInput.addEventListener('input', () => {
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(() => {
+      searchQuery = searchInput.value;
+      applyFilters();
+    }, 250);
+  });
+
+  sortSelect.addEventListener('change', () => {
+    sortBy = sortSelect.value;
+    applyFilters();
+  });
+
+  contributorFilter.addEventListener('change', () => {
+    selectedContributor = contributorFilter.value;
+    applyFilters();
+  });
+
+  clearBtn.addEventListener('click', () => {
+    activeTags = [];
+    searchQuery = '';
+    selectedContributor = '';
+    searchInput.value = '';
+    contributorFilter.value = '';
+    applyFilters();
+  });
+
+  // Tag filter clicks
+  document.getElementById('tag-filters')?.addEventListener('click', (e) => {
+    const btn = (e.target as HTMLElement).closest('.tag-badge');
+    if (!btn) return;
+    const tag = btn.textContent?.trim() ?? '';
+    if (activeTags.includes(tag)) {
+      activeTags = activeTags.filter(t => t !== tag);
+    } else {
+      activeTags.push(tag);
+    }
+    applyFilters();
+  });
+
+  // Tag clicks in entries
+  gridContainer.addEventListener('click', (e) => {
+    const btn = (e.target as HTMLElement).closest('.tag-badge');
+    if (!btn) return;
+    e.preventDefault();
+    e.stopPropagation();
+    const tag = btn.textContent?.trim() ?? '';
+    if (!activeTags.includes(tag)) {
+      activeTags.push(tag);
+      applyFilters();
+    }
+  });
+
+  // View toggle
+  document.querySelectorAll('.view-toggle-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      viewMode = (btn as HTMLElement).dataset.view as 'grid' | 'list';
+      document.querySelectorAll('.view-toggle-btn').forEach(b => {
+        const isActive = (b as HTMLElement).dataset.view === viewMode;
+        b.classList.toggle('bg-primary', isActive);
+        b.classList.toggle('text-white', isActive);
+        b.classList.toggle('text-content-muted', !isActive);
+      });
+      applyFilters();
+    });
+  });
+
+  // Discover button — random entry
+  document.getElementById('discover-btn')?.addEventListener('click', () => {
+    if (entries.length === 0) return;
+    const entry = entries[Math.floor(Math.random() * entries.length)];
+    const url = entry.el.querySelector('a[target="_blank"]')?.getAttribute('href') ?? '';
+    const subject = entry.el.querySelector('h3')?.textContent?.trim() ?? '';
+    const contributor = entry.contributor;
+    const tags = entry.tags;
+    const dateStr = entry.dateStr;
+    const domain = entry.el.querySelectorAll('.text-xs.text-content-muted')[1]?.textContent?.trim() ?? '';
+
+    const modal = document.createElement('div');
+    modal.id = 'surprise-modal';
+    modal.className = 'fixed inset-0 z-50 flex items-center justify-center page-enter';
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.innerHTML = `
+      <div id="surprise-overlay" class="absolute inset-0 bg-black/50"></div>
+      <div class="relative glass rounded-2xl p-6 sm:p-8 max-w-lg w-full mx-4 border border-edge shadow-xl">
+        <button id="surprise-close" class="absolute top-3 right-3 p-1.5 rounded-lg text-content-muted hover:text-content hover:bg-bg-alt transition-colors" aria-label="Fermer">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+        <div class="flex items-center gap-2 text-xs text-content-muted mb-3">
+          <span>${dateStr}</span>
+          <span class="w-1 h-1 rounded-full bg-content-muted"></span>
+          <span>${domain}</span>
+        </div>
+        <h2 class="text-lg font-bold text-content mb-3">${subject}</h2>
+        <div class="flex flex-wrap gap-1.5 mb-3">${tags.map(t => `<span class="tag-badge">${t}</span>`).join('')}</div>
+        <a href="/contributors/${encodeURIComponent(contributor)}/" class="text-sm text-primary hover:underline">${contributor}</a>
+        <div class="flex gap-3 mt-6">
+          <a href="${url}" target="_blank" rel="noopener noreferrer" class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-primary text-white text-sm font-medium hover:opacity-90 transition-opacity">Ouvrir le lien</a>
+          <button id="surprise-another" class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg glass border border-edge text-content text-sm font-medium hover:bg-bg-alt transition-colors">Autre surprise</button>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(modal);
+
+    const close = () => { modal.remove(); document.removeEventListener('keydown', onKey); };
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') close(); };
+    document.addEventListener('keydown', onKey);
+    modal.querySelector('#surprise-overlay')?.addEventListener('click', close);
+    modal.querySelector('#surprise-close')?.addEventListener('click', close);
+    modal.querySelector('#surprise-another')?.addEventListener('click', () => {
+      document.getElementById('surprise-modal')?.remove();
+      document.getElementById('discover-btn')?.click();
+    });
+  });
+</script>

@@ -1,0 +1,52 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { loadEntries } from "../../data/load-entries.ts";
+import { computeContributorProfiles } from "../../data/stats.ts";
+import { renderCardItem } from "../../components/card-item.ts";
+import { formatDate } from "../../utils/date.ts";
+
+export function getStaticPaths() {
+  const entries = loadEntries();
+  const profiles = computeContributorProfiles(entries);
+  return profiles.map((p, i) => ({
+    params: { name: encodeURIComponent(p.name) },
+    props: { profile: p, rank: i + 1 },
+  }));
+}
+
+const { profile, rank } = Astro.props;
+---
+
+<Layout title={`${profile.name} — Zatsit Tech Watch`}>
+  <div class="page-enter">
+    <a href="/contributors/" class="text-sm text-content-muted hover:text-primary transition-colors mb-6 inline-flex items-center gap-1">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+      Retour
+    </a>
+
+    <!-- Profile header -->
+    <div class="glass rounded-xl p-6 mb-8">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+        <div class="w-16 h-16 rounded-full bg-primary flex items-center justify-center text-white text-2xl font-bold shrink-0">
+          {profile.name.charAt(0)}
+        </div>
+        <div class="flex-1">
+          <h1 class="text-2xl font-bold text-content">{profile.name}</h1>
+          <p class="text-sm text-content-muted">Rang #{rank} · {profile.count} contributions</p>
+          <p class="text-xs text-content-muted mt-1">Du {formatDate(profile.firstDate)} au {formatDate(profile.lastDate)}</p>
+        </div>
+      </div>
+      <div class="flex flex-wrap gap-2 mt-4">
+        {profile.topTags.map((t: { tag: string; count: number }) => (
+          <span class="tag-badge">{t.tag} <span class="ml-1 opacity-60">{t.count}</span></span>
+        ))}
+      </div>
+    </div>
+
+    <!-- Entries -->
+    <h2 class="text-lg font-semibold text-content mb-4">Contributions ({profile.count})</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {profile.entries.slice().reverse().map((e: any) => <Fragment set:html={renderCardItem(e)} />)}
+    </div>
+  </div>
+</Layout>

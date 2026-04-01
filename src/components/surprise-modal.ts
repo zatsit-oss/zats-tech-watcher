@@ -50,6 +50,6 @@ export function renderSurpriseContent(entry: TechWatchEntry): string {
     </div>
     <h2 class="text-lg font-bold text-content mb-3">${truncate(entry.subject, 120)}</h2>
     <div class="flex flex-wrap gap-1.5 mb-3">${tags}</div>
-    <a href="#/contributors/${encodeURIComponent(entry.contributor)}" class="text-sm text-primary hover:underline">${entry.contributor}</a>
+    <a href="/contributors/${encodeURIComponent(entry.contributor)}/" class="text-sm text-primary hover:underline">${entry.contributor}</a>
   `;
 }

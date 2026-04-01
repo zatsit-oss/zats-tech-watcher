@@ -9,7 +9,7 @@ export function getStaticPaths() {
   const entries = loadEntries();
   const profiles = computeContributorProfiles(entries);
   return profiles.map((p, i) => ({
-    params: { name: encodeURIComponent(p.name) },
+    params: { name: p.name },
     props: { profile: p, rank: i + 1 },
   }));
 }

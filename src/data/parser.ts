@@ -3,10 +3,11 @@ import { parseFrenchDate } from "../utils/date.ts";
 import { extractDomain } from "../utils/format.ts";
 import { extractTags } from "./tag-extractor.ts";
 
-export async function fetchAndParse(): Promise<TechWatchEntry[]> {
-  const response = await fetch("/tech-watch-v1.tsv");
-  if (!response.ok) throw new Error(`Failed to fetch TSV: ${response.status}`);
-  const text = await response.text();
+/**
+ * Parse raw TSV text into TechWatchEntry[].
+ * Used at Astro build time with text read via node:fs.
+ */
+export function parseTsvText(text: string): TechWatchEntry[] {
   return parseTsv(text);
 }
 

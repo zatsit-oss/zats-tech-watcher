@@ -15,8 +15,8 @@
   --color-edge-solid: #e5e7eb;
   --color-dot: rgba(15, 21, 253, 0.08);
 
-  /* Font */
-  --font-sans: "Poppins", sans-serif;
+  /* Font — self-hosted via @fontsource/poppins */
+  --font-sans: "Poppins", system-ui, -apple-system, sans-serif;
 
   /* Shadows */
   --shadow-glass: 0 4px 24px rgba(0, 0, 0, 0.06);
@@ -166,4 +166,13 @@ body {
   box-shadow: var(--shadow-glass);
   color: var(--color-content);
   z-index: 50;
+}
+
+/* ===== Reduced motion (a11y) ===== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

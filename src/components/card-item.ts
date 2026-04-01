@@ -16,7 +16,7 @@ export function renderCardItem(entry: TechWatchEntry): string {
         ${entry.tags.map((t) => renderTagBadge(t, false, true)).join("")}
       </div>
       <div class="mt-auto flex items-center justify-between pt-2 border-t border-edge">
-        <a href="#/contributors/${encodeURIComponent(entry.contributor)}" class="text-xs font-medium text-primary hover:underline">
+        <a href="/contributors/${encodeURIComponent(entry.contributor)}/" class="text-xs font-medium text-primary hover:underline">
           ${entry.contributor}
         </a>
         <a href="${entry.url}" target="_blank" rel="noopener noreferrer" class="text-xs text-content-muted hover:text-primary transition-colors flex items-center gap-1">

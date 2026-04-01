@@ -1,0 +1,72 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { loadEntries } from "../data/load-entries.ts";
+import { computeStats } from "../data/stats.ts";
+import { renderBarChart } from "../charts/bar-chart.ts";
+import { renderLineChart } from "../charts/line-chart.ts";
+import { renderDonutChart } from "../charts/donut-chart.ts";
+import { formatDate } from "../utils/date.ts";
+
+const entries = loadEntries();
+const stats = computeStats(entries);
+const avgPerMonth = (stats.totalEntries / Math.max(stats.byMonth.length, 1)).toFixed(1);
+
+const lineChartHtml = renderLineChart(stats.byMonth.map(m => ({ label: m.label, value: m.count })));
+const donutHtml = renderDonutChart(stats.byTag.slice(0, 10).map(t => ({ label: t.tag, value: t.count })));
+const topTagsHtml = renderBarChart(stats.byTag.slice(0, 12).map(t => ({ label: t.tag, value: t.count })));
+const topContribHtml = renderBarChart(stats.byContributor.slice(0, 10).map(c => ({ label: c.name.split(" ")[0], value: c.count })));
+---
+
+<Layout title="Dashboard — Zatsit Tech Watch">
+  <div class="page-enter">
+    <h1 class="text-3xl font-bold gradient-text mb-2">Dashboard</h1>
+    <p class="text-content-muted text-sm mb-8">Statistiques de la veille technologique</p>
+
+    <!-- Summary cards -->
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+      <div class="glass rounded-xl p-5 text-center">
+        <p class="text-xs text-content-muted uppercase tracking-wider mb-1">Ressources</p>
+        <p class="text-2xl font-bold gradient-text">{stats.totalEntries}</p>
+        <p class="text-xs text-content-muted mt-1">Du {formatDate(stats.dateRange.from)} au {formatDate(stats.dateRange.to)}</p>
+      </div>
+      <div class="glass rounded-xl p-5 text-center">
+        <p class="text-xs text-content-muted uppercase tracking-wider mb-1">Contributeurs</p>
+        <p class="text-2xl font-bold gradient-text">{stats.totalContributors}</p>
+        <p class="text-xs text-content-muted mt-1">actifs sur la période</p>
+      </div>
+      <div class="glass rounded-xl p-5 text-center">
+        <p class="text-xs text-content-muted uppercase tracking-wider mb-1">Tags</p>
+        <p class="text-2xl font-bold gradient-text">{stats.totalTags}</p>
+        <p class="text-xs text-content-muted mt-1">catégories identifiées</p>
+      </div>
+      <div class="glass rounded-xl p-5 text-center">
+        <p class="text-xs text-content-muted uppercase tracking-wider mb-1">Moyenne</p>
+        <p class="text-2xl font-bold gradient-text">{avgPerMonth}/mois</p>
+        <p class="text-xs text-content-muted mt-1">rythme de contributions</p>
+      </div>
+    </div>
+
+    <!-- Charts -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+      <div class="glass rounded-xl p-6">
+        <h3 class="text-sm font-semibold text-content mb-4">Évolution mensuelle</h3>
+        <Fragment set:html={lineChartHtml} />
+      </div>
+      <div class="glass rounded-xl p-6">
+        <h3 class="text-sm font-semibold text-content mb-4">Répartition par tag</h3>
+        <Fragment set:html={donutHtml} />
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div class="glass rounded-xl p-6">
+        <h3 class="text-sm font-semibold text-content mb-4">Top Tags</h3>
+        <Fragment set:html={topTagsHtml} />
+      </div>
+      <div class="glass rounded-xl p-6">
+        <h3 class="text-sm font-semibold text-content mb-4">Top Contributeurs</h3>
+        <Fragment set:html={topContribHtml} />
+      </div>
+    </div>
+  </div>
+</Layout>

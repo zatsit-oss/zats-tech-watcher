@@ -15,7 +15,7 @@ export function renderListItem(entry: TechWatchEntry, index: number): string {
         <div class="flex items-center gap-2 mt-1.5 flex-wrap">
           <span class="text-xs text-content-muted">${entry.dateStr}</span>
           <span class="text-xs text-content-muted">·</span>
-          <a href="#/contributors/${encodeURIComponent(entry.contributor)}" class="text-xs text-primary hover:underline">${entry.contributor}</a>
+          <a href="/contributors/${encodeURIComponent(entry.contributor)}/" class="text-xs text-primary hover:underline">${entry.contributor}</a>
           <span class="text-xs text-content-muted">·</span>
           <div class="flex gap-1 flex-wrap">
             ${entry.tags.map((t) => renderTagBadge(t, false, true)).join("")}

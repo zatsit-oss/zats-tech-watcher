@@ -1,0 +1,123 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { loadEntries } from "../data/load-entries.ts";
+import { renderHeatmapSvg } from "../charts/heatmap-svg.ts";
+import type { DayActivity } from "../charts/heatmap-svg.ts";
+import type { TechWatchEntry } from "../types.ts";
+
+const entries = loadEntries();
+
+// Build day map
+const dayMap = new Map<string, TechWatchEntry[]>();
+for (const entry of entries) {
+  const key = entry.date.toISOString().slice(0, 10);
+  if (!dayMap.has(key)) dayMap.set(key, []);
+  dayMap.get(key)!.push(entry);
+}
+
+const dayData: DayActivity[] = Array.from(dayMap.entries()).map(([date, items]) => ({
+  date,
+  count: items.length,
+}));
+
+const totalEntries = entries.length;
+const activeDays = dayData.filter(d => d.count > 0).length;
+
+// Max streak
+const sortedDays = [...dayMap.keys()].sort();
+let maxStreak = sortedDays.length > 0 ? 1 : 0;
+let currentStreak = 1;
+for (let i = 1; i < sortedDays.length; i++) {
+  const prev = new Date(sortedDays[i - 1]);
+  const curr = new Date(sortedDays[i]);
+  const diff = Math.round((curr.getTime() - prev.getTime()) / 86400000);
+  if (diff === 1) {
+    currentStreak++;
+    if (currentStreak > maxStreak) maxStreak = currentStreak;
+  } else {
+    currentStreak = 1;
+  }
+}
+
+// Average per week
+const dates = entries.map(e => e.date.getTime());
+const weekSpan = dates.length > 0
+  ? Math.max(Math.ceil((Math.max(...dates) - Math.min(...dates)) / (7 * 86400000)), 1)
+  : 1;
+const avgPerWeek = (totalEntries / weekSpan).toFixed(1);
+
+// Top 5 most active days
+const topDays = [...dayMap.entries()].sort((a, b) => b[1].length - a[1].length).slice(0, 5);
+
+const heatmapHtml = renderHeatmapSvg(dayData);
+
+// Legend levels
+const legendLevels = [
+  "var(--color-bg-alt)",
+  "color-mix(in srgb, var(--color-primary) 25%, transparent)",
+  "color-mix(in srgb, var(--color-primary) 50%, transparent)",
+  "color-mix(in srgb, var(--color-primary) 75%, transparent)",
+  "var(--color-primary)",
+];
+---
+
+<Layout title="Activité — Zatsit Tech Watch">
+  <div class="page-enter">
+    <h1 class="text-3xl font-bold gradient-text mb-2">Activité</h1>
+    <p class="text-content-muted text-sm mb-8">Calendrier des contributions</p>
+
+    <!-- Summary cards -->
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+      <div class="glass rounded-xl p-5 text-center">
+        <p class="text-xs text-content-muted uppercase tracking-wider mb-1">Ressources</p>
+        <p class="text-2xl font-bold gradient-text">{totalEntries}</p>
+        <p class="text-xs text-content-muted mt-1">au total</p>
+      </div>
+      <div class="glass rounded-xl p-5 text-center">
+        <p class="text-xs text-content-muted uppercase tracking-wider mb-1">Jours actifs</p>
+        <p class="text-2xl font-bold gradient-text">{activeDays}</p>
+        <p class="text-xs text-content-muted mt-1">avec contributions</p>
+      </div>
+      <div class="glass rounded-xl p-5 text-center">
+        <p class="text-xs text-content-muted uppercase tracking-wider mb-1">Streak max</p>
+        <p class="text-2xl font-bold gradient-text">{maxStreak} j.</p>
+        <p class="text-xs text-content-muted mt-1">jours consécutifs</p>
+      </div>
+      <div class="glass rounded-xl p-5 text-center">
+        <p class="text-xs text-content-muted uppercase tracking-wider mb-1">Moyenne</p>
+        <p class="text-2xl font-bold gradient-text">{avgPerWeek}/sem.</p>
+        <p class="text-xs text-content-muted mt-1">contributions par semaine</p>
+      </div>
+    </div>
+
+    <!-- Heatmap -->
+    <div class="glass rounded-xl p-6 mb-8 overflow-x-auto">
+      <h3 class="text-sm font-semibold text-content mb-4">Contributions sur l'année</h3>
+      <Fragment set:html={heatmapHtml} />
+      <div class="flex items-center justify-end gap-2 mt-4 text-xs text-content-muted">
+        <span>Moins</span>
+        {legendLevels.map(fill => (
+          <span class="inline-block w-3 h-3 rounded-sm" style={`background:${fill}`}></span>
+        ))}
+        <span>Plus</span>
+      </div>
+    </div>
+
+    <!-- Top active days -->
+    <div class="glass rounded-xl p-6">
+      <h3 class="text-sm font-semibold text-content mb-4">Jours les plus actifs</h3>
+      <div class="space-y-3">
+        {topDays.map(([dateKey, dayEntries]) => {
+          const [y, m, d] = dateKey.split("-");
+          return (
+            <div class="flex items-start gap-4 py-2 border-b border-edge last:border-0">
+              <div class="flex-shrink-0 w-20 text-sm font-medium text-content">{d}/{m}/{y}</div>
+              <div class="flex-shrink-0 w-8 text-sm font-bold gradient-text">{dayEntries.length}</div>
+              <div class="text-sm text-content-muted truncate">{dayEntries.map(e => e.subject).join(", ")}</div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  </div>
+</Layout>

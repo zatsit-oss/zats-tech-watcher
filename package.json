@@ -4,9 +4,9 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro check && astro build",
-    "preview": "astro preview",
+    "dev": "npx astro dev",
+    "build": "npx astro check && npx astro build",
+    "preview": "npx astro preview",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "astro build && playwright test"

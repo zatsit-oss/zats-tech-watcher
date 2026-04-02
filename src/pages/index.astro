@@ -4,6 +4,10 @@ import { loadEntries } from "../data/load-entries.ts";
 import { renderCardItem } from "../components/card-item.ts";
 import { renderListItem } from "../components/list-item.ts";
 import { renderTagBadge } from "../components/tag-badge.ts";
+import SearchIcon from "../assets/icons/search.svg";
+import FlaskIcon from "../assets/icons/flask.svg";
+import GridIcon from "../assets/icons/grid.svg";
+import ListIcon from "../assets/icons/list.svg";
 const entries = loadEntries();
 const allTags = [...new Set(entries.flatMap((e) => e.tags))].sort();
 const contributors = [...new Set(entries.map((e) => e.contributor))].sort();
@@ -22,9 +26,7 @@ const contributors = [...new Set(entries.map((e) => e.contributor))].sort();
     <!-- Search + Sort + View toggle -->
     <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3 mb-6">
       <div class="relative flex-1 max-w-md">
-        <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-content-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-        </svg>
+        <SearchIcon class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-content-muted" aria-hidden="true" />
         <input
           id="search-input"
           type="text"
@@ -35,9 +37,7 @@ const contributors = [...new Set(entries.map((e) => e.contributor))].sort();
       </div>
       <div class="flex items-center gap-3">
         <button id="discover-btn" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg glass border border-edge text-sm text-content hover:bg-bg-alt transition-colors" aria-label="Découvrir une ressource au hasard">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
-          </svg>
+          <FlaskIcon class="w-4 h-4" aria-hidden="true" />
           <span class="hidden sm:inline">Découvrir</span>
         </button>
         <div class="flex items-center gap-2">
@@ -52,14 +52,10 @@ const contributors = [...new Set(entries.map((e) => e.contributor))].sort();
         </div>
         <div class="flex items-center gap-1 glass rounded-lg p-1">
           <button data-view="grid" class="view-toggle-btn p-1.5 rounded-md transition-colors bg-primary text-white" aria-label="Vue grille">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/>
-            </svg>
+            <GridIcon class="w-4 h-4" aria-hidden="true" />
           </button>
           <button data-view="list" class="view-toggle-btn p-1.5 rounded-md transition-colors text-content-muted hover:text-content" aria-label="Vue liste">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-            </svg>
+            <ListIcon class="w-4 h-4" aria-hidden="true" />
           </button>
         </div>
       </div>
@@ -92,9 +88,7 @@ const contributors = [...new Set(entries.map((e) => e.contributor))].sort();
       {entries.map((e, i) => <Fragment set:html={renderListItem(e, i)} />)}
     </div>
     <div id="empty-state" class="glass rounded-xl p-12 text-center hidden">
-      <svg class="w-16 h-16 mx-auto text-content-muted mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-      </svg>
+      <SearchIcon class="w-16 h-16 mx-auto text-content-muted mb-4" aria-hidden="true" />
       <h3 class="text-lg font-semibold text-content-muted mb-2">Aucun résultat</h3>
       <p class="text-sm text-content-muted">Essayez de modifier vos filtres ou votre recherche.</p>
     </div>

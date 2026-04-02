@@ -56,7 +56,7 @@ export function renderLineChart(
     .join("");
 
   return `
-    <svg viewBox="0 0 ${width} ${height}" class="w-full" style="max-height: ${height}px">
+    <svg viewBox="0 0 ${width} ${height}" class="w-full" style="max-height: ${height}px" role="img" aria-label="Graphique en ligne">
       <defs>
         <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%" stop-color="var(--color-primary)" stop-opacity="0.2"/>

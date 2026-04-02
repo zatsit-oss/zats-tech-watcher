@@ -79,7 +79,7 @@ export function renderTagCloudSvg(
     .join("");
 
   return `
-    <svg viewBox="0 0 ${width} ${height}" class="w-full" style="max-height: ${height}px">
+    <svg viewBox="0 0 ${width} ${height}" class="w-full" style="max-height: ${height}px" role="img" aria-label="Nuage de tags">
       ${texts}
     </svg>
   `;

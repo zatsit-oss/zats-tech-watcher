@@ -21,7 +21,7 @@ const barChartHtml = renderBarChart(tagStats.slice(0, 12).map(t => ({ label: t.t
 
     <!-- Tag cloud -->
     <div class="glass rounded-xl p-6 mb-8">
-      <h3 class="text-sm font-semibold text-content mb-4">Nuage de tags</h3>
+      <h2 class="text-sm font-semibold text-content mb-4">Nuage de tags</h3>
       <div id="tag-cloud-container">
         <Fragment set:html={tagCloudHtml} />
       </div>
@@ -30,7 +30,7 @@ const barChartHtml = renderBarChart(tagStats.slice(0, 12).map(t => ({ label: t.t
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
       <!-- Trending tags -->
       <div class="glass rounded-xl p-6">
-        <h3 class="text-sm font-semibold text-content mb-4">Tendances montantes</h3>
+        <h2 class="text-sm font-semibold text-content mb-4">Tendances montantes</h3>
         {trending.length > 0 ? (
           <div class="space-y-3">
             {trending.map(t => (
@@ -53,7 +53,7 @@ const barChartHtml = renderBarChart(tagStats.slice(0, 12).map(t => ({ label: t.t
 
       <!-- Bar chart -->
       <div class="glass rounded-xl p-6">
-        <h3 class="text-sm font-semibold text-content mb-4">Distribution des tags</h3>
+        <h2 class="text-sm font-semibold text-content mb-4">Distribution des tags</h3>
         <Fragment set:html={barChartHtml} />
       </div>
     </div>
@@ -77,11 +77,11 @@ const barChartHtml = renderBarChart(tagStats.slice(0, 12).map(t => ({ label: t.t
               <td class="px-4 py-3 text-right text-content-muted hidden sm:table-cell">{t.contributors.length}</td>
               <td class="px-4 py-3 text-right">
                 {t.trend > 0 ? (
-                  <span class="text-green-500 font-medium">+{t.trend}</span>
+                  <span class="text-green-500 font-medium" aria-label={`Tendance en hausse de ${t.trend}`}>+{t.trend}</span>
                 ) : t.trend < 0 ? (
-                  <span class="text-red-400 font-medium">{t.trend}</span>
+                  <span class="text-red-400 font-medium" aria-label={`Tendance en baisse de ${Math.abs(t.trend)}`}>{t.trend}</span>
                 ) : (
-                  <span class="text-content-muted">—</span>
+                  <span class="text-content-muted" aria-label="Tendance stable">—</span>
                 )}
               </td>
             </tr>

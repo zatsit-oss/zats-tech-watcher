@@ -66,17 +66,32 @@ function isActive(href: string): boolean {
   function initMobileMenu() {
     const btn = document.getElementById('mobile-menu-btn');
     const nav = document.getElementById('mobile-nav');
+
+    function closeMenu() {
+      nav?.classList.add('hidden');
+      nav?.classList.remove('flex');
+      btn?.setAttribute('aria-expanded', 'false');
+    }
+
     btn?.addEventListener('click', () => {
       const expanded = btn.getAttribute('aria-expanded') === 'true';
       btn.setAttribute('aria-expanded', String(!expanded));
       nav?.classList.toggle('hidden');
       nav?.classList.toggle('flex');
+      if (!expanded) {
+        const firstLink = nav?.querySelector('a') as HTMLElement;
+        firstLink?.focus();
+      }
     });
+
     nav?.addEventListener('click', (e) => {
-      if ((e.target as HTMLElement).tagName === 'A') {
-        nav.classList.add('hidden');
-        nav.classList.remove('flex');
-        btn?.setAttribute('aria-expanded', 'false');
+      if ((e.target as HTMLElement).tagName === 'A') closeMenu();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && btn?.getAttribute('aria-expanded') === 'true') {
+        closeMenu();
+        btn?.focus();
       }
     });
   }

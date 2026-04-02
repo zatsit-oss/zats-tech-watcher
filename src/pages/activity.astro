@@ -92,7 +92,7 @@ const legendLevels = [
 
     <!-- Heatmap -->
     <div class="glass rounded-xl p-6 mb-8 overflow-x-auto">
-      <h3 class="text-sm font-semibold text-content mb-4">Contributions sur l'année</h3>
+      <h2 class="text-sm font-semibold text-content mb-4">Contributions sur l'année</h3>
       <Fragment set:html={heatmapHtml} />
       <div class="flex items-center justify-end gap-2 mt-4 text-xs text-content-muted">
         <span>Moins</span>
@@ -105,7 +105,7 @@ const legendLevels = [
 
     <!-- Top active days -->
     <div class="glass rounded-xl p-6">
-      <h3 class="text-sm font-semibold text-content mb-4">Jours les plus actifs</h3>
+      <h2 class="text-sm font-semibold text-content mb-4">Jours les plus actifs</h3>
       <div class="space-y-3">
         {topDays.map(([dateKey, dayEntries]) => {
           const [y, m, d] = dateKey.split("-");

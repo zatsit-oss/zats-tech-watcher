@@ -16,6 +16,9 @@ import MoonIcon from "../assets/icons/moon.svg";
 <script>
   function initThemeToggle() {
     const btn = document.getElementById('theme-toggle');
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    btn?.setAttribute('aria-label',
+      currentTheme === 'dark' ? 'Passer en mode clair' : 'Passer en mode sombre');
     btn?.addEventListener('click', () => {
       const current = document.documentElement.getAttribute('data-theme');
       const next = current === 'dark' ? 'light' : 'dark';

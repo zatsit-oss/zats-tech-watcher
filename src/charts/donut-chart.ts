@@ -67,7 +67,7 @@ export function renderDonutChart(
 
   return `
     <div class="flex flex-col sm:flex-row items-center gap-6">
-      <svg viewBox="0 0 ${size} ${size}" class="w-full max-w-[200px] shrink-0">
+      <svg viewBox="0 0 ${size} ${size}" class="w-full max-w-[200px] shrink-0" role="img" aria-label="Diagramme circulaire">
         ${slices.join("")}
         <text x="${cx}" y="${cy - 8}" text-anchor="middle" font-size="20" font-weight="700" fill="var(--color-content)">${total}</text>
         <text x="${cx}" y="${cy + 10}" text-anchor="middle" font-size="10" fill="var(--color-content-muted)">total</text>

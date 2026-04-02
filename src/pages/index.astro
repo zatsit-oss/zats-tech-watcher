@@ -18,7 +18,7 @@ const contributors = [...new Set(entries.map((e) => e.contributor))].sort();
     <!-- Header section -->
     <div class="mb-8">
       <h1 class="text-3xl font-bold gradient-text mb-2">Veille Technologique</h1>
-      <p class="text-content-muted text-sm">
+      <p class="text-content-muted text-sm" aria-live="polite" aria-atomic="true">
         <span id="result-count">{entries.length}</span> ressource{entries.length > 1 ? "s" : ""} trouvée{entries.length > 1 ? "s" : ""}
       </p>
     </div>
@@ -51,10 +51,10 @@ const contributors = [...new Set(entries.map((e) => e.contributor))].sort();
           </select>
         </div>
         <div class="flex items-center gap-1 glass rounded-lg p-1">
-          <button data-view="grid" class="view-toggle-btn p-1.5 rounded-md transition-colors bg-primary text-white" aria-label="Vue grille">
+          <button data-view="grid" class="view-toggle-btn p-2.5 rounded-md transition-colors bg-primary text-white" aria-label="Vue grille" aria-pressed="true">
             <GridIcon class="w-4 h-4" aria-hidden="true" />
           </button>
-          <button data-view="list" class="view-toggle-btn p-1.5 rounded-md transition-colors text-content-muted hover:text-content" aria-label="Vue liste">
+          <button data-view="list" class="view-toggle-btn p-2.5 rounded-md transition-colors text-content-muted hover:text-content" aria-label="Vue liste" aria-pressed="false">
             <ListIcon class="w-4 h-4" aria-hidden="true" />
           </button>
         </div>
@@ -65,7 +65,7 @@ const contributors = [...new Set(entries.map((e) => e.contributor))].sort();
     <div class="mb-6">
       <div class="flex flex-col gap-4">
         <div>
-          <h4 class="text-xs font-semibold text-content-muted uppercase tracking-wider mb-2">Tags</h4>
+          <h2 class="text-xs font-semibold text-content-muted uppercase tracking-wider mb-2">Tags</h2>
           <div id="tag-filters" class="flex flex-wrap gap-1.5">
             {allTags.map((t) => <Fragment set:html={renderTagBadge(t, false)} />)}
           </div>
@@ -210,7 +210,9 @@ const contributors = [...new Set(entries.map((e) => e.contributor))].sort();
     // Tag active states
     document.querySelectorAll('#tag-filters .tag-badge').forEach(btn => {
       const tag = btn.textContent?.trim() ?? '';
-      btn.classList.toggle('active', activeTags.includes(tag));
+      const isActive = activeTags.includes(tag);
+      btn.classList.toggle('active', isActive);
+      btn.setAttribute('aria-pressed', String(isActive));
     });
   }
 
@@ -278,6 +280,7 @@ const contributors = [...new Set(entries.map((e) => e.contributor))].sort();
         b.classList.toggle('bg-primary', isActive);
         b.classList.toggle('text-white', isActive);
         b.classList.toggle('text-content-muted', !isActive);
+        b.setAttribute('aria-pressed', String(isActive));
       });
       applyFilters();
     });
@@ -294,40 +297,65 @@ const contributors = [...new Set(entries.map((e) => e.contributor))].sort();
     const dateStr = entry.dateStr;
     const domain = entry.el.querySelectorAll('.text-xs.text-content-muted')[1]?.textContent?.trim() ?? '';
 
+    const previousFocus = document.activeElement as HTMLElement;
     const modal = document.createElement('div');
     modal.id = 'surprise-modal';
     modal.className = 'fixed inset-0 z-50 flex items-center justify-center page-enter';
     modal.setAttribute('role', 'dialog');
     modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-labelledby', 'surprise-title');
     modal.innerHTML = `
       <div id="surprise-overlay" class="absolute inset-0 bg-black/50"></div>
       <div class="relative glass rounded-2xl p-6 sm:p-8 max-w-lg w-full mx-4 border border-edge shadow-xl">
-        <button id="surprise-close" class="absolute top-3 right-3 p-1.5 rounded-lg text-content-muted hover:text-content hover:bg-bg-alt transition-colors" aria-label="Fermer">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        <button id="surprise-close" class="absolute top-3 right-3 p-2.5 rounded-lg text-content-muted hover:text-content hover:bg-bg-alt transition-colors" aria-label="Fermer">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
         </button>
         <div class="flex items-center gap-2 text-xs text-content-muted mb-3">
           <span>${dateStr}</span>
           <span class="w-1 h-1 rounded-full bg-content-muted"></span>
           <span>${domain}</span>
         </div>
-        <h2 class="text-lg font-bold text-content mb-3">${subject}</h2>
+        <h2 id="surprise-title" class="text-lg font-bold text-content mb-3">${subject}</h2>
         <div class="flex flex-wrap gap-1.5 mb-3">${tags.map(t => `<span class="tag-badge">${t}</span>`).join('')}</div>
         <a href="/contributors/${encodeURIComponent(contributor)}/" class="text-sm text-primary hover:underline">${contributor}</a>
         <div class="flex gap-3 mt-6">
-          <a href="${url}" target="_blank" rel="noopener noreferrer" class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-primary text-white text-sm font-medium hover:opacity-90 transition-opacity">Ouvrir le lien</a>
+          <a href="${url}" target="_blank" rel="noopener noreferrer" class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-primary text-white text-sm font-medium hover:opacity-90 transition-opacity">Ouvrir le lien <span class="sr-only">(nouvel onglet)</span></a>
           <button id="surprise-another" class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg glass border border-edge text-content text-sm font-medium hover:bg-bg-alt transition-colors">Autre surprise</button>
         </div>
       </div>
     `;
     document.body.appendChild(modal);
 
-    const close = () => { modal.remove(); document.removeEventListener('keydown', onKey); };
-    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') close(); };
+    // Focus management
+    const closeBtn = modal.querySelector('#surprise-close') as HTMLElement;
+    closeBtn?.focus();
+
+    // Focus trap
+    const focusableEls = modal.querySelectorAll<HTMLElement>('button, a[href], [tabindex]:not([tabindex="-1"])');
+    const firstFocusable = focusableEls[0];
+    const lastFocusable = focusableEls[focusableEls.length - 1];
+
+    const close = () => {
+      modal.remove();
+      document.removeEventListener('keydown', onKey);
+      previousFocus?.focus();
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') { close(); return; }
+      if (e.key === 'Tab') {
+        if (e.shiftKey && document.activeElement === firstFocusable) {
+          e.preventDefault(); lastFocusable?.focus();
+        } else if (!e.shiftKey && document.activeElement === lastFocusable) {
+          e.preventDefault(); firstFocusable?.focus();
+        }
+      }
+    };
     document.addEventListener('keydown', onKey);
     modal.querySelector('#surprise-overlay')?.addEventListener('click', close);
-    modal.querySelector('#surprise-close')?.addEventListener('click', close);
+    closeBtn?.addEventListener('click', close);
     modal.querySelector('#surprise-another')?.addEventListener('click', () => {
       document.getElementById('surprise-modal')?.remove();
+      document.removeEventListener('keydown', onKey);
       document.getElementById('discover-btn')?.click();
     });
   });

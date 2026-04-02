@@ -38,7 +38,7 @@ function renderGroupHtml(key: string, items: TechWatchEntry[], mode: string): st
     <div class="relative pl-12 pb-8">
       <div class="absolute left-2.5 top-1 w-4 h-4 rounded-full bg-primary border-4 border-bg"></div>
       <div class="mb-3">
-        <h3 class="text-lg font-bold text-content">${label}</h3>
+        <h2 class="text-lg font-bold text-content">${label}</h2>
         <span class="text-xs text-content-muted">${items.length} entrée${items.length > 1 ? "s" : ""}</span>
       </div>
       <div class="space-y-2">
@@ -62,8 +62,8 @@ const weekHtml = weekSortedKeys.map(k => renderGroupHtml(k, weekGroups.get(k)!, 
         <p class="text-content-muted text-sm">Vue chronologique des contributions</p>
       </div>
       <div class="flex items-center gap-1 glass rounded-lg p-1">
-        <button data-mode="month" class="timeline-mode-btn px-3 py-1.5 rounded-md text-sm transition-colors bg-primary text-white">Mois</button>
-        <button data-mode="week" class="timeline-mode-btn px-3 py-1.5 rounded-md text-sm transition-colors text-content-muted hover:text-content">Semaine</button>
+        <button data-mode="month" class="timeline-mode-btn px-3 py-1.5 rounded-md text-sm transition-colors bg-primary text-white" aria-pressed="true">Mois</button>
+        <button data-mode="week" class="timeline-mode-btn px-3 py-1.5 rounded-md text-sm transition-colors text-content-muted hover:text-content" aria-pressed="false">Semaine</button>
       </div>
     </div>
 
@@ -90,6 +90,7 @@ const weekHtml = weekSortedKeys.map(k => renderGroupHtml(k, weekGroups.get(k)!, 
         b.classList.toggle('bg-primary', isActive);
         b.classList.toggle('text-white', isActive);
         b.classList.toggle('text-content-muted', !isActive);
+        b.setAttribute('aria-pressed', String(isActive));
       });
     });
   });

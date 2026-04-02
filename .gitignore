@@ -9,8 +9,16 @@ lerna-debug.log*
 
 node_modules
 dist
+.astro
 *.local
 .clever.json
+
+# Test output
+test-results
+playwright-report
+
+# Claude Code cache
+.claude/skills
 
 # Editor directories and files
 .vscode/*

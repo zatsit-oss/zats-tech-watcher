@@ -4,6 +4,7 @@ import { loadEntries } from "../data/load-entries.ts";
 import { computeTagStats } from "../data/stats.ts";
 import { renderTagCloudSvg } from "../charts/tag-cloud-svg.ts";
 import { renderBarChart } from "../charts/bar-chart.ts";
+import TrendUpIcon from "../assets/icons/trend-up.svg";
 
 const entries = loadEntries();
 const tagStats = computeTagStats(entries);
@@ -39,9 +40,7 @@ const barChartHtml = renderBarChart(tagStats.slice(0, 12).map(t => ({ label: t.t
                   <span class="text-xs text-content-muted">{t.count} entries</span>
                 </div>
                 <div class="flex items-center gap-1 text-green-500">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
-                  </svg>
+                  <TrendUpIcon class="w-4 h-4" aria-hidden="true" />
                   <span class="text-sm font-medium">+{t.trend}</span>
                 </div>
               </div>

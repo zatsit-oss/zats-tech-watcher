@@ -17,6 +17,15 @@ export function extractDomain(url: string): string {
   }
 }
 
+/** Shorten full name to "FirstName L." format */
+export function shortenName(fullName: string): string {
+  const parts = fullName.trim().split(/\s+/);
+  if (parts.length < 2) return fullName;
+  const firstName = parts[0];
+  const lastInitial = parts[parts.length - 1].charAt(0).toUpperCase();
+  return `${firstName} ${lastInitial}.`;
+}
+
 /** Capitalize first letter */
 export function capitalize(str: string): string {
   return str.charAt(0).toUpperCase() + str.slice(1);

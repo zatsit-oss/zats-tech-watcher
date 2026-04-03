@@ -1,6 +1,6 @@
 import type { TechWatchEntry } from "../types.ts";
 import { parseFrenchDate } from "../utils/date.ts";
-import { extractDomain } from "../utils/format.ts";
+import { extractDomain, shortenName } from "../utils/format.ts";
 import { extractTags } from "./tag-extractor.ts";
 
 /**
@@ -22,7 +22,7 @@ function parseTsv(text: string): TechWatchEntry[] {
 
     const cols = line.split("\t");
     const dateStr = cols[0]?.trim() ?? "";
-    const contributor = cols[1]?.trim() ?? "";
+    const contributor = shortenName(cols[1]?.trim() ?? "");
     const subject = cols[2]?.trim() ?? "";
     const url = cols[3]?.trim() ?? "";
 

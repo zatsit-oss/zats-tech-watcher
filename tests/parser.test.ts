@@ -21,8 +21,8 @@ describe("parseTsvText", () => {
   it("extracts contributor name", () => {
     const entries = parseTsvText(SAMPLE_TSV);
     const names = entries.map((e) => e.contributor);
-    expect(names).toContain("John Doe");
-    expect(names).toContain("Jane Smith");
+    expect(names).toContain("John D.");
+    expect(names).toContain("Jane S.");
   });
 
   it("extracts domain from URL", () => {

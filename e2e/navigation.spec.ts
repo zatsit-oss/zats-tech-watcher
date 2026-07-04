@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { siteConfig } from "../src/config.ts";
 
 test.describe("Navigation", () => {
   test("home page loads and shows title", async ({ page }) => {
@@ -15,6 +16,7 @@ test.describe("Navigation", () => {
   });
 
   test("navigates to contributors page", async ({ page }) => {
+    test.skip(!siteConfig.showRanking, "contributor ranking is disabled");
     await page.goto("/");
     await page.click('a[href="/contributors/"]');
     await expect(page.locator("h1")).toContainText("Contributeurs");
@@ -41,6 +43,7 @@ test.describe("Navigation", () => {
   });
 
   test("navigates to a contributor detail page", async ({ page }) => {
+    test.skip(!siteConfig.showRanking, "contributor ranking is disabled");
     await page.goto("/contributors/");
     // Click on the first contributor link in the leaderboard table body
     const firstLink = page.locator("tbody a").first();
@@ -50,6 +53,7 @@ test.describe("Navigation", () => {
   });
 
   test("contributor detail has back link", async ({ page }) => {
+    test.skip(!siteConfig.showRanking, "contributor ranking is disabled");
     await page.goto("/contributors/");
     await page.locator("tbody a").first().click();
     const backLink = page.locator('main a[href="/contributors/"]');

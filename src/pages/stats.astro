@@ -6,6 +6,7 @@ import { renderBarChart } from "../charts/bar-chart.ts";
 import { renderLineChart } from "../charts/line-chart.ts";
 import { renderDonutChart } from "../charts/donut-chart.ts";
 import { formatDate } from "../utils/date.ts";
+import { siteConfig } from "../config.ts";
 
 const entries = loadEntries();
 const stats = computeStats(entries);
@@ -14,7 +15,9 @@ const avgPerMonth = (stats.totalEntries / Math.max(stats.byMonth.length, 1)).toF
 const lineChartHtml = renderLineChart(stats.byMonth.map(m => ({ label: m.label, value: m.count })));
 const donutHtml = renderDonutChart(stats.byTag.slice(0, 10).map(t => ({ label: t.tag, value: t.count })));
 const topTagsHtml = renderBarChart(stats.byTag.slice(0, 12).map(t => ({ label: t.tag, value: t.count })));
-const topContribHtml = renderBarChart(stats.byContributor.slice(0, 10).map(c => ({ label: c.name.split(" ")[0], value: c.count })));
+const topContribHtml = siteConfig.showRanking
+  ? renderBarChart(stats.byContributor.slice(0, 10).map(c => ({ label: c.name.split(" ")[0], value: c.count })))
+  : "";
 ---
 
 <Layout title="Dashboard — Zatsit Tech Watch">
@@ -49,24 +52,26 @@ const topContribHtml = renderBarChart(stats.byContributor.slice(0, 10).map(c => 
     <!-- Charts -->
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
       <div class="glass rounded-xl p-6">
-        <h2 class="text-sm font-semibold text-content mb-4">Évolution mensuelle</h3>
+        <h2 class="text-sm font-semibold text-content mb-4">Évolution mensuelle</h2>
         <Fragment set:html={lineChartHtml} />
       </div>
       <div class="glass rounded-xl p-6">
-        <h2 class="text-sm font-semibold text-content mb-4">Répartition par tag</h3>
+        <h2 class="text-sm font-semibold text-content mb-4">Répartition par tag</h2>
         <Fragment set:html={donutHtml} />
       </div>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
       <div class="glass rounded-xl p-6">
-        <h2 class="text-sm font-semibold text-content mb-4">Top Tags</h3>
+        <h2 class="text-sm font-semibold text-content mb-4">Top Tags</h2>
         <Fragment set:html={topTagsHtml} />
       </div>
-      <div class="glass rounded-xl p-6">
-        <h2 class="text-sm font-semibold text-content mb-4">Top Contributeurs</h3>
-        <Fragment set:html={topContribHtml} />
-      </div>
+      {siteConfig.showRanking && (
+        <div class="glass rounded-xl p-6">
+          <h2 class="text-sm font-semibold text-content mb-4">Top Contributeurs</h2>
+          <Fragment set:html={topContribHtml} />
+        </div>
+      )}
     </div>
   </div>
 </Layout>

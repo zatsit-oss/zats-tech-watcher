@@ -26,6 +26,7 @@ Aligned with the Zatsit project ecosystem (greenscore, corporate, cv-generator).
 - `npm run test` — Run unit tests (Vitest)
 - `npm run test:e2e` — Build + run E2E tests (Playwright)
 - `npm run test:watch` — Run unit tests in watch mode
+- `npm run deploy:cellar` — Build + deploy to Clever Cloud Cellar (prod, also run by CI on main)
 
 ## Project Structure
 ```

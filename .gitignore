@@ -17,8 +17,10 @@ dist
 test-results
 playwright-report
 
-# Claude Code cache
+# Claude Code local files
 .claude/skills
+.claude/settings.local.json
+.claude/settings.json
 
 # Editor directories and files
 .vscode/*

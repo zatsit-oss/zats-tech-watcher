@@ -1,0 +1,33 @@
+---
+import SunIcon from "../assets/icons/sun.svg";
+import MoonIcon from "../assets/icons/moon.svg";
+---
+<button id="theme-toggle" aria-label="Basculer le thème" title="Basculer le thème"
+        class="p-2 rounded-lg hover:bg-bg-alt transition-colors focus:ring-2 focus:ring-primary focus:outline-none">
+  <SunIcon id="icon-sun" class="w-5 h-5 hidden" aria-hidden="true" />
+  <MoonIcon id="icon-moon" class="w-5 h-5" aria-hidden="true" />
+</button>
+
+<style>
+  [data-theme="dark"] #icon-sun { display: block; }
+  [data-theme="dark"] #icon-moon { display: none; }
+</style>
+
+<script>
+  function initThemeToggle() {
+    const btn = document.getElementById('theme-toggle');
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    btn?.setAttribute('aria-label',
+      currentTheme === 'dark' ? 'Passer en mode clair' : 'Passer en mode sombre');
+    btn?.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      btn.setAttribute('aria-label',
+        next === 'dark' ? 'Passer en mode clair' : 'Passer en mode sombre');
+    });
+  }
+  initThemeToggle();
+  document.addEventListener('astro:after-swap', initThemeToggle);
+</script>

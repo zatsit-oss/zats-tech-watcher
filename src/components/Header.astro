@@ -1,0 +1,103 @@
+---
+import Logo from "./Logo.astro";
+import ThemeToggle from "./ThemeToggle.astro";
+import MenuIcon from "../assets/icons/menu.svg";
+import { siteConfig } from "../config.ts";
+
+const allNavLinks = [
+  { href: "/", label: "Accueil" },
+  { href: "/contributors/", label: "Contributeurs", requiresRanking: true },
+  { href: "/timeline/", label: "Timeline" },
+  { href: "/stats/", label: "Stats" },
+  { href: "/tags/", label: "Tags" },
+  { href: "/activity/", label: "Activité" },
+];
+
+const navLinks = allNavLinks.filter((l) => !l.requiresRanking || siteConfig.showRanking);
+
+const currentPath = Astro.url.pathname;
+
+function isActive(href: string): boolean {
+  if (href === "/") return currentPath === "/" || currentPath === "";
+  return currentPath.startsWith(href);
+}
+---
+
+<header class="glass sticky top-0 z-40 border-b border-edge">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <a href="/" class="flex items-center gap-2 no-underline" aria-label="Zatsit Tech Watch — Accueil">
+        <Logo class="h-7 w-auto text-primary" />
+        <span class="text-xl font-bold gradient-text">Tech Watch</span>
+      </a>
+
+      <nav id="main-nav" class="hidden md:flex items-center gap-6" aria-label="Navigation principale">
+        {navLinks.map(link => (
+          <a
+            href={link.href}
+            class:list={["nav-link text-sm", { active: isActive(link.href) }]}
+            aria-current={isActive(link.href) ? "page" : undefined}
+          >
+            {link.label}
+          </a>
+        ))}
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <ThemeToggle />
+        <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-bg-alt transition-colors" aria-expanded="false" aria-controls="mobile-nav" aria-label="Ouvrir le menu">
+          <MenuIcon class="w-5 h-5" aria-hidden="true" />
+        </button>
+      </div>
+    </div>
+
+    <nav id="mobile-nav" class="md:hidden hidden pb-4 flex-col gap-2" role="navigation" aria-label="Menu mobile">
+      {navLinks.map(link => (
+        <a
+          href={link.href}
+          class:list={["nav-link text-sm block py-2", { active: isActive(link.href) }]}
+          aria-current={isActive(link.href) ? "page" : undefined}
+        >
+          {link.label}
+        </a>
+      ))}
+    </nav>
+  </div>
+</header>
+
+<script>
+  function initMobileMenu() {
+    const btn = document.getElementById('mobile-menu-btn');
+    const nav = document.getElementById('mobile-nav');
+
+    function closeMenu() {
+      nav?.classList.add('hidden');
+      nav?.classList.remove('flex');
+      btn?.setAttribute('aria-expanded', 'false');
+    }
+
+    btn?.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      nav?.classList.toggle('hidden');
+      nav?.classList.toggle('flex');
+      if (!expanded) {
+        const firstLink = nav?.querySelector('a') as HTMLElement;
+        firstLink?.focus();
+      }
+    });
+
+    nav?.addEventListener('click', (e) => {
+      if ((e.target as HTMLElement).tagName === 'A') closeMenu();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && btn?.getAttribute('aria-expanded') === 'true') {
+        closeMenu();
+        btn?.focus();
+      }
+    });
+  }
+  initMobileMenu();
+  document.addEventListener('astro:after-swap', initMobileMenu);
+</script>

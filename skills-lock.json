@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "skills": {
+    "accessibility-a11y": {
+      "source": "mindrally/skills",
+      "sourceType": "github",
+      "computedHash": "3117d5b0302f4fbb90cf7b3b65474aa0ea70eadaf91036ab9e20c912d68f9289"
+    },
+    "accessibility-audit": {
+      "source": "webflow/webflow-skills",
+      "sourceType": "github",
+      "computedHash": "d76f378083037b87b644c401f85a5715b54982243f45238e13c0d0f82794c869"
+    }
+  }
+}

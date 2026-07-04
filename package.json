@@ -9,7 +9,8 @@
     "preview": "astro preview",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:e2e": "astro build && playwright test"
+    "test:e2e": "astro build && playwright test",
+    "deploy:cellar": "bash scripts/deploy-cellar.sh"
   },
   "dependencies": {
     "@fontsource/poppins": "^5.2.7",

@@ -51,7 +51,7 @@ src/
 tests/                         # Unit tests (Vitest)
 e2e/                           # E2E tests (Playwright)
 public/
-  tech-watch-v1.tsv            # Data source (132 entries)
+  tech-watch-v1.tsv            # Data source (synced from Google Sheet)
   zatsit.svg                   # Favicon (Zatsit sigle)
 ```
 

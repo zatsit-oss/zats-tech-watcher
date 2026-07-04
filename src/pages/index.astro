@@ -4,13 +4,11 @@ import { loadEntries } from "../data/load-entries.ts";
 import { renderCardItem } from "../components/card-item.ts";
 import { renderListItem } from "../components/list-item.ts";
 import { renderTagBadge } from "../components/tag-badge.ts";
-import { siteConfig } from "../config.ts";
 import SearchIcon from "../assets/icons/search.svg";
 import FlaskIcon from "../assets/icons/flask.svg";
 import GridIcon from "../assets/icons/grid.svg";
 import ListIcon from "../assets/icons/list.svg";
 const entries = loadEntries();
-const showRanking = siteConfig.showRanking;
 const allTags = [...new Set(entries.flatMap((e) => e.tags))].sort();
 const contributors = [...new Set(entries.map((e) => e.contributor))].sort();
 ---
@@ -83,7 +81,7 @@ const contributors = [...new Set(entries.map((e) => e.contributor))].sort();
     </div>
 
     <!-- Content -->
-    <div id="entries-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" data-show-ranking={showRanking ? "true" : "false"}>
+    <div id="entries-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
       {entries.map((e) => <Fragment set:html={renderCardItem(e)} />)}
     </div>
     <div id="entries-list" class="glass rounded-xl divide-y divide-edge hidden">
@@ -98,6 +96,9 @@ const contributors = [...new Set(entries.map((e) => e.contributor))].sort();
 </Layout>
 
 <script>
+  import { renderContributorName } from "../components/contributor-name.ts";
+  import { escapeHtml } from "../utils/format.ts";
+
   // Client-side filtering, sorting, view toggle — all data in DOM
   interface EntryData {
     el: HTMLElement;
@@ -112,7 +113,6 @@ const contributors = [...new Set(entries.map((e) => e.contributor))].sort();
   }
 
   const gridContainer = document.getElementById('entries-grid')!;
-  const showRanking = gridContainer.dataset.showRanking === 'true';
   const listContainer = document.getElementById('entries-list')!;
   const emptyState = document.getElementById('empty-state')!;
   const searchInput = document.getElementById('search-input') as HTMLInputElement;
@@ -314,17 +314,15 @@ const contributors = [...new Set(entries.map((e) => e.contributor))].sort();
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
         </button>
         <div class="flex items-center gap-2 text-xs text-content-muted mb-3">
-          <span>${dateStr}</span>
+          <span>${escapeHtml(dateStr)}</span>
           <span class="w-1 h-1 rounded-full bg-content-muted"></span>
-          <span>${domain}</span>
+          <span>${escapeHtml(domain)}</span>
         </div>
-        <h2 id="surprise-title" class="text-lg font-bold text-content mb-3">${subject}</h2>
-        <div class="flex flex-wrap gap-1.5 mb-3">${tags.map(t => `<span class="tag-badge">${t}</span>`).join('')}</div>
-        ${showRanking
-          ? `<a href="/contributors/${encodeURIComponent(contributor)}/" class="text-sm text-primary hover:underline">${contributor}</a>`
-          : `<span class="text-sm text-content-muted">${contributor}</span>`}
+        <h2 id="surprise-title" class="text-lg font-bold text-content mb-3">${escapeHtml(subject)}</h2>
+        <div class="flex flex-wrap gap-1.5 mb-3">${tags.map(t => `<span class="tag-badge">${escapeHtml(t)}</span>`).join('')}</div>
+        ${renderContributorName(contributor, "text-sm")}
         <div class="flex gap-3 mt-6">
-          <a href="${url}" target="_blank" rel="noopener noreferrer" class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-primary text-white text-sm font-medium hover:opacity-90 transition-opacity">Ouvrir le lien <span class="sr-only">(nouvel onglet)</span></a>
+          <a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer" class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-primary text-white text-sm font-medium hover:opacity-90 transition-opacity">Ouvrir le lien <span class="sr-only">(nouvel onglet)</span></a>
           <button id="surprise-another" class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg glass border border-edge text-content text-sm font-medium hover:bg-bg-alt transition-colors">Autre surprise</button>
         </div>
       </div>

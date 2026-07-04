@@ -4,25 +4,24 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "astro": "astro",
-    "dev": "npx astro dev",
-    "build": "npx astro check && npx astro build",
-    "preview": "npx astro preview",
+    "dev": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "astro build && playwright test"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.8",
     "@fontsource/poppins": "^5.2.7",
-    "@tailwindcss/vite": "^4.2.1",
-    "astro": "^5.18.1",
-    "tailwindcss": "^4.2.1",
-    "@types/node": "^25.5.0",
-    "typescript": "~5.9.3"
+    "astro": "^5.18.1"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.8",
     "@playwright/test": "^1.59.1",
+    "@tailwindcss/vite": "^4.2.1",
+    "@types/node": "^25.5.0",
+    "tailwindcss": "^4.2.1",
+    "typescript": "~5.9.3",
     "vitest": "^4.1.2"
   }
 }

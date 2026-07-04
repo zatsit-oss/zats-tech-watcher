@@ -32,7 +32,7 @@ An internal **tech watch portal** for teams. Browse, filter, and explore article
 - **Language:** [TypeScript](https://www.typescriptlang.org) 5.x — Vanilla TS (no React/Vue)
 - **Testing:** [Vitest](https://vitest.dev) (unit) + [Playwright](https://playwright.dev) (e2e)
 - **Font:** [Poppins](https://fontsource.org/fonts/poppins) self-hosted via `@fontsource`
-- **Deployment:** [Clever Cloud](https://www.clever-cloud.com/)
+- **Deployment:** [Google Cloud Storage](https://cloud.google.com/storage) (production) · [Firebase Hosting](https://firebase.google.com/docs/hosting) (PR previews)
 
 ---
 

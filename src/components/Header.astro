@@ -4,16 +4,14 @@ import ThemeToggle from "./ThemeToggle.astro";
 import MenuIcon from "../assets/icons/menu.svg";
 import { siteConfig } from "../config.ts";
 
-const allNavLinks = [
+const navLinks = [
   { href: "/", label: "Accueil" },
-  { href: "/contributors/", label: "Contributeurs", requiresRanking: true },
+  ...(siteConfig.showRanking ? [{ href: "/contributors/", label: "Contributeurs" }] : []),
   { href: "/timeline/", label: "Timeline" },
   { href: "/stats/", label: "Stats" },
   { href: "/tags/", label: "Tags" },
   { href: "/activity/", label: "Activité" },
 ];
-
-const navLinks = allNavLinks.filter((l) => !l.requiresRanking || siteConfig.showRanking);
 
 const currentPath = Astro.url.pathname;
 

@@ -40,9 +40,10 @@ src/
     card-item.ts         # Card HTML string (glassmorphism)
     list-item.ts         # List row HTML string
     tag-badge.ts         # Tag badge HTML string (active/inactive, clickable/static)
-    surprise-modal.ts    # "Surprise me" modal HTML string
+    contributor-name.ts  # Contributor link/span helper (showRanking-gated, HTML-escaped)
   pages/
     index.astro          # Home: filterable grid/list (client-side search/sort/filter)
+    404.astro            # Not-found page
     contributors/
       index.astro        # Leaderboard with podium
       [name].astro       # Contributor profile (getStaticPaths)
@@ -59,7 +60,8 @@ src/
   styles/
     global.css           # @theme Tailwind v4 + dark mode + glassmorphism + dot-grid
   types.ts               # Shared TypeScript interfaces
-  utils/                 # Helpers (date, dom, debounce, format)
+  config.ts              # Site-wide feature flags (siteConfig.showRanking)
+  utils/                 # Helpers (date, dom, debounce, format incl. escapeHtml)
 tests/                   # Unit tests (Vitest)
 e2e/                     # E2E tests (Playwright)
 public/
@@ -89,6 +91,10 @@ public/
 | `/stats/` | stats.astro | 4 SVG charts dashboard |
 | `/tags/` | tags.astro | Tag cloud + trends |
 | `/activity/` | activity.astro | Activity heatmap + stats |
+| `/404.html` | 404.astro | Not-found page |
+
+## Feature Flags
+`src/config.ts` exposes `siteConfig.showRanking`: when `false`, the contributor ranking is fully hidden (nav link, leaderboard, profile pages, contributor links, stats chart, contributor e2e tests skipped). Contributor names must always be rendered through `components/contributor-name.ts`.
 
 ## Architecture Details
 See `.claude/architecture.md` for full file listing and data flow.

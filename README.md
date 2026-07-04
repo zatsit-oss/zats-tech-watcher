@@ -168,7 +168,7 @@ Deploys the static site to Clever Cloud Cellar (S3-compatible object storage) on
 
 1. Standard Astro build (`npm run build`), after unit tests.
 2. Incremental `s3cmd sync` of `dist/` to the `techwatcher.zatsit.fr` bucket (additive first, so the site never breaks mid-deploy).
-3. Route aliases: Cellar serves exact object keys only (it never appends `/index.html`), so every `route/index.html` is also uploaded as `route` and `route/`, served as `text/html`.
+3. Route aliases: Cellar resolves `/route/` natively but not bare `/route`, so every `route/index.html` is also uploaded as the extensionless key `route`, served as `text/html`.
 4. Orphan pruning (stale hashed assets, removed pages), then `Cache-Control` normalization: `must-revalidate` everywhere, `immutable` for fingerprinted `/_astro/*` assets.
 
 | Secret | Purpose |

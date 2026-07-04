@@ -1,0 +1,47 @@
+---
+name: Sync Tech Watch Data
+
+on:
+  schedule:
+    - cron: '0 6 * * 1' # every Monday 06:00 UTC
+  workflow_dispatch:
+  repository_dispatch:
+    types: [sheet-updated]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: sync-tech-watch-data
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Download and normalize sheet data
+        env:
+          SHEET_ID: ${{ secrets.TECH_WATCH_SHEET_ID }}
+          GOOGLE_SHEETS_SA_KEY: ${{ secrets.GOOGLE_SHEETS_SA_KEY }}
+        run: node scripts/sync-tech-watch-data.mjs
+
+      - name: Create pull request if data changed
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: chore/sync-tech-watch-data
+          commit-message: 'chore: sync tech watch data from Google Sheet'
+          title: 'chore: sync tech watch data'
+          body: |
+            Mise à jour automatique des données de veille depuis le Google Sheet.
+
+            Générée par le workflow `sync-data.yml` (cron hebdomadaire / déclenchement manuel / repository_dispatch).
+          delete-branch: true

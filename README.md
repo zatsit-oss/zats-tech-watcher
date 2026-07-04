@@ -32,7 +32,7 @@ An internal **tech watch portal** for teams. Browse, filter, and explore article
 - **Language:** [TypeScript](https://www.typescriptlang.org) 5.x — Vanilla TS (no React/Vue)
 - **Testing:** [Vitest](https://vitest.dev) (unit) + [Playwright](https://playwright.dev) (e2e)
 - **Font:** [Poppins](https://fontsource.org/fonts/poppins) self-hosted via `@fontsource`
-- **Deployment:** [Google Cloud Storage](https://cloud.google.com/storage) (production) · [Firebase Hosting](https://firebase.google.com/docs/hosting) (PR previews)
+- **Deployment:** [Clever Cloud Cellar](https://www.clever-cloud.com/product/cellar-object-storage/) (production) · [Firebase Hosting](https://firebase.google.com/docs/hosting) (PR previews)
 
 ---
 
@@ -40,7 +40,7 @@ An internal **tech watch portal** for teams. Browse, filter, and explore article
 
 The portal reads its data from a **TSV (Tab-Separated Values)** file located at `public/tech-watch-v1.tsv`. You must provide your own data file in this format.
 
-The file is kept in sync with a Google Sheet by the `sync-data.yml` workflow (weekly cron + manual dispatch): it downloads the sheet with a service account (`GCP_SA_KEY` and `TECH_WATCH_SHEET_ID` secrets), normalizes it via `scripts/sync-tech-watch-data.mjs` (canonical header, LF endings, row validation) and opens a pull request when the data changed. The script also works offline: `node scripts/sync-tech-watch-data.mjs --from-file export.tsv`.
+The file is kept in sync with a Google Sheet by the `sync-data.yml` workflow — see [CI/CD](#-cicd) below.
 
 ### File format
 
@@ -135,6 +135,51 @@ e2e/                    # E2E tests (Playwright)
 public/
 └── tech-watch-v1.tsv   # Data source (synced from Google Sheet)
 ```
+
+---
+
+## ⚙️ CI/CD
+
+```text
+Google Sheet ──(weekly cron)──▶ sync-data.yml ──▶ data PR ──(merge)──▶ main
+                                                     │                  │
+                                    firebase-hosting-deploy.yml   cellar-deploy.yml
+                                       (PR preview, 30 days)     (production deploy)
+```
+
+### Data sync — `sync-data.yml`
+
+Keeps `public/tech-watch-v1.tsv` in sync with the team's Google Sheet (fed by the Google Chat bot). Runs every Monday at 06:00 UTC, on manual dispatch, or on a `repository_dispatch` event (type `sheet-updated`).
+
+1. `scripts/sync-tech-watch-data.mjs` downloads the sheet with a Google service account and normalizes it: canonical English header (`Date, Contributors, Topics, Links, Tags`), LF line endings, exactly 5 columns, invalid rows skipped with a warning.
+2. If the data changed, a pull request is opened (branch `chore/sync-tech-watch-data`). Merging it triggers the production deploy.
+
+The script also works offline: `node scripts/sync-tech-watch-data.mjs --from-file export.tsv`.
+
+| Secret | Purpose |
+| :----- | :------ |
+| `GCP_SA_KEY` | Google service account key JSON (the sheet must be shared with its `client_email`, Sheets API enabled on the GCP project) |
+| `TECH_WATCH_SHEET_ID` | Spreadsheet id (from the sheet URL, between `/d/` and `/edit`) |
+| `GH_PAT` | Org-level PAT used to create the data PR (org policy blocks `GITHUB_TOKEN` PR creation; PAT-created PRs also trigger CI) |
+
+### Production deploy — `cellar-deploy.yml`
+
+Deploys the static site to Clever Cloud Cellar (S3-compatible object storage) on every push to `main`, via `npm run deploy:cellar` (`scripts/deploy-cellar.sh`):
+
+1. Standard Astro build (`npm run build`), after unit tests.
+2. Incremental `s3cmd sync` of `dist/` to the `techwatcher.zatsit.fr` bucket (additive first, so the site never breaks mid-deploy).
+3. Route aliases: Cellar serves exact object keys only (it never appends `/index.html`), so every `route/index.html` is also uploaded as `route` and `route/`, served as `text/html`.
+4. Orphan pruning (stale hashed assets, removed pages), then `Cache-Control` normalization: `must-revalidate` everywhere, `immutable` for fingerprinted `/_astro/*` assets.
+
+| Secret | Purpose |
+| :----- | :------ |
+| `CELLAR_ADDON_KEY_ID` / `CELLAR_ADDON_KEY_SECRET` | S3 credentials of the Cellar addon |
+
+To deploy from your machine instead: configure `s3cmd --configure` once, then `npm run deploy:cellar`.
+
+### PR previews — `firebase-hosting-deploy.yml`
+
+Every pull request gets a Firebase Hosting preview channel (30-day expiry), using the `FIREBASE_SERVICE_ACCOUNT_ZATSIT_TECHWATCHER_STAGING` secret.
 
 ---
 

@@ -1,0 +1,27 @@
+name: Deploy to Firebase Hosting
+
+on:
+  pull_request:
+
+concurrency:
+    group: ${{ github.ref || github.run_id }}
+    cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Fetch and Build content
+        uses: ./.github/actions/build
+
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_ZATSIT_TECHWATCHER_STAGING }}
+          projectId: zatsit-dsi-externalsites-dev
+          target: zatsit-tech-watcher-6b087
+          expires: 30d

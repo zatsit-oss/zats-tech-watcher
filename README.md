@@ -40,6 +40,8 @@ An internal **tech watch portal** for teams. Browse, filter, and explore article
 
 The portal reads its data from a **TSV (Tab-Separated Values)** file located at `public/tech-watch-v1.tsv`. You must provide your own data file in this format.
 
+The file is kept in sync with a Google Sheet by the `sync-data.yml` workflow (weekly cron + manual dispatch): it downloads the sheet with a service account (`GOOGLE_SHEETS_SA_KEY` and `TECH_WATCH_SHEET_ID` secrets), normalizes it via `scripts/sync-tech-watch-data.mjs` (canonical header, LF endings, row validation) and opens a pull request when the data changed. The script also works offline: `node scripts/sync-tech-watch-data.mjs --from-file export.tsv`.
+
 ### File format
 
 The first line must be the header row. Each subsequent line is one entry, with columns separated by **tabs**:
@@ -131,7 +133,7 @@ src/
 tests/                  # Unit tests (Vitest)
 e2e/                    # E2E tests (Playwright)
 public/
-└── tech-watch-v1.tsv   # Data source (132 entries)
+└── tech-watch-v1.tsv   # Data source (synced from Google Sheet)
 ```
 
 ---

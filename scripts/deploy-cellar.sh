@@ -6,14 +6,13 @@
 # Why this script exists
 # ----------------------
 # Astro is a multi-page app: each route is a separate HTML file
-# (`timeline/index.html`, `contributors/emmanuel/index.html`, ...). Cellar is
-# raw object storage, not a web server: it serves the *exact* object key and
-# never appends "/index.html". This site links to trailing-slash paths
-# (`/timeline/`, `/contributors/`), so after a normal build every generated
-# "<route>/index.html" is also uploaded under two alias keys served as
-# text/html: "<route>" and "<route>/". Then both `/timeline` and `/timeline/`
-# hit an exact key. All Cellar specifics live HERE — the Astro project stays
-# 100% standard.
+# (`timeline/index.html`, `contributors/emmanuel/index.html`, ...). Cellar
+# resolves trailing-slash requests natively (`/timeline/` serves
+# `timeline/index.html`, verified in production), which covers every internal
+# link of this site. Extensionless requests (`/timeline`, typed by hand) do
+# NOT resolve, so every generated "<route>/index.html" is also uploaded as an
+# extensionless alias key "<route>" served as text/html. All Cellar specifics
+# live HERE — the Astro project stays 100% standard.
 #
 # Usage
 # -----
@@ -36,23 +35,6 @@ if [[ -n "${CELLAR_ADDON_KEY_ID:-}" ]]; then
   S3CMD_OPTS+=(--access_key="$CELLAR_ADDON_KEY_ID" --secret_key="${CELLAR_ADDON_KEY_SECRET:-}")
 fi
 
-# Trailing-slash keys ("timeline/") cannot be written with s3cmd (it treats a
-# trailing slash as a prefix and appends the file name), so those aliases are
-# uploaded with curl + SigV4. Credentials go through a curl config file
-# created with umask 077 — never on the command line.
-CURL_AUTH_CFG="$(mktemp)"
-trap 'rm -f "$CURL_AUTH_CFG"' EXIT
-key_id="${CELLAR_ADDON_KEY_ID:-$(sed -n 's/^access_key[ =]*//p' "$HOME/.s3cfg" | head -1)}"
-key_secret="${CELLAR_ADDON_KEY_SECRET:-$(sed -n 's/^secret_key[ =]*//p' "$HOME/.s3cfg" | head -1)}"
-( umask 077; printf 'user = "%s:%s"\n' "$key_id" "$key_secret" > "$CURL_AUTH_CFG" )
-
-put_trailing_slash_alias() { # $1 = local file, $2 = key without trailing slash
-  curl -sf --config "$CURL_AUTH_CFG" --aws-sigv4 "aws:amz:us-east-1:s3" \
-    -X PUT "https://$HOST/$BUCKET/$2/" \
-    -H "content-type: text/html" -H "x-amz-acl: public-read" \
-    --data-binary @"$1" >/dev/null
-}
-
 echo "==> Building (standard Astro)"
 npm run build
 
@@ -64,10 +46,10 @@ echo "==> Uploading $DIST/ to s3://$BUCKET/ (additive: new/changed only)"
 s3cmd "${S3CMD_OPTS[@]}" sync "$DIST/" "s3://$BUCKET/" \
   --acl-public --no-mime-magic --guess-mime-type
 
-echo "==> Refreshing route aliases so /timeline and /timeline/ both resolve"
-# Cellar serves exact keys only. Every sub-route page (dist/<route>/index.html)
-# is also uploaded as "<route>" (extensionless) and "<route>/" (trailing
-# slash), both served as text/html (overwrite in place, no gap). The root
+echo "==> Refreshing extensionless aliases so bare links (/timeline, /stats) resolve"
+# Cellar resolves "/route/" natively but not "/route". Every sub-route page
+# (dist/<route>/index.html) is also uploaded as the extensionless key
+# "<route>", served as text/html (overwrite in place, no gap). The root
 # (dist/index.html) is left as-is: Cellar already serves it at "/".
 aliases=()
 while IFS= read -r file; do
@@ -75,9 +57,8 @@ while IFS= read -r file; do
   key="${route%/index.html}"      # e.g. timeline
   s3cmd "${S3CMD_OPTS[@]}" put "$file" "s3://$BUCKET/$key" \
     --mime-type=text/html --acl-public >/dev/null
-  put_trailing_slash_alias "$file" "$key"
-  aliases+=("$key" "$key/")
-  echo "    + $key (+ $key/)"
+  aliases+=("$key")
+  echo "    + $key"
 done < <(find "$DIST" -mindepth 2 -name index.html)
 
 echo "==> Pruning orphan objects (stale assets / removed pages)"

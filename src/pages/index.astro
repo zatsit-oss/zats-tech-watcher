@@ -4,11 +4,13 @@ import { loadEntries } from "../data/load-entries.ts";
 import { renderCardItem } from "../components/card-item.ts";
 import { renderListItem } from "../components/list-item.ts";
 import { renderTagBadge } from "../components/tag-badge.ts";
+import { siteConfig } from "../config.ts";
 import SearchIcon from "../assets/icons/search.svg";
 import FlaskIcon from "../assets/icons/flask.svg";
 import GridIcon from "../assets/icons/grid.svg";
 import ListIcon from "../assets/icons/list.svg";
 const entries = loadEntries();
+const showRanking = siteConfig.showRanking;
 const allTags = [...new Set(entries.flatMap((e) => e.tags))].sort();
 const contributors = [...new Set(entries.map((e) => e.contributor))].sort();
 ---
@@ -81,7 +83,7 @@ const contributors = [...new Set(entries.map((e) => e.contributor))].sort();
     </div>
 
     <!-- Content -->
-    <div id="entries-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div id="entries-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" data-show-ranking={showRanking ? "true" : "false"}>
       {entries.map((e) => <Fragment set:html={renderCardItem(e)} />)}
     </div>
     <div id="entries-list" class="glass rounded-xl divide-y divide-edge hidden">
@@ -110,6 +112,7 @@ const contributors = [...new Set(entries.map((e) => e.contributor))].sort();
   }
 
   const gridContainer = document.getElementById('entries-grid')!;
+  const showRanking = gridContainer.dataset.showRanking === 'true';
   const listContainer = document.getElementById('entries-list')!;
   const emptyState = document.getElementById('empty-state')!;
   const searchInput = document.getElementById('search-input') as HTMLInputElement;
@@ -124,8 +127,8 @@ const contributors = [...new Set(entries.map((e) => e.contributor))].sort();
 
   const entries: EntryData[] = gridItems.map((el, i) => {
     const tags = Array.from(el.querySelectorAll('.tag-badge')).map(b => b.textContent?.trim() ?? '');
-    const contributorLink = el.querySelector('a[href^="/contributors/"]') as HTMLAnchorElement;
-    const contributor = contributorLink?.textContent?.trim() ?? '';
+    const contributorEl = el.querySelector('.contributor-name') as HTMLElement;
+    const contributor = contributorEl?.textContent?.trim() ?? '';
     const externalLink = el.querySelector('a[target="_blank"]') as HTMLAnchorElement;
     const url = externalLink?.href ?? '';
     const dateStr = el.querySelector('.text-xs.text-content-muted')?.textContent?.trim() ?? '';
@@ -317,7 +320,9 @@ const contributors = [...new Set(entries.map((e) => e.contributor))].sort();
         </div>
         <h2 id="surprise-title" class="text-lg font-bold text-content mb-3">${subject}</h2>
         <div class="flex flex-wrap gap-1.5 mb-3">${tags.map(t => `<span class="tag-badge">${t}</span>`).join('')}</div>
-        <a href="/contributors/${encodeURIComponent(contributor)}/" class="text-sm text-primary hover:underline">${contributor}</a>
+        ${showRanking
+          ? `<a href="/contributors/${encodeURIComponent(contributor)}/" class="text-sm text-primary hover:underline">${contributor}</a>`
+          : `<span class="text-sm text-content-muted">${contributor}</span>`}
         <div class="flex gap-3 mt-6">
           <a href="${url}" target="_blank" rel="noopener noreferrer" class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-primary text-white text-sm font-medium hover:opacity-90 transition-opacity">Ouvrir le lien <span class="sr-only">(nouvel onglet)</span></a>
           <button id="surprise-another" class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg glass border border-edge text-content text-sm font-medium hover:bg-bg-alt transition-colors">Autre surprise</button>

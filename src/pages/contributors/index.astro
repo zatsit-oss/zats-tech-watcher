@@ -3,6 +3,11 @@ import Layout from "../../layouts/Layout.astro";
 import { loadEntries } from "../../data/load-entries.ts";
 import { computeContributorProfiles } from "../../data/stats.ts";
 import { renderTagBadge } from "../../components/tag-badge.ts";
+import { siteConfig } from "../../config.ts";
+
+if (!siteConfig.showRanking) {
+  return Astro.redirect("/");
+}
 
 const entries = loadEntries();
 const profiles = computeContributorProfiles(entries);

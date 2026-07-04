@@ -2,15 +2,18 @@
 import Logo from "./Logo.astro";
 import ThemeToggle from "./ThemeToggle.astro";
 import MenuIcon from "../assets/icons/menu.svg";
+import { siteConfig } from "../config.ts";
 
-const navLinks = [
+const allNavLinks = [
   { href: "/", label: "Accueil" },
-  { href: "/contributors/", label: "Contributeurs" },
+  { href: "/contributors/", label: "Contributeurs", requiresRanking: true },
   { href: "/timeline/", label: "Timeline" },
   { href: "/stats/", label: "Stats" },
   { href: "/tags/", label: "Tags" },
   { href: "/activity/", label: "Activité" },
 ];
+
+const navLinks = allNavLinks.filter((l) => !l.requiresRanking || siteConfig.showRanking);
 
 const currentPath = Astro.url.pathname;
 

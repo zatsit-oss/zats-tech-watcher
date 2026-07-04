@@ -4,6 +4,7 @@ import { loadEntries } from "../data/load-entries.ts";
 import { groupByDate, monthKey, monthLabel, weekKey } from "../utils/date.ts";
 import { renderTagBadge } from "../components/tag-badge.ts";
 import type { TechWatchEntry } from "../types.ts";
+import { siteConfig } from "../config.ts";
 
 const entries = loadEntries();
 const sorted = [...entries].sort((a, b) => b.date.getTime() - a.date.getTime());
@@ -11,6 +12,13 @@ const sorted = [...entries].sort((a, b) => b.date.getTime() - a.date.getTime());
 // Pre-render both views
 const monthGroups = groupByDate(sorted, (e) => e.date, monthKey);
 const weekGroups = groupByDate(sorted, (e) => e.date, weekKey);
+
+function renderContributor(name: string): string {
+  if (siteConfig.showRanking) {
+    return '<a href="/contributors/' + encodeURIComponent(name) + '/" class="text-xs text-primary hover:underline">' + name + '</a>';
+  }
+  return '<span class="text-xs text-content-muted">' + name + '</span>';
+}
 
 function renderEntry(entry: TechWatchEntry): string {
   return `
@@ -22,7 +30,7 @@ function renderEntry(entry: TechWatchEntry): string {
         <span class="text-xs text-content-muted shrink-0">${entry.dateStr}</span>
       </div>
       <div class="flex items-center gap-2 flex-wrap">
-        <a href="/contributors/${encodeURIComponent(entry.contributor)}/" class="text-xs text-primary hover:underline">${entry.contributor}</a>
+        ${renderContributor(entry.contributor)}
         <span class="text-xs text-content-muted">·</span>
         <span class="text-xs text-content-muted">${entry.domain}</span>
         <span class="text-xs text-content-muted">·</span>

@@ -31,7 +31,7 @@ jobs:
       - name: Download and normalize sheet data
         env:
           SHEET_ID: ${{ secrets.TECH_WATCH_SHEET_ID }}
-          GOOGLE_SHEETS_SA_KEY: ${{ secrets.GOOGLE_SHEETS_SA_KEY }}
+          GOOGLE_SHEETS_SA_KEY: ${{ secrets.GCP_SA_KEY }}
         run: node scripts/sync-tech-watch-data.mjs
 
       - name: Create pull request if data changed

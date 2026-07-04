@@ -2,6 +2,7 @@ import type { TechWatchEntry } from "../types.ts";
 import { renderTagBadge } from "./tag-badge.ts";
 import { truncate } from "../utils/format.ts";
 import { formatDate } from "../utils/date.ts";
+import { siteConfig } from "../config.ts";
 
 export function renderSurpriseModal(entry: TechWatchEntry): string {
   return `
@@ -50,6 +51,8 @@ export function renderSurpriseContent(entry: TechWatchEntry): string {
     </div>
     <h2 class="text-lg font-bold text-content mb-3">${truncate(entry.subject, 120)}</h2>
     <div class="flex flex-wrap gap-1.5 mb-3">${tags}</div>
-    <a href="/contributors/${encodeURIComponent(entry.contributor)}/" class="text-sm text-primary hover:underline">${entry.contributor}</a>
+    ${siteConfig.showRanking
+      ? `<a href="/contributors/${encodeURIComponent(entry.contributor)}/" class="text-sm text-primary hover:underline">${entry.contributor}</a>`
+      : `<span class="text-sm text-content-muted">${entry.contributor}</span>`}
   `;
 }

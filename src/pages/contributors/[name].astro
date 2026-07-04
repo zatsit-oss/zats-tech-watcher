@@ -5,8 +5,10 @@ import { computeContributorProfiles } from "../../data/stats.ts";
 import { renderCardItem } from "../../components/card-item.ts";
 import { formatDate } from "../../utils/date.ts";
 import ChevronLeftIcon from "../../assets/icons/chevron-left.svg";
+import { siteConfig } from "../../config.ts";
 
 export function getStaticPaths() {
+  if (!siteConfig.showRanking) return [];
   const entries = loadEntries();
   const profiles = computeContributorProfiles(entries);
   return profiles.map((p, i) => ({

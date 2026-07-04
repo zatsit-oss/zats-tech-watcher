@@ -1,8 +1,13 @@
 import type { TechWatchEntry } from "../types.ts";
 import { truncate } from "../utils/format.ts";
 import { renderTagBadge } from "./tag-badge.ts";
+import { siteConfig } from "../config.ts";
 
 export function renderCardItem(entry: TechWatchEntry): string {
+  const contributorHtml = siteConfig.showRanking
+    ? `<a href="/contributors/${encodeURIComponent(entry.contributor)}/" class="contributor-name text-xs font-medium text-primary hover:underline">${entry.contributor}</a>`
+    : `<span class="contributor-name text-xs font-medium text-content-muted">${entry.contributor}</span>`;
+
   return `
     <article class="glass rounded-xl p-5 transition-all duration-200 glass-hover flex flex-col gap-3">
       <div class="flex items-start justify-between gap-2">
@@ -16,9 +21,7 @@ export function renderCardItem(entry: TechWatchEntry): string {
         ${entry.tags.map((t) => renderTagBadge(t, false, true)).join("")}
       </div>
       <div class="mt-auto flex items-center justify-between pt-2 border-t border-edge">
-        <a href="/contributors/${encodeURIComponent(entry.contributor)}/" class="text-xs font-medium text-primary hover:underline">
-          ${entry.contributor}
-        </a>
+        ${contributorHtml}
         <a href="${entry.url}" target="_blank" rel="noopener noreferrer" class="text-xs text-content-muted hover:text-primary transition-colors flex items-center gap-1">
           Ouvrir <span class="sr-only">(nouvel onglet)</span>
           <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">

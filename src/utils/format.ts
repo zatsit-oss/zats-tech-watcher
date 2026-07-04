@@ -1,3 +1,13 @@
+/** Escape HTML metacharacters for safe interpolation into markup and attributes */
+export function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
 /** Truncate text with ellipsis */
 export function truncate(str: string, max: number): string {
   return str.length > max ? str.slice(0, max - 1) + "…" : str;

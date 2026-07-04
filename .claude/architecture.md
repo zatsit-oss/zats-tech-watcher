@@ -17,9 +17,10 @@ src/
     card-item.ts               # Card glassmorphism: date, subject, tags, contributor, link
     list-item.ts               # List row: index, subject, domain, date, contributor, tags
     tag-badge.ts               # Reusable badge (active/inactive, clickable/static)
-    surprise-modal.ts          # "Surprise me" modal (kept as HTML string helper)
+    contributor-name.ts        # Contributor link/span helper (gated by showRanking, escaped)
   pages/
     index.astro                # Home: filterable grid/list with client-side search/sort/filter
+    404.astro                  # Not-found page (served by static hosting)
     contributors/
       index.astro              # Leaderboard: podium top 3 + full table
       [name].astro             # Contributor profile (getStaticPaths from TSV data)
@@ -27,6 +28,7 @@ src/
     stats.astro                # Dashboard: 4 summary cards + 4 SVG charts
     tags.astro                 # Tag cloud + trending + distribution chart + full table
     activity.astro             # Activity heatmap, streak stats, top active days
+  config.ts                    # Site-wide feature flags (siteConfig.showRanking)
   data/
     load-entries.ts            # Build-time data loader (node:fs → parseTsvText)
     parser.ts                  # Parse TSV text → TechWatchEntry[] (sorted by date desc)
@@ -45,7 +47,7 @@ src/
     date.ts                    # parseFrenchDate (DD/MM/YYYY), formatDate, monthKey/Label, weekKey, groupByDate
     dom.ts                     # qs, qsa, mount, unmount, el
     debounce.ts                # Simple debounce (no args)
-    format.ts                  # truncate, formatNumber, extractDomain, capitalize
+    format.ts                  # escapeHtml, truncate, formatNumber, extractDomain, capitalize
 tests/                         # Unit tests (Vitest)
 e2e/                           # E2E tests (Playwright)
 public/
@@ -59,7 +61,7 @@ public/
 3. Tags extracted from "Sujets" via `data/tag-extractor.ts` (alias dictionary, stopwords, fallback "Other")
 4. Domain extracted from URL via `utils/format.ts`
 5. Each `.astro` page imports `loadEntries()` in its frontmatter → data available at build
-6. Astro renders all pages to static HTML (17 pages including 11 contributor profiles)
+6. Astro renders all pages to static HTML (18 pages including 11 contributor profiles and 404)
 7. Client-side `<script>` blocks handle interactivity (filters, search, sort, view toggle, theme)
 
 ## Routes (file-based)
@@ -72,6 +74,10 @@ public/
 | `/stats/` | stats.astro | Dashboard 4 charts SVG |
 | `/tags/` | tags.astro | Nuage de tags + tendances |
 | `/activity/` | activity.astro | Heatmap d'activité + stats |
+| `/404.html` | 404.astro | Page introuvable |
+
+## Feature Flags (`src/config.ts`)
+- `siteConfig.showRanking` — quand `false` : lien nav "Contributeurs" masqué, `/contributors/` redirige vers l'accueil (stub meta-refresh en SSG), pages profils non générées, noms de contributeurs rendus en texte simple (via `components/contributor-name.ts`), chart "Top Contributeurs" masqué sur `/stats/`, tests E2E contributeurs skippés.
 
 ## Tag Extraction Strategy
 - La colonne "Tags" du TSV est vide → tags extraits automatiquement de "Sujets"
@@ -86,6 +92,6 @@ public/
 - **E2E tests**: Playwright + Chromium — `npm run test:e2e` (navigation, filters, dark mode, a11y)
 
 ## Build Output
-- 17 static HTML pages generated in ~700ms
+- 18 static HTML pages generated in ~700ms
 - CSS + JS: minimal client-side bundle (filters/theme/mobile menu only)
 - Font: self-hosted Poppins via @fontsource (no external CDN)

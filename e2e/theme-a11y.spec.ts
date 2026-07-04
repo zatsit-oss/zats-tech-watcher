@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { siteConfig } from "../src/config.ts";
 
 test.describe("Dark Mode", () => {
   test("default theme is light", async ({ page }) => {
@@ -76,7 +77,14 @@ test.describe("Accessibility", () => {
   });
 
   test("heading hierarchy: h1 is present on each page", async ({ page }) => {
-    const pages = ["/", "/contributors/", "/timeline/", "/stats/", "/tags/", "/activity/"];
+    const pages = [
+      "/",
+      ...(siteConfig.showRanking ? ["/contributors/"] : []),
+      "/timeline/",
+      "/stats/",
+      "/tags/",
+      "/activity/",
+    ];
     for (const url of pages) {
       await page.goto(url);
       const h1 = page.locator("h1");

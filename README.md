@@ -113,6 +113,7 @@ npm run preview
 | `npm run test`        | Run unit tests (Vitest)                         |
 | `npm run test:e2e`    | Build + run e2e tests (Playwright)              |
 | `npm run test:watch`  | Run unit tests in watch mode                    |
+| `npm run deploy:cellar` | Build + deploy to Clever Cloud Cellar (needs `s3cmd` configured) |
 
 ---
 
@@ -132,6 +133,9 @@ src/
 
 tests/                  # Unit tests (Vitest)
 e2e/                    # E2E tests (Playwright)
+scripts/
+├── sync-tech-watch-data.mjs  # Google Sheet download + TSV normalization
+└── deploy-cellar.sh          # Build + publish to Clever Cloud Cellar
 public/
 └── tech-watch-v1.tsv   # Data source (synced from Google Sheet)
 ```

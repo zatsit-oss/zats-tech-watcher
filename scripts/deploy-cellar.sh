@@ -70,10 +70,32 @@ printf '%s\n' "${aliases[@]}" >> "$valid"
 sort -u -o "$valid" "$valid"
 s3cmd "${S3CMD_OPTS[@]}" ls --recursive "s3://$BUCKET/" \
   | sed -E "s#.*s3://$BUCKET/##" | sort -u > "$remote"
+# s3cmd cannot address a key ending in "/" (it demands --recursive, which
+# would wipe the whole prefix). Such keys are one-time leftovers from the
+# initial deploy; delete them with a signed curl DELETE instead. Credentials
+# go through a curl config file created with umask 077 — never on the
+# command line.
+CURL_AUTH_CFG="$(mktemp)"
+trap 'rm -f "$CURL_AUTH_CFG"' EXIT
+key_id="${CELLAR_ADDON_KEY_ID:-$(sed -n 's/^access_key[ =]*//p' "$HOME/.s3cfg" | head -1)}"
+key_secret="${CELLAR_ADDON_KEY_SECRET:-$(sed -n 's/^secret_key[ =]*//p' "$HOME/.s3cfg" | head -1)}"
+( umask 077; printf 'user = "%s:%s"\n' "$key_id" "$key_secret" > "$CURL_AUTH_CFG" )
+
+delete_slash_key() { # $1 = orphan key ending in "/"
+  local encoded
+  encoded="$(python3 -c 'import sys, urllib.parse; print(urllib.parse.quote(sys.argv[1]))' "$1")"
+  curl -sfS --config "$CURL_AUTH_CFG" --aws-sigv4 "aws:amz:us-east-1:s3" \
+    -X DELETE "https://$HOST/$BUCKET/$encoded" >/dev/null
+}
+
 comm -13 "$valid" "$remote" | while IFS= read -r key; do
   [ -z "$key" ] && continue
   echo "    - $key"
-  s3cmd "${S3CMD_OPTS[@]}" del "s3://$BUCKET/$key" >/dev/null
+  if [[ "$key" == */ ]]; then
+    delete_slash_key "$key"
+  else
+    s3cmd "${S3CMD_OPTS[@]}" del "s3://$BUCKET/$key" >/dev/null
+  fi
 done
 rm -f "$valid" "$remote"
 

@@ -37,8 +37,9 @@ jobs:
       - name: Create pull request if data changed
         uses: peter-evans/create-pull-request@v7
         with:
-          # Org policy blocks GITHUB_TOKEN from creating PRs; the PAT also lets CI run on the PR
-          token: ${{ secrets.GH_PAT }}
+          # Uses the native GITHUB_TOKEN ("Allow GitHub Actions to create PRs"
+          # is enabled at org and repo level). The PR is never merged
+          # automatically — a maintainer reviews and merges it.
           branch: chore/sync-tech-watch-data
           commit-message: 'chore: sync tech watch data from Google Sheet'
           title: 'chore: sync tech watch data'

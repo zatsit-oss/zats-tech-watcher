@@ -62,7 +62,7 @@ src/
   styles/
     global.css           # @theme Tailwind v4 + dark mode + glassmorphism + dot-grid
   types.ts               # Shared TypeScript interfaces
-  config.ts              # Site-wide feature flags (siteConfig.showRanking)
+  config.ts              # Site-wide feature flags (anonymizeContributors, showRanking)
   utils/                 # Helpers (date, dom, debounce, format incl. escapeHtml)
 tests/                   # Unit tests (Vitest)
 e2e/                     # E2E tests (Playwright)

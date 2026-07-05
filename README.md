@@ -15,7 +15,7 @@ An internal **tech watch portal** for teams. Browse, filter, and explore article
 ## 🚀 Features
 
 - **Grid / List View:** Browse articles with search, sort, and tag filtering
-- **Contributors:** Leaderboard (podium) and individual profile pages
+- **Contributors:** Leaderboard (podium) and individual profile pages (hidden by default: contributor anonymization is on)
 - **Timeline:** Vertical chronological view (month/week toggle)
 - **Statistics:** Dashboard with 4 SVG charts (bar, line, donut, tag-cloud)
 - **Tags:** Tag cloud, trends, and distribution
@@ -158,8 +158,8 @@ Google Sheet ──(weekly cron)──▶ sync-data.yml ──▶ data PR ──
 
 Keeps `data/tech-watch-v1.tsv` in sync with the team's Google Sheet (fed by the Google Chat bot). Runs every Monday at 06:00 UTC, on manual dispatch, or on a `repository_dispatch` event (type `sheet-updated`).
 
-1. `scripts/sync-tech-watch-data.mjs` downloads the sheet with a Google service account and normalizes it: canonical English header (`Date, Contributors, Topics, Links, Tags`), LF line endings, exactly 5 columns, invalid rows skipped with a warning.
-2. If the data changed, a pull request is opened (branch `chore/sync-tech-watch-data`). Merging it triggers the production deploy.
+1. `scripts/sync-tech-watch-data.mjs` downloads the sheet with a Google service account and normalizes it: canonical English header (`Date, Contributors, Topics, Links, Tags, Comment`), LF line endings, exactly 6 columns, invalid rows skipped with a warning.
+2. If the data changed, a pull request is opened (branch `chore/sync-tech-watch-data`) with the native `GITHUB_TOKEN` ("Allow GitHub Actions to create and approve pull requests" is enabled at org and repo level). Review and merge stay manual; merging triggers the production deploy.
 
 The script also works offline: `node scripts/sync-tech-watch-data.mjs --from-file export.tsv`.
 
@@ -167,7 +167,6 @@ The script also works offline: `node scripts/sync-tech-watch-data.mjs --from-fil
 | :----- | :------ |
 | `GCP_SA_KEY` | Google service account key JSON (the sheet must be shared with its `client_email`, Sheets API enabled on the GCP project) |
 | `TECH_WATCH_SHEET_ID` | Spreadsheet id (from the sheet URL, between `/d/` and `/edit`) |
-| `GH_PAT` | Org-level PAT used to create the data PR (org policy blocks `GITHUB_TOKEN` PR creation; PAT-created PRs also trigger CI) |
 
 ### Production deploy — `cellar-deploy.yml`
 

@@ -29,7 +29,7 @@ src/
     stats.astro                # Dashboard: 4 summary cards + 4 SVG charts
     tags.astro                 # Tag cloud + trending + distribution chart + full table
     activity.astro             # Activity heatmap, streak stats, top active days
-  config.ts                    # Site-wide feature flags (siteConfig.showRanking)
+  config.ts                    # Site-wide feature flags (anonymizeContributors, showRanking)
   data/
     load-entries.ts            # Build-time data loader (node:fs → parseTsvText)
     parser.ts                  # Parse TSV text → TechWatchEntry[] (sorted by date desc)
@@ -59,13 +59,14 @@ data/
 ```
 
 ## Data Flow
-1. At **build time**, `data/load-entries.ts` reads `public/tech-watch-v1.tsv` via `node:fs`
-2. `data/parser.ts` splits TSV lines, extracts 4 columns (Date, Rapporteurs, Sujets, Liens)
-3. Tags extracted from "Sujets" via `data/tag-extractor.ts` (alias dictionary, stopwords, fallback "Other")
-4. Domain extracted from URL via `utils/format.ts`
-5. Each `.astro` page imports `loadEntries()` in its frontmatter → data available at build
-6. Astro renders all pages to static HTML (18 pages including 11 contributor profiles and 404)
-7. Client-side `<script>` blocks handle interactivity (filters, search, sort, view toggle, theme)
+1. At **build time**, `data/load-entries.ts` reads `data/tech-watch-v1.tsv` via `node:fs` (outside public/: never shipped)
+2. `data/parser.ts` splits TSV lines, extracts Date, Contributors, Topics, Links and the optional Comment
+3. Contributor names are replaced by stable pseudonyms in `load-entries.ts` when `siteConfig.anonymizeContributors` is on (default)
+4. Tags extracted from "Topics" via `data/tag-extractor.ts` (alias dictionary, stopwords, fallback "Other")
+5. Domain extracted from URL via `utils/format.ts`
+6. Each `.astro` page imports `loadEntries()` in its frontmatter → data available at build
+7. Astro renders all pages to static HTML (8 pages by default; ~21 including contributor profiles when the ranking is enabled)
+8. Client-side `<script>` blocks handle interactivity (filters, search, sort, view toggle, theme)
 
 ## Routes (file-based)
 | Path | Page | Description |
@@ -81,6 +82,7 @@ data/
 | `/mentions-legales/` | mentions-legales.astro | Mentions légales |
 
 ## Feature Flags (`src/config.ts`)
+- `siteConfig.anonymizeContributors` (défaut `true`) : les noms de contributeurs sont remplacés au build par des pseudonymes stables ("Contributeur 1..N") dans `load-entries.ts`, et `showRanking` est forcé à `false`. La source TSV (noms complets) vit dans `data/`, jamais déployée. Les mentions légales s'adaptent automatiquement au flag.
 - `siteConfig.showRanking` — quand `false` : lien nav "Contributeurs" masqué, `/contributors/` redirige vers l'accueil (stub meta-refresh en SSG), pages profils non générées, noms de contributeurs rendus en texte simple (via `components/contributor-name.ts`), chart "Top Contributeurs" masqué sur `/stats/`, tests E2E contributeurs skippés.
 
 ## Tag Extraction Strategy
@@ -96,6 +98,6 @@ data/
 - **E2E tests**: Playwright + Chromium — `npm run test:e2e` (navigation, filters, dark mode, a11y)
 
 ## Build Output
-- 18 static HTML pages generated in ~700ms
+- 8 static HTML pages by default (anonymized, no contributor pages); ~21 when the ranking is enabled
 - CSS + JS: minimal client-side bundle (filters/theme/mobile menu only)
 - Font: self-hosted Poppins via @fontsource (no external CDN)

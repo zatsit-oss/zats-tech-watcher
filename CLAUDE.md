@@ -45,6 +45,7 @@ src/
   pages/
     index.astro          # Home: filterable grid/list (client-side search/sort/filter)
     404.astro            # Not-found page
+    mentions-legales.astro  # Legal notice (required, public site)
     contributors/
       index.astro        # Leaderboard with podium
       [name].astro       # Contributor profile (getStaticPaths)
@@ -95,6 +96,7 @@ scripts/
 | `/tags/` | tags.astro | Tag cloud + trends |
 | `/activity/` | activity.astro | Activity heatmap + stats |
 | `/404.html` | 404.astro | Not-found page |
+| `/mentions-legales/` | mentions-legales.astro | Legal notice |
 
 ## Feature Flags
 `src/config.ts` exposes `siteConfig.showRanking`: when `false`, the contributor ranking is fully hidden (nav link, leaderboard, profile pages, contributor links, stats chart, contributor e2e tests skipped). Contributor names must always be rendered through `components/contributor-name.ts`.

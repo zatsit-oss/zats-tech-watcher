@@ -14,6 +14,7 @@ export function renderListItem(entry: TechWatchEntry, index: number): string {
           </a>
           <span class="text-xs text-content-muted shrink-0">(${escapeHtml(entry.domain)})</span>
         </div>
+        ${entry.comment ? `<p class="entry-comment text-xs italic text-content/70 mt-1">${escapeHtml(entry.comment)}</p>` : ""}
         <div class="flex items-center gap-2 mt-1.5 flex-wrap">
           <span class="text-xs text-content-muted">${escapeHtml(entry.dateStr)}</span>
           <span class="text-xs text-content-muted">·</span>

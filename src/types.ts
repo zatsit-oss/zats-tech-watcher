@@ -7,6 +7,8 @@ export interface TechWatchEntry {
   url: string;
   domain: string;
   tags: string[];
+  /** Optional contributor note explaining why the resource is worth reading */
+  comment: string;
 }
 
 export interface ContributorProfile {

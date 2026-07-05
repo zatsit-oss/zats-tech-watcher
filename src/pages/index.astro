@@ -18,6 +18,12 @@ const contributors = [...new Set(entries.map((e) => e.contributor))].sort();
     <!-- Header section -->
     <div class="mb-8">
       <h1 class="text-3xl font-bold gradient-text mb-2">Veille Technologique</h1>
+      <p class="text-content text-sm max-w-3xl mb-1">
+        Les articles, outils et tendances repérés au fil de l'eau par les consultants de
+        <a href="https://zatsit.fr" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">Zatsit</a>,
+        cabinet de conseil tech engagé pour un numérique utile et responsable.
+        Une veille collaborative, partagée ici en continu — explorez, filtrez, laissez-vous surprendre.
+      </p>
       <p class="text-content-muted text-sm" aria-live="polite" aria-atomic="true">
         <span id="result-count">{entries.length}</span> ressource{entries.length > 1 ? "s" : ""} trouvée{entries.length > 1 ? "s" : ""}
       </p>

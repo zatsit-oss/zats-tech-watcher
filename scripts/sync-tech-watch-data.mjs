@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * Download the tech watch Google Sheet and normalize it into
- * public/tech-watch-v1.tsv: canonical English header, LF line endings,
+ * data/tech-watch-v1.tsv: canonical English header, LF line endings,
  * exactly 6 columns per row, invalid rows skipped with a warning.
  *
  * Remote mode (default) — requires env vars:
@@ -16,7 +16,7 @@ import { createSign } from "node:crypto";
 import { readFileSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 
-const OUTPUT_PATH = fileURLToPath(new URL("../public/tech-watch-v1.tsv", import.meta.url));
+const OUTPUT_PATH = fileURLToPath(new URL("../data/tech-watch-v1.tsv", import.meta.url));
 const CANONICAL_HEADER = ["Date", "Contributors", "Topics", "Links", "Tags", "Comment"];
 const COLUMN_COUNT = CANONICAL_HEADER.length;
 const DATE_RE = /^\d{2}\/\d{2}\/\d{4}$/;

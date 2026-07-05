@@ -38,7 +38,7 @@ An internal **tech watch portal** for teams. Browse, filter, and explore article
 
 ## 📄 Data Source
 
-The portal reads its data from a **TSV (Tab-Separated Values)** file located at `public/tech-watch-v1.tsv`. You must provide your own data file in this format.
+The portal reads its data from a **TSV (Tab-Separated Values)** file located at `data/tech-watch-v1.tsv` (kept **outside** `public/` on purpose: it contains full contributor names and is never shipped to the deployed site). You must provide your own data file in this format.
 
 The file is kept in sync with a Google Sheet by the `sync-data.yml` workflow — see [CI/CD](#-cicd) below.
 
@@ -62,6 +62,8 @@ Date	Contributors	Topics	Links	Tags
 30/01/2025	John Doe	open-source AI code assistant	https://continue.dev
 28/02/2025	Jane Smith	API testing and quality tools	https://example.com
 ```
+
+> **Privacy:** `src/config.ts` exposes `siteConfig.anonymizeContributors` (default `true`): contributor names are replaced at build time by stable pseudonyms ("Contributeur 1..N") and the contributor ranking pages are not built. Set it to `false` to publish real (shortened) names and the leaderboard.
 
 > **Note:** Tags are automatically extracted from the `Topics` column using a built-in alias dictionary (~50 terms). You do not need to fill the `Tags` column manually.
 
@@ -137,8 +139,8 @@ e2e/                    # E2E tests (Playwright)
 scripts/
 ├── sync-tech-watch-data.mjs  # Google Sheet download + TSV normalization
 └── deploy-cellar.sh          # Build + publish to Clever Cloud Cellar
-public/
-└── tech-watch-v1.tsv   # Data source (synced from Google Sheet)
+data/
+└── tech-watch-v1.tsv   # Data source (synced from Google Sheet, NOT shipped: full names)
 ```
 
 ---
@@ -154,7 +156,7 @@ Google Sheet ──(weekly cron)──▶ sync-data.yml ──▶ data PR ──
 
 ### Data sync — `sync-data.yml`
 
-Keeps `public/tech-watch-v1.tsv` in sync with the team's Google Sheet (fed by the Google Chat bot). Runs every Monday at 06:00 UTC, on manual dispatch, or on a `repository_dispatch` event (type `sheet-updated`).
+Keeps `data/tech-watch-v1.tsv` in sync with the team's Google Sheet (fed by the Google Chat bot). Runs every Monday at 06:00 UTC, on manual dispatch, or on a `repository_dispatch` event (type `sheet-updated`).
 
 1. `scripts/sync-tech-watch-data.mjs` downloads the sheet with a Google service account and normalizes it: canonical English header (`Date, Contributors, Topics, Links, Tags`), LF line endings, exactly 5 columns, invalid rows skipped with a warning.
 2. If the data changed, a pull request is opened (branch `chore/sync-tech-watch-data`). Merging it triggers the production deploy.

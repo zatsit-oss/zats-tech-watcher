@@ -66,8 +66,9 @@ src/
   utils/                 # Helpers (date, dom, debounce, format incl. escapeHtml)
 tests/                   # Unit tests (Vitest)
 e2e/                     # E2E tests (Playwright)
+data/
+  tech-watch-v1.tsv      # Data source (synced from Google Sheet, NOT in public/: full names)
 public/
-  tech-watch-v1.tsv      # Data source (synced from Google Sheet via scripts/sync-tech-watch-data.mjs)
   zatsit.svg             # Favicon
 scripts/
   sync-tech-watch-data.mjs  # Download Google Sheet + normalize into the TSV (used by sync-data.yml)
@@ -99,7 +100,7 @@ scripts/
 | `/mentions-legales/` | mentions-legales.astro | Legal notice |
 
 ## Feature Flags
-`src/config.ts` exposes `siteConfig.showRanking`: when `false`, the contributor ranking is fully hidden (nav link, leaderboard, profile pages, contributor links, stats chart, contributor e2e tests skipped). Contributor names must always be rendered through `components/contributor-name.ts`.
+`src/config.ts` exposes `siteConfig.anonymizeContributors` (default `true`: contributor names replaced by stable pseudonyms at build time, ranking pages not built, forces showRanking off) and `siteConfig.showRanking`: when `false`, the contributor ranking is fully hidden (nav link, leaderboard, profile pages, contributor links, stats chart, contributor e2e tests skipped). Contributor names must always be rendered through `components/contributor-name.ts`.
 
 ## Architecture Details
 See `.claude/architecture.md` for full file listing and data flow.

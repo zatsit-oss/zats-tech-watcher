@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { siteConfig } from "../config.ts";
 ---
 
 <Layout title="Mentions légales - Zatsit Tech Watch" description="Mentions légales du portail de veille technologique Zatsit">
@@ -38,11 +39,12 @@ import Layout from "../layouts/Layout.astro";
     <section class="glass rounded-xl p-6 mb-6">
       <h2 class="text-lg font-semibold text-content mb-3">Données personnelles</h2>
       <p class="text-sm text-content leading-relaxed">
-        Ce site affiche les prénoms et initiales des consultants zatsit contributeurs de la
-        veille technologique, dans le cadre de leur activité professionnelle. Aucune autre
-        donnée personnelle n'est collectée : pas de compte utilisateur, pas de cookie de
-        suivi, pas de mesure d'audience. Pour toute demande de rectification ou de
-        suppression, contactez
+        {siteConfig.anonymizeContributors
+          ? "Les contributions de veille sont publiées de manière anonymisée : les auteurs sont désignés par des pseudonymes."
+          : "Ce site affiche les prénoms et initiales des consultants zatsit contributeurs de la veille technologique, dans le cadre de leur activité professionnelle."}
+        Aucune {siteConfig.anonymizeContributors ? "" : "autre "}donnée personnelle n'est
+        collectée par ce site : pas de compte utilisateur, pas de cookie de suivi, pas de
+        mesure d'audience. Pour toute demande de rectification ou de suppression, contactez
         <a href="mailto:support@zatsit.fr" class="text-primary hover:underline">support@zatsit.fr</a>.
       </p>
     </section>

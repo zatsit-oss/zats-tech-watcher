@@ -13,6 +13,7 @@ export function renderCardItem(entry: TechWatchEntry): string {
       <h3 class="text-sm font-semibold leading-snug line-clamp-2 text-content">
         ${escapeHtml(truncate(entry.subject, 100))}
       </h3>
+      ${entry.comment ? `<p class="entry-comment text-xs italic text-content/70 border-l-2 border-primary/40 pl-2">${escapeHtml(truncate(entry.comment, 160))}</p>` : ""}
       <div class="flex flex-wrap gap-1.5">
         ${entry.tags.map((t) => renderTagBadge(t, false, true)).join("")}
       </div>

@@ -21,6 +21,7 @@ src/
   pages/
     index.astro                # Home: filterable grid/list with client-side search/sort/filter
     404.astro                  # Not-found page (served by static hosting)
+    mentions-legales.astro     # Legal notice page
     contributors/
       index.astro              # Leaderboard: podium top 3 + full table
       [name].astro             # Contributor profile (getStaticPaths from TSV data)
@@ -75,6 +76,7 @@ public/
 | `/tags/` | tags.astro | Nuage de tags + tendances |
 | `/activity/` | activity.astro | Heatmap d'activité + stats |
 | `/404.html` | 404.astro | Page introuvable |
+| `/mentions-legales/` | mentions-legales.astro | Mentions légales |
 
 ## Feature Flags (`src/config.ts`)
 - `siteConfig.showRanking` — quand `false` : lien nav "Contributeurs" masqué, `/contributors/` redirige vers l'accueil (stub meta-refresh en SSG), pages profils non générées, noms de contributeurs rendus en texte simple (via `components/contributor-name.ts`), chart "Top Contributeurs" masqué sur `/stats/`, tests E2E contributeurs skippés.

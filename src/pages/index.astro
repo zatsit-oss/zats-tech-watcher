@@ -18,6 +18,12 @@ const contributors = [...new Set(entries.map((e) => e.contributor))].sort();
     <!-- Header section -->
     <div class="mb-8">
       <h1 class="text-3xl font-bold gradient-text mb-2">Veille Technologique</h1>
+      <p class="text-content text-sm max-w-3xl mb-1">
+        Les articles, outils et tendances repérés au fil de l'eau par les consultants de
+        <a href="https://zatsit.fr" target="_blank" rel="noopener noreferrer" class="font-bold text-primary hover:underline">zatsit</a>,
+        cabinet de conseil tech engagé pour un numérique utile et responsable.
+        Une veille collaborative, partagée ici en continu : explorez, filtrez, laissez-vous surprendre.
+      </p>
       <p class="text-content-muted text-sm" aria-live="polite" aria-atomic="true">
         <span id="result-count">{entries.length}</span> ressource{entries.length > 1 ? "s" : ""} trouvée{entries.length > 1 ? "s" : ""}
       </p>
@@ -99,7 +105,7 @@ const contributors = [...new Set(entries.map((e) => e.contributor))].sort();
   import { renderContributorName } from "../components/contributor-name.ts";
   import { escapeHtml } from "../utils/format.ts";
 
-  // Client-side filtering, sorting, view toggle — all data in DOM
+  // Client-side filtering, sorting, view toggle - all data in DOM
   interface EntryData {
     el: HTMLElement;
     listEl: HTMLElement;
@@ -289,7 +295,7 @@ const contributors = [...new Set(entries.map((e) => e.contributor))].sort();
     });
   });
 
-  // Discover button — random entry
+  // Discover button - random entry
   document.getElementById('discover-btn')?.addEventListener('click', () => {
     if (entries.length === 0) return;
     const entry = entries[Math.floor(Math.random() * entries.length)];

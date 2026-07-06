@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-test.describe("Home — Search & Filters", () => {
+test.describe("Home - Search & Filters", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto("/");
   });
@@ -74,7 +74,7 @@ test.describe("Home — Search & Filters", () => {
   });
 });
 
-test.describe("Home — Discover Modal", () => {
+test.describe("Home - Discover Modal", () => {
   test("discover button opens surprise modal", async ({ page }) => {
     await page.goto("/");
     await page.click("#discover-btn");

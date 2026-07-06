@@ -53,6 +53,7 @@ The first line must be the header row. Each subsequent line is one entry, with c
 | 3 | `Topics` | No | Free text | Subject or topic description (used for tag extraction) |
 | 4 | `Links` | Yes | URL | Link to the article or resource |
 | 5 | `Tags` | No | Free text | *(currently unused — tags are auto-extracted from `Topics`)* |
+| 6 | `Comment` | No | Free text | Optional contributor note ("why it's worth reading"), shown on cards and list rows |
 
 ### Example
 

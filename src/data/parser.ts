@@ -25,6 +25,7 @@ function parseTsv(text: string): TechWatchEntry[] {
     const contributor = shortenName(cols[1]?.trim() ?? "");
     const subject = cols[2]?.trim() ?? "";
     const url = cols[3]?.trim() ?? "";
+    const comment = cols[5]?.trim() ?? "";
 
     if (!dateStr || !contributor || !url) continue;
 
@@ -41,6 +42,7 @@ function parseTsv(text: string): TechWatchEntry[] {
       url,
       domain,
       tags,
+      comment,
     });
   }
 

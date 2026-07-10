@@ -56,7 +56,7 @@ src/
   data/
     load-entries.ts      # Build-time data loader (node:fs)
     parser.ts            # TSV parser → TechWatchEntry[]
-    tag-extractor.ts     # Tag extraction (alias dict ~50 terms)
+    tag-extractor.ts     # Tag extraction (alias dict ~120 terms)
     stats.ts             # Stats computation (by tag, contributor, month)
   charts/                # SVG chart components (bar, line, donut, tag-cloud, heatmap)
   styles/

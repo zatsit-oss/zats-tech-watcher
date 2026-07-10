@@ -33,7 +33,7 @@ src/
   data/
     load-entries.ts            # Build-time data loader (node:fs → parseTsvText)
     parser.ts                  # Parse TSV text → TechWatchEntry[] (sorted by date desc)
-    tag-extractor.ts           # Tag extraction from Sujets (alias dict ~50 terms + stopwords FR/EN)
+    tag-extractor.ts           # Tag extraction from Sujets (alias dict ~120 terms + stopwords FR/EN)
     stats.ts                   # computeStats, computeTagStats, computeContributorProfiles, computeMonthStats
   charts/
     bar-chart.ts               # SVG bars with animations, y-axis labels, grid lines
@@ -87,11 +87,11 @@ data/
 
 ## Tag Extraction Strategy
 - La colonne "Tags" du TSV est vide → tags extraits automatiquement de "Sujets"
-- Dictionnaire d'alias (~50 termes) : `ia` → `AI`, `oss` → `Open Source`, `k8s` → `DevOps`, etc.
+- Dictionnaire d'alias (~120 termes) : `ia` → `AI`, `oss` → `Open Source`, `k8s` → `DevOps`, etc.
 - Multi-word aliases checked first, then single words
 - Stopwords FR/EN filtrés
 - Fallback: tag "Other" si aucun match
-- Tags résultants: AI, Security, DevOps, Open Source, Web, Green IT, API, Git, Testing, Data, Tools, Cloud, Documentation, Languages, Collaboration, Training
+- Tags résultants: AI, Security, DevOps, Open Source, Web, Green IT, API, Git, Testing, Data, Tools, Cloud, Documentation, Languages, Collaboration, Training, Craft, Events
 
 ## Testing
 - **Unit tests**: Vitest — `npm run test` (parser, tag-extractor, stats, date, format)

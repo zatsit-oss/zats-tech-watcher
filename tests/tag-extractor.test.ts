@@ -48,6 +48,15 @@ describe("extractTags", () => {
     expect(extractTags("chrome-devtools-mcp")).toContain("AI");
   });
 
+  it("extracts Sovereignty tags", () => {
+    expect(extractTags("souveraineté technologique européenne")).toContain("Sovereignty");
+    expect(extractTags("indice de résilience numérique")).toContain("Sovereignty");
+  });
+
+  it("extracts Hardware tags", () => {
+    expect(extractTags("instabilités hardware laptop Framework")).toContain("Hardware");
+  });
+
   it("returns sorted tags", () => {
     const tags = extractTags("Docker et IA pour le cloud");
     const sorted = [...tags].sort();

@@ -91,7 +91,7 @@ data/
 - Multi-word aliases checked first, then single words
 - Stopwords FR/EN filtrés
 - Fallback: tag "Other" si aucun match
-- Tags résultants: AI, Security, DevOps, Open Source, Web, Green IT, API, Git, Testing, Data, Tools, Cloud, Documentation, Languages, Collaboration, Training, Craft, Events
+- Tags résultants: AI, Security, DevOps, Open Source, Web, Green IT, API, Git, Testing, Data, Tools, Cloud, Documentation, Languages, Collaboration, Training, Craft, Events, Sovereignty, Hardware
 
 ## Testing
 - **Unit tests**: Vitest — `npm run test` (parser, tag-extractor, stats, date, format)

@@ -84,6 +84,7 @@ const TAG_ALIASES: Record<string, string> = {
   // Tools
   tool: "Tools",
   tools: "Tools",
+  outil: "Tools",
   outils: "Tools",
   cli: "Tools",
   ide: "Tools",
@@ -138,6 +139,15 @@ const TAG_ALIASES: Record<string, string> = {
   fosdem: "Events",
   devoxx: "Events",
   calendrier: "Events",
+  // Sovereignty
+  souveraineté: "Sovereignty",
+  souverain: "Sovereignty",
+  sovereignty: "Sovereignty",
+  résilience: "Sovereignty",
+  // Hardware
+  hardware: "Hardware",
+  laptop: "Hardware",
+  webcam: "Hardware",
 };
 
 const STOPWORDS = new Set([

@@ -54,6 +54,7 @@ The first line must be the header row. Each subsequent line is one entry, with c
 | 4 | `Links` | Yes | URL | Link to the article or resource |
 | 5 | `Tags` | No | Free text | *(currently unused — tags are auto-extracted from `Topics`)* |
 | 6 | `Comment` | No | Free text | Optional contributor note ("why it's worth reading"), shown on cards and list rows |
+| 7 | `AiEnriched` | No | `true` or empty | Traceability marker: `true` when the `Topics` text was AI-enriched; ignored by the site |
 
 ### Example
 
@@ -158,7 +159,7 @@ Google Sheet ──(weekly cron)──▶ sync-data.yml ──▶ data PR ──
 
 Keeps `data/tech-watch-v1.tsv` in sync with the team's Google Sheet (fed by the Google Chat bot). Runs every Monday at 06:00 UTC, on manual dispatch, or on a `repository_dispatch` event (type `sheet-updated`).
 
-1. `scripts/sync-tech-watch-data.mjs` downloads the sheet with a Google service account and normalizes it: canonical English header (`Date, Contributors, Topics, Links, Tags, Comment`), LF line endings, exactly 6 columns, invalid rows skipped with a warning.
+1. `scripts/sync-tech-watch-data.mjs` downloads the sheet with a Google service account and normalizes it: canonical English header (`Date, Contributors, Topics, Links, Tags, Comment, AiEnriched`), LF line endings, exactly 7 columns, invalid rows skipped with a warning.
 2. If the data changed, a pull request is opened (branch `chore/sync-tech-watch-data`) with the native `GITHUB_TOKEN` ("Allow GitHub Actions to create and approve pull requests" is enabled at org and repo level). Review and merge stay manual; merging triggers the production deploy.
 
 The script also works offline: `node scripts/sync-tech-watch-data.mjs --from-file export.tsv`.

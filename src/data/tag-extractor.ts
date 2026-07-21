@@ -11,8 +11,14 @@ const TAG_ALIASES: Record<string, string> = {
   codeassist: "AI",
   "code assistant": "AI",
   vibecoding: "AI",
+  "vibe coding": "AI",
   copilot: "AI",
   prompt: "AI",
+  agent: "AI",
+  agents: "AI",
+  mcp: "AI",
+  claude: "AI",
+  anthropic: "AI",
   // Security
   security: "Security",
   sécurité: "Security",
@@ -20,6 +26,12 @@ const TAG_ALIASES: Record<string, string> = {
   siem: "Security",
   edr: "Security",
   vulnerability: "Security",
+  cybersécurité: "Security",
+  cybersecurity: "Security",
+  oidc: "Security",
+  openid: "Security",
+  authentification: "Security",
+  authentication: "Security",
   // DevOps
   devops: "DevOps",
   k8s: "DevOps",
@@ -30,6 +42,11 @@ const TAG_ALIASES: Record<string, string> = {
   iac: "DevOps",
   dora: "DevOps",
   terraform: "DevOps",
+  prometheus: "DevOps",
+  alertmanager: "DevOps",
+  monitoring: "DevOps",
+  proxy: "DevOps",
+  kafka: "Data",
   // Open Source
   oss: "Open Source",
   "open-source": "Open Source",
@@ -62,12 +79,20 @@ const TAG_ALIASES: Record<string, string> = {
   // Data
   data: "Data",
   sql: "Data",
+  json: "Data",
+  yaml: "Data",
   // Tools
   tool: "Tools",
   tools: "Tools",
+  outil: "Tools",
   outils: "Tools",
   cli: "Tools",
   ide: "Tools",
+  vscode: "Tools",
+  npm: "Tools",
+  jq: "Tools",
+  yq: "Tools",
+  toolkit: "Tools",
   // Cloud
   cloud: "Cloud",
   // Documentation
@@ -81,6 +106,7 @@ const TAG_ALIASES: Record<string, string> = {
   rust: "Languages",
   java: "Languages",
   typescript: "Languages",
+  angular: "Web",
   // Collaboration
   collaborative: "Collaboration",
   chat: "Collaboration",
@@ -88,6 +114,40 @@ const TAG_ALIASES: Record<string, string> = {
   // Training
   training: "Training",
   courses: "Training",
+  guide: "Training",
+  tutorial: "Training",
+  tutoriel: "Training",
+  labs: "Training",
+  // Craft (software craftsmanship / quality; no bare "craft": too ambiguous, e.g. "craft beer")
+  craftsman: "Craft",
+  craftsmanship: "Craft",
+  craftman: "Craft",
+  quality: "Craft",
+  qualité: "Craft",
+  "clean code": "Craft",
+  // Events
+  "événement": "Events",
+  "événements": "Events",
+  evenement: "Events",
+  event: "Events",
+  events: "Events",
+  cfp: "Events",
+  talks: "Events",
+  "conférence": "Events",
+  conference: "Events",
+  meetup: "Events",
+  fosdem: "Events",
+  devoxx: "Events",
+  calendrier: "Events",
+  // Sovereignty
+  souveraineté: "Sovereignty",
+  souverain: "Sovereignty",
+  sovereignty: "Sovereignty",
+  résilience: "Sovereignty",
+  // Hardware
+  hardware: "Hardware",
+  laptop: "Hardware",
+  webcam: "Hardware",
 };
 
 const STOPWORDS = new Set([
@@ -124,6 +184,16 @@ export function extractTags(subject: string): string[] {
   for (const word of words) {
     const tag = TAG_ALIASES[word];
     if (tag) found.add(tag);
+
+    // Hyphenated tokens ("playwright-mcp") also match on each part
+    if (word.includes("-")) {
+      for (const part of word.split("-")) {
+        if (part.length > 1 && !STOPWORDS.has(part)) {
+          const partTag = TAG_ALIASES[part];
+          if (partTag) found.add(partTag);
+        }
+      }
+    }
   }
 
   // If no tags found from a long subject, mark as "Other"

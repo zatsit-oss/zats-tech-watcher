@@ -1,199 +1,199 @@
-Date	Contributors	Topics	Links	Tags	Comment
-30/01/2025	Prince Izailahy	open-source AI code assistant	https://continue.dev		
-28/02/2025	Emmanuel Péru	openapi api test quality craftman	https://pb33f.io/doctor/		
-02/03/2025	Nicolas Lefebvre	outils pour faire des présentations (slides) en markdown	https://sli.dev/		
-02/03/2025	Germain Lefebvre	Why should you put a proxy in front of Kafka ?	https://www.linkedin.com/pulse/why-should-you-put-proxy-front-kafka-anthony-callaert-azpcc		
-03/03/2025	Nicolas Fourré	MilleCheck outils d'analyse de performances web	https://millecheck.ai/		
-03/03/2025	Emmanuel Péru	green ecoconception	https://github.com/green-code-initiative/creedengo-rules-specifications		
-06/03/2025	Emmanuel Péru	security oss	https://about.gitlab.com/blog/2025/03/04/introducing-gitlabs-open-source-security-hub/		
-10/03/2025	Germain Lefebvre	ide open source boosté a l'IA	https://korben.info/trae-ide-qui-transforme-ia-en-partenaire-de-code.html		
-13/03/2025	Germain Lefebvre	Security platform - XDR & SIEM	https://wazuh.com		
-13/03/2025	Germain Lefebvre	Security platform - EDR/XDR with remediation	https://www.crowdsec.net		
-15/03/2025	Emmanuel Péru	frontend web js help library	https://driverjs.com/		
-20/03/2025	Nicolas Lefebvre	une frise pour suivre l'état des nouveautés kubernetes	https://kaniuse.gerome.dev/		
-25/03/2025	Emmanuel Péru	git DevOps frenchtech	https://froggit.fr/		
-26/03/2025	Emmanuel Péru	security oss	https://blog.cloudflare.com/open-sourcing-openpubkey-ssh-opkssh-integrating-single-sign-on-with-ssh/		
-28/03/2025	Emmanuel Péru	web api data	https://json-ld.org/		
-29/03/2025	Emmanuel Péru	greenit ecoconception	https://www.collection-liens-greenit.fr/		
-22/04/2025	Emmanuel Péru	typescript AI	https://voltagent.dev		
-05/05/2025	Emmanuel Péru	devops	https://github.com/flipt-io/flipt		
-11/05/2025	Germain Lefebvre	Interactive Diagrams in JS	https://gojs.net/latest/		
-14/05/2025	Emmanuel Péru	cartographie neo4j infrastructure	https://github.com/cartography-cncf/cartography		
-15/05/2025	Ludovic Dussart	tester la structure de son dockerfile	https://github.com/GoogleContainerTools/container-structure-test		
-15/05/2025	Ludovic Dussart	batch/shell testing	https://github.com/bats-core/bats-core		
-15/05/2025	Ludovic Dussart	java benchmark tool	https://github.com/openjdk/jmh		
-20/05/2025	Emmanuel Péru	DevOps dora oss	https://devlake.apache.org/		
-21/05/2025	Emmanuel Péru	oss collaborative tool	https://answer.apache.org		
-22/05/2025	Guillaume Gayot	installer tous les outils de dev nécessaires en une commande	https://github.com/jdx/mise		
-22/05/2025	Emmanuel Péru	ia code	https://jules.google/		
-23/05/2025	Emmanuel Péru	iot cloud nocode	https://appblocks.io/		
-24/05/2025	Quentin Burg	Obsidian-like open source	https://github.com/logseq/logseq		
-30/05/2025	Germain Lefebvre	calculer la mémoire nécessaire pour Prometheus en fonction de la cardinalite	https://www.robustperception.io/how-much-ram-does-prometheus-2-x-need-for-cardinality-and-ingestion/		
-30/05/2025	Germain Lefebvre	A Federated OpenID Connect Provider	https://dexidp.io		
-31/05/2025	Germain Lefebvre	Labs gratuits sur des technos	https://kodekloud.com/free-labs		
-01/06/2025	Germain Lefebvre	The beautiful docs framework with Next.js	https://fumadocs.dev		
-03/06/2025	Germain Lefebvre	Your ultimate AI social media scheduling tool	https://github.com/gitroomhq/postiz-app		
-16/06/2025	Emmanuel Péru	test http API	https://hurl.dev/		
-21/06/2025	Emmanuel Péru	network tool test	https://trippy.rs/		
-23/06/2025	Quentin Burg	Calendrier talks et cfp (mondial)	https://developers.events/		
-27/06/2025	Emmanuel Péru	rust cli	https://ratatui.rs/		
-06/07/2025	Emmanuel Péru	blog Docusaurus veille	https://blog.fwfw.app/		
-06/07/2025	Germain Lefebvre	GoAccess is a real-time web log analyzer	https://github.com/allinurl/goaccess		
-08/07/2025	Germain Lefebvre	Gestionnaire d'alertes gérées avec AlertManager	https://github.com/SoulKyu/notificator		
-08/07/2025	Germain Lefebvre	comprehensive vulnerability scanner	https://github.com/SiriusScan/Sirius		
-10/07/2025	Emmanuel Péru	AI training	https://anthropic.skilljar.com		
-17/07/2025	Emmanuel Péru	AI code assistant AWS	https://kiro.dev/blog/introducing-kiro/		
-20/07/2025	Germain Lefebvre	access and protect all of your infrastructure	https://github.com/gravitational/teleport		
-20/07/2025	Germain Lefebvre	LLM-powered brute-force tool	https://github.com/MorDavid/BruteForceAI		
-21/07/2025	Emmanuel Péru	web performance test	https://www.sitespeed.io/		
-23/07/2025	Emmanuel Péru	openapi oss	https://quobix.com/articles/the-tardis/		
-24/07/2025	Germain Lefebvre	Calendrier des événements Tech en France	https://developers.events		
-26/07/2025	Emmanuel Péru	matériel écoconception	https://share.google/ov91tf2PAzfyZ4Cv3		
-26/07/2025	Germain Lefebvre	reverse proxy avec authentification (Google, Azure, OIDC...)	https://github.com/oauth2-proxy/oauth2-proxy		
-26/07/2025	Ludovic Dussart	CTO or not CTO	https://kdelfour.github.io/Ebook_To_be_Or_not_to_be_CTO/		
-30/07/2025	Emmanuel Péru	language	https://www.ponylang.io/		
-19/08/2025	Emmanuel Péru	api test documentation	https://voiden.md/blog/migrate-postman-collections-to-voiden		
-19/08/2025	Paul Verbeke	instabilités W11 24H2 sur PC framework avec webcam USB externe	https://community.frame.work/t/external-webcam-causing-system-instability-and-crashes/68518/3		
-01/09/2025	Germain Lefebvre	Open-source Infrastructure as Code orchestration platform	https://github.com/terramate-io/terramate		
-01/09/2025	Ludovic Dussart	L'avenir de git ?	https://korben.info/jj-jujutsu-version-control-alternative.html		
-04/09/2025	Emmanuel Péru	web écoconception	https://korben.info/obs-harry-roberts-transforme-votre-site.html		
-10/09/2025	Emmanuel Péru	web design	https://svgl.app/		
-19/09/2025	Ludovic Dussart	yq is like jq for Yaml	https://github.com/mikefarah/yq		
-29/09/2025	Emmanuel Péru	social opensource	https://atproto.com/		
-02/10/2025	Emmanuel Péru	opensource stockage	https://garagehq.deuxfleurs.fr/		
-07/10/2025	Emmanuel Péru	opensource payment ecommerce	https://hyperswitch.io/		
-07/10/2025	Germain Lefebvre	Carte en live des trains	https://carto.tchoo.net		
-15/10/2025	Emmanuel Péru	green (rapport Cigref numérique responsable)	https://www.cigref.fr/wp/wp-content/uploads/2025/09/Rapport-strategies-Numerique-Responsable-des-grandes-organisations-septembre-2025-VDEF.pdf		
-23/10/2025	Emmanuel Péru	ia Google	https://www.skills.google/		
-30/10/2025	Emmanuel Péru	ai Oss	https://handy.computer/		
-30/10/2025	Ludovic Dussart	Vault OpenSource	https://openbao.org/		
-31/10/2025	Emilien Ferrandi	algorithmes expliqués avec démo visuelle	https://algorithm-visualizer.org/		
-31/10/2025	Emmanuel Péru	protocol ecoconception	https://ghgprotocol.org		
-04/11/2025	Germain Lefebvre	Open Source alternative à Vercel/Heroku/Netlify	https://github.com/raghavyuva/nixopus		
-05/11/2025	Emmanuel Péru	greenit	https://opensourcegreenops.cloud/		
-05/11/2025	Germain Lefebvre	Free IDE for Kubernetes	https://github.com/freelensapp/freelens		
-05/11/2025	Nicolas Lefebvre	Angular et l'IA : outil de contrôle qualité du code généré	https://blog.angular.dev/beyond-the-horizon-how-angular-is-embracing-ai-for-next-gen-apps-7a7ed706e1a3		
-06/11/2025	Germain Lefebvre	Classement des modèles LLM de génération d'image	https://artificialanalysis.ai/image/leaderboard/text-to-image		
-09/11/2025	Germain Lefebvre	Multi-agent framework, runtime and control plane	https://github.com/agno-agi/agno		
-09/11/2025	Germain Lefebvre	Open-source AI hackers for your apps	https://github.com/usestrix/strix		
-14/11/2025	Emmanuel Péru	redis sql data	https://github.com/nalgeon/redka		
-22/11/2025	Emmanuel Péru	Oss signature document fr	https://github.com/btouchard/ackify-ce/blob/main/README_FR.md		
-22/11/2025	Emmanuel Péru	AI vibecoding Google	https://www.lesnumeriques.com/intelligence-artificielle/google-antigravity-l-ia-qui-code-a-votre-place-est-la-le-metier-de-developpeur-ne-sera-plus-jamais-le-meme-n245972.html		
-25/11/2025	Emmanuel Péru	green courses	https://www.isit-academy.org		
-25/11/2025	Emmanuel Péru	trend language	https://devecosystem-2025.jetbrains.com/tools-and-trends		
-04/12/2025	Emmanuel Péru	git github	https://www.trygitwrap.com/		
-07/12/2025	Emmanuel Péru	AI courses GitHub copilot	https://github.com/microsoft/ML-For-Beginners		
-10/12/2025	Emmanuel Péru	ia	https://proton.me/fr/blog/lumo-ai		
-14/12/2025	Emmanuel Péru	ecoconception greenit	https://www.green-coding.io/products/green-metrics-tool/		
-18/12/2025	Germain Lefebvre	awesome-copilot	https://github.com/github/awesome-copilot		
-22/12/2025	Guillaume Gayot	un bus de message en rust (interface web intégrée)	https://github.com/apache/iggy		
-22/12/2025	Emmanuel Péru	ia green	https://ecologits.ai/latest/		
-22/12/2025	Emmanuel Péru	ecoconception tool green	https://e-footprint.boavizta.org/		
-24/12/2025	Emmanuel Péru	security oss	https://github.com/ossf/security-baseline		
-24/12/2025	Emmanuel Péru	chat collaborative oss	https://github.com/zulip/zulip		
-28/12/2025	Emmanuel Péru	Oss drawing schema	https://github.com/stan-smith/FossFLOW		
-06/01/2026	Emmanuel Péru	greenit	https://greenspector.com		
-06/01/2026	Emmanuel Péru	github oss	https://githubwrapped.xyz		
-06/01/2026	Emmanuel Péru	oss fr	https://www.courtbouillon.org/projects/		
-08/01/2026	Emmanuel Péru	AI chat security	https://www.promptfoo.dev/		
-14/01/2026	Emmanuel Péru	oss alternative gouvernance	https://www.goeuropean.org		
-16/01/2026	Emmanuel Péru	storage oss	https://www.plakar.io		
-20/01/2026	Emmanuel Péru	gouvernance souverain (indice résilience numérique)	https://www.itforbusiness.fr/indice-de-resilience-numerique-irn-le-thermometre-pour-gouverner-ses-dependances-99428		
-20/01/2026	Emmanuel Péru	ia code oss	https://ollama.com/blog/claude		
-21/01/2026	Ludovic Dussart	The open source AI coding agent	https://opencode.ai/		
-25/01/2026	Germain Lefebvre	GitHub Agentic Workflows	https://githubnext.github.io/gh-aw/		
-26/01/2026	Emmanuel Péru	ia tool	https://yoanbernabeu.github.io/grepai/		
-26/01/2026	Emmanuel Péru	media numerique responsable	https://les-enovateurs.com		
-28/01/2026	Emmanuel Péru	ia oss	https://github.com/clawdbot/clawdbot		
-28/01/2026	Paul Verbeke	orchestrateur IA utilisant open code	https://github.com/code-yeongyu/oh-my-opencode		
-28/01/2026	Paul Verbeke	proxy de traduction entre formats d'API LLM (format OpenAI)	https://github.com/BerriAI/litellm		
-29/01/2026	Emmanuel Péru	k8s Oss docusaurus	https://keploy.io/docs/		
-30/01/2026	Lucas Perreau	Prompt to generate instructions	https://docs.github.com/fr/copilot/how-tos/configure-custom-instructions/add-repository-instructions		
-30/01/2026	Emmanuel Péru	web design	https://github.com/LayoutitStudio/voxcss		
-31/01/2026	Emmanuel Péru	web dev test oss	https://github.com/responsively-org/responsively-app		
-01/02/2026	Nicolas Lefebvre	thread du fondateur de Claude avec des astuces IA	https://x.com/i/status/2017742741636321619		
-02/02/2026	Ludovic Dussart	Local AI, on Your Computer	https://lmstudio.ai/		
-03/02/2026	Emmanuel Péru	IA method code-assist	https://www.hoko.team/blog/spec-driven-development-frameworks-aidd-2026		
-03/02/2026	Paul Verbeke	toolkit pour scénarios produit et résultats prévisibles (vs vibe coding)	https://github.com/github/spec-kit		
-03/02/2026	Ludovic Dussart	lightweight spec-driven framework	https://openspec.dev/		
-03/02/2026	Emmanuel Péru	ia LLM prompt	https://github.com/glittercowboy/get-shit-done		
-03/02/2026	Emmanuel Péru	knowledge api	https://consensus.app/home/api/		
-03/02/2026	Emmanuel Péru	light LLM	https://github.com/lyogavin/airllm		
-05/02/2026	Nicolas Lefebvre	vscode	https://aka.ms/VSCode/109		
-06/02/2026	Ludovic Dussart	Command Multiple AI Coding Agents	https://vibecraft.build/		
-09/02/2026	Paul Verbeke	chrome-devtools-mcp	https://github.com/ChromeDevTools/chrome-devtools-mcp		
-09/02/2026	Paul Verbeke	playwright-mcp	https://github.com/microsoft/playwright-mcp		
-09/02/2026	Paul Verbeke	browsermcp	https://github.com/browsermcp/mcp		
-10/02/2026	Emmanuel Péru	mesure oss	https://fondation-sahar.fr/trackcarbon		
-12/02/2026	Emmanuel Péru	Oss tool (Trilium notes hiérarchiques)	https://www.cachem.fr/trilium-notes-alternative-open-source-pour-les-notes-hierarchique/		
-12/02/2026	Emmanuel Péru	ia codeassist google gemini	https://developers.googleblog.com/conductor-introducing-context-driven-development-for-gemini-cli/		
-12/02/2026	Emmanuel Péru	llm empreinte	https://github.com/sipeed/picoclaw		
-16/02/2026	Emmanuel Péru	ia codeassist manifesto	https://o16g.com		
-16/02/2026	Ludovic Dussart	réduire le bruit en CLI pour réduire les tokens LLM (80% de gains)	https://github.com/rtk-ai/rtk		
-17/02/2026	Emmanuel Péru	openApi arazzo workflow documentation	https://github.com/frankkilcommins/arazzo2openapi		
-21/02/2026	Emmanuel Péru	os k8s linux	https://kairos.io/		
-27/02/2026	Emmanuel Péru	graph data oss	https://hugegraph.apache.org/		
-28/02/2026	Emmanuel Péru	open source	https://code.gouv.fr/sill/list		
-28/02/2026	Emmanuel Péru	doc Oss mkdoc web	https://zensical.org/		
-01/03/2026	Paul Verbeke	game impact ademe	https://www.trois-rivieres.net/		
-01/03/2026	Quentin Burg	ecoconception	https://simbios.fr/ressources		
-03/03/2026	Emmanuel Péru	green referentiel (ROI sobriété numérique AGIT)	https://alliancegreenit.org/media/page-groupe-de-travail/roi-mpact-methodologie-lb-roi-sobriete-numerique-agit.pdf		
-04/03/2026	Germain Lefebvre	framework laptop	https://github.com/ozturkkl/framework-control		
-04/03/2026	Emmanuel Péru	icons design documentation	https://gcp-icons.svg.zone		
-05/03/2026	Emmanuel Péru	rex greenit	https://www.infoq.com/presentations/green-it/		
-06/03/2026	Emmanuel Péru	IA agent	https://github.com/openai/symphony/blob/main/SPEC.md		
-10/03/2026	Ludovic Dussart	pdf tool	https://bentopdf.com/index.html		
-10/03/2026	Emmanuel Péru	GitHub alternative	https://codeberg.org/		
-11/03/2026	Ludovic Dussart	metadata platform	https://open-metadata.org/		
-17/03/2026	Ludovic Dussart	Hundreds of models & providers. One command to find what runs on your hardware	https://github.com/AlexsJones/llmfit		
-18/03/2026	Nicolas Lefebvre	npm	https://npmx.dev/		
-20/03/2026	Nicolas Lefebvre	angular	https://github.com/angular/angular/tree/main/skills/dev-skills/angular-developer		
-20/03/2026	Nicolas Lefebvre	skillgrade: évaluer les skills d'agent et éviter les régressions	https://github.com/mgechev/skillgrade		
-22/03/2026	Emmanuel Péru	agent ai package manager	https://github.com/microsoft/apm		
-24/03/2026	Germain Lefebvre	Liste des videos du FOSDEM	https://gpages.juszkiewicz.com.pl/fosdem-videos/		
-24/03/2026	Ludovic Dussart	The AI Framework for Full-Stack Apps	https://genkit.dev/		
-24/03/2026	Jerome Vasseur	Le guide complet pour créer des skills pour vos agents (Anthropic)	https://resources.anthropic.com/hubfs/The-Complete-Guide-to-Building-Skill-for-Claude.pdf		
-26/03/2026	Germain Lefebvre	prompt minimal et rapide pour n'importe quel shell	https://starship.rs/		
-27/03/2026	Jerome Vasseur	Un guide très complet sur claude code	https://cc.bruniaux.com/		
-27/03/2026	Quentin Burg	comparer du JSON ou YAML en ligne de commande	https://github.com/josephburnett/jd		
-02/04/2026	Emmanuel Péru	openapi arazzo	https://jentic.com/arazzo-editor		
-02/04/2026	Germain Lefebvre	Le remplaçant de WordPress en Astro, secure by design	https://github.com/emdash-cms/emdash		
-03/04/2026	Germain Lefebvre	Privacy-first API platform (Tauri v2), alternative légère à Postman	https://github.com/berbicanes/apiark		
-03/04/2026	Nicolas Fourré	forker un framework pour l'héberger soi-même (Cloudflare)	https://blog.cloudflare.com/vinext/		
-08/04/2026	Quentin Burg	attacher le contexte d'une session agent à un commit git	https://entire.io/		
-10/04/2026	Emmanuel Péru	IA agentic	https://getbaton.dev/		
-10/04/2026	Ludovic Dussart	Open-source orchestration for zero-human companies	https://github.com/paperclipai/paperclip		
-17/04/2026	Emmanuel Péru	catalogue solutions opensource	https://korben.info/selfh-st-apps-annuaire-self-hosting.html		
-17/04/2026	Emmanuel Péru	catalogue solution opensource	https://selfh.st/apps/		
-23/04/2026	Paul Verbeke	Copilot : serveurs saturés par l'IA agentique, changements de plans	https://github.blog/news-insights/company-news/changes-to-github-copilot-individual-plans/		
-24/04/2026	Paul Verbeke	supply chain attack : CLI Bitwarden vérolé via npm	https://next.ink/235095/la-saga-continue-un-paquet-npm-verole-de-bitwarden-cli-a-derobe-des-secrets/		
-27/04/2026	Germain Lefebvre	événement cybersécurité et craft beer	https://cyberbrew.tech/		
-28/04/2026	Quentin Burg	multi agent coding	https://github.com/liza-mas/liza		
-29/04/2026	Emmanuel Péru	markdown pdf web	https://github.com/iamgio/quarkdown		
-30/04/2026	Quentin Burg	générer des urls locales liées aux ports (myapp.localhost)	https://portless.sh/		
-04/05/2026	Emmanuel Péru	linux update	https://github.com/topgrade-rs/topgrade		
-05/05/2026	Emmanuel Péru	greenit datacenter map	https://dcwatch.hubblo.org		
-05/05/2026	Ludovic Dussart	transformer du code/knowledge base en knowledge graph interactif	https://understand-anything.com/		
-08/05/2026	Nicolas Lefebvre	URL to markdown for agents	https://curl.md/		
-12/05/2026	Emmanuel Péru	AI agent orchestration	https://github.com/mattpocock/sandcastle		
-13/05/2026	Quentin Burg	cours sur Effect plutôt complet	https://www.typeonce.dev/course/effect-beginners-complete-getting-started		
-26/05/2026	Germain Lefebvre	Skills pour agents IA spécialisés dans la bureaucratie française	https://github.com/romainsimon/paperasse		
-29/05/2026	Ludovic Dussart	tooling local pour l'observabilité LLM (Datadog test agent)	https://github.com/DataDog/dd-apm-test-agent/tree/master/lapdog		
-08/06/2026	Emmanuel Péru	skill AI token killer	https://github.com/juliusbrussee/caveman		
-08/06/2026	Emmanuel Péru	IA MCP documentation snippet	https://github.com/upstash/context7		
-10/06/2026	Germain Lefebvre	benchmark agentique : construire un émulateur GBA from scratch	https://benchlm.ai/benchmarks/gbaEval		
-10/06/2026	Ludovic Dussart	right-size les modèles LLM selon RAM/CPU/GPU	https://www.llmfit.org/		
-11/06/2026	Mehdi Slimani	CopilotKit : réunir utilisateurs et agents IA dans les apps	https://share.google/sAttbwvk0DHXSwqH7		
-11/06/2026	Mehdi Slimani	CopilotKit : réunir utilisateurs et agents IA dans les apps	https://www.copilotkit.ai/		
-11/06/2026	Ludovic Dussart	Docker Buildx Bake : build déclaratif et concurrent	https://docs.docker.com/build/bake		
-11/06/2026	Germain Lefebvre	MemFuse : couche mémoire persistante open-source pour LLM	https://github.com/memfuse/memfuse		
-11/06/2026	Nicolas Lefebvre	sbx : solution Docker pour agents en env local sandboxé	https://www.docker.com/products/docker-sandboxes/		
-11/06/2026	Quentin Burg	LLM pour détecter les erreurs sémantiques web (accessibilité)	https://github.com/NadeenAhmad/AccessGuruLLM		
-18/06/2026	Emmanuel Péru	wiki doc ai	https://github.com/GoogleCloudPlatform/knowledge-catalog/tree/main/okf		
-21/06/2026	Germain Lefebvre	Token-saving companion for OpenCode	https://github.com/MrGray17/opentoken		
-24/06/2026	Emmanuel Péru	sovereignty	https://eu-score.tech		
-28/06/2026	Germain Lefebvre	Linux Foundation : Agent Name Service (identité pour agents IA)	https://www.linuxfoundation.org/press/linux-foundation-announces-intent-to-launch-agent-name-service-to-establish-trusted-identity-infrastructure-for-ai-agents		
-01/07/2026	Germain Lefebvre	Arrivée de Claude Sonnet 5	https://www.anthropic.com/news/claude-sonnet-5		
-01/07/2026	Ludovic Dussart	monitoring de tokens pour suivre vos consos	https://github.com/ccusage/ccusage		
-04/07/2026	Germain Lefebvre	Code généré par IA : le paradoxe de la productivité	https://www.blogdumoderateur.com/code-genere-ia-developpeurs-paradoxe-productivite/		
-04/07/2026	Germain Lefebvre	Build a Managed Tech Digest Agent with the Gemini API	https://codelabs.developers.google.com/tech-digest-managed-agent		
+Date	Contributors	Topics	Links	Tags	Comment	AiEnriched
+30/01/2025	Prince Izailahy	open-source AI code assistant	https://continue.dev			
+28/02/2025	Emmanuel Péru	openapi api test quality craftman	https://pb33f.io/doctor/			
+02/03/2025	Nicolas Lefebvre	outils pour faire des présentations (slides) en markdown	https://sli.dev/			
+02/03/2025	Germain Lefebvre	Why should you put a proxy in front of Kafka ?	https://www.linkedin.com/pulse/why-should-you-put-proxy-front-kafka-anthony-callaert-azpcc			
+03/03/2025	Nicolas Fourré	MilleCheck outils d'analyse de performances web	https://millecheck.ai/			
+03/03/2025	Emmanuel Péru	green ecoconception	https://github.com/green-code-initiative/creedengo-rules-specifications			
+06/03/2025	Emmanuel Péru	security oss	https://about.gitlab.com/blog/2025/03/04/introducing-gitlabs-open-source-security-hub/			
+10/03/2025	Germain Lefebvre	ide open source boosté a l'IA	https://korben.info/trae-ide-qui-transforme-ia-en-partenaire-de-code.html			
+13/03/2025	Germain Lefebvre	Security platform - XDR & SIEM	https://wazuh.com			
+13/03/2025	Germain Lefebvre	Security platform - EDR/XDR with remediation	https://www.crowdsec.net			
+15/03/2025	Emmanuel Péru	frontend web js help library	https://driverjs.com/			
+20/03/2025	Nicolas Lefebvre	une frise pour suivre l'état des nouveautés kubernetes	https://kaniuse.gerome.dev/			
+25/03/2025	Emmanuel Péru	git DevOps frenchtech	https://froggit.fr/			
+26/03/2025	Emmanuel Péru	security oss	https://blog.cloudflare.com/open-sourcing-openpubkey-ssh-opkssh-integrating-single-sign-on-with-ssh/			
+28/03/2025	Emmanuel Péru	web api data	https://json-ld.org/			
+29/03/2025	Emmanuel Péru	greenit ecoconception	https://www.collection-liens-greenit.fr/			
+22/04/2025	Emmanuel Péru	typescript AI	https://voltagent.dev			
+05/05/2025	Emmanuel Péru	devops	https://github.com/flipt-io/flipt			
+11/05/2025	Germain Lefebvre	Interactive Diagrams in JS	https://gojs.net/latest/			
+14/05/2025	Emmanuel Péru	cartographie neo4j infrastructure	https://github.com/cartography-cncf/cartography			
+15/05/2025	Ludovic Dussart	tester la structure de son dockerfile	https://github.com/GoogleContainerTools/container-structure-test			
+15/05/2025	Ludovic Dussart	batch/shell testing	https://github.com/bats-core/bats-core			
+15/05/2025	Ludovic Dussart	java benchmark tool	https://github.com/openjdk/jmh			
+20/05/2025	Emmanuel Péru	DevOps dora oss	https://devlake.apache.org/			
+21/05/2025	Emmanuel Péru	oss collaborative tool	https://answer.apache.org			
+22/05/2025	Guillaume Gayot	installer tous les outils de dev nécessaires en une commande	https://github.com/jdx/mise			
+22/05/2025	Emmanuel Péru	ia code	https://jules.google/			
+23/05/2025	Emmanuel Péru	iot cloud nocode	https://appblocks.io/			
+24/05/2025	Quentin Burg	Obsidian-like open source	https://github.com/logseq/logseq			
+30/05/2025	Germain Lefebvre	calculer la mémoire nécessaire pour Prometheus en fonction de la cardinalite	https://www.robustperception.io/how-much-ram-does-prometheus-2-x-need-for-cardinality-and-ingestion/			
+30/05/2025	Germain Lefebvre	A Federated OpenID Connect Provider	https://dexidp.io			
+31/05/2025	Germain Lefebvre	Labs gratuits sur des technos	https://kodekloud.com/free-labs			
+01/06/2025	Germain Lefebvre	The beautiful docs framework with Next.js	https://fumadocs.dev			
+03/06/2025	Germain Lefebvre	Your ultimate AI social media scheduling tool	https://github.com/gitroomhq/postiz-app			
+16/06/2025	Emmanuel Péru	test http API	https://hurl.dev/			
+21/06/2025	Emmanuel Péru	network tool test	https://trippy.rs/			
+23/06/2025	Quentin Burg	Calendrier talks et cfp (mondial)	https://developers.events/			
+27/06/2025	Emmanuel Péru	rust cli	https://ratatui.rs/			
+06/07/2025	Emmanuel Péru	blog Docusaurus veille	https://blog.fwfw.app/			
+06/07/2025	Germain Lefebvre	GoAccess is a real-time web log analyzer	https://github.com/allinurl/goaccess			
+08/07/2025	Germain Lefebvre	Gestionnaire d'alertes gérées avec AlertManager	https://github.com/SoulKyu/notificator			
+08/07/2025	Germain Lefebvre	comprehensive vulnerability scanner	https://github.com/SiriusScan/Sirius			
+10/07/2025	Emmanuel Péru	AI training	https://anthropic.skilljar.com			
+17/07/2025	Emmanuel Péru	AI code assistant AWS	https://kiro.dev/blog/introducing-kiro/			
+20/07/2025	Germain Lefebvre	access and protect all of your infrastructure	https://github.com/gravitational/teleport			
+20/07/2025	Germain Lefebvre	LLM-powered brute-force tool	https://github.com/MorDavid/BruteForceAI			
+21/07/2025	Emmanuel Péru	web performance test	https://www.sitespeed.io/			
+23/07/2025	Emmanuel Péru	openapi oss	https://quobix.com/articles/the-tardis/			
+24/07/2025	Germain Lefebvre	Calendrier des événements Tech en France	https://developers.events			
+26/07/2025	Emmanuel Péru	matériel écoconception	https://share.google/ov91tf2PAzfyZ4Cv3			
+26/07/2025	Germain Lefebvre	reverse proxy avec authentification (Google, Azure, OIDC...)	https://github.com/oauth2-proxy/oauth2-proxy			
+26/07/2025	Ludovic Dussart	guide ebook pour CTO, leadership technique	https://kdelfour.github.io/Ebook_To_be_Or_not_to_be_CTO/			true
+30/07/2025	Emmanuel Péru	language	https://www.ponylang.io/			
+19/08/2025	Emmanuel Péru	api test documentation	https://voiden.md/blog/migrate-postman-collections-to-voiden			
+19/08/2025	Paul Verbeke	instabilités hardware laptop Framework : webcam USB externe sous W11 24H2	https://community.frame.work/t/external-webcam-causing-system-instability-and-crashes/68518/3			true
+01/09/2025	Germain Lefebvre	Open-source Infrastructure as Code orchestration platform	https://github.com/terramate-io/terramate			
+01/09/2025	Ludovic Dussart	L'avenir de git ?	https://korben.info/jj-jujutsu-version-control-alternative.html			
+04/09/2025	Emmanuel Péru	web écoconception	https://korben.info/obs-harry-roberts-transforme-votre-site.html			
+10/09/2025	Emmanuel Péru	web design	https://svgl.app/			
+19/09/2025	Ludovic Dussart	yq is like jq for Yaml	https://github.com/mikefarah/yq			
+29/09/2025	Emmanuel Péru	social opensource	https://atproto.com/			
+02/10/2025	Emmanuel Péru	opensource stockage	https://garagehq.deuxfleurs.fr/			
+07/10/2025	Emmanuel Péru	opensource payment ecommerce	https://hyperswitch.io/			
+07/10/2025	Germain Lefebvre	carte web temps réel des trains, open data OpenStreetMap	https://carto.tchoo.net			true
+15/10/2025	Emmanuel Péru	green (rapport Cigref numérique responsable)	https://www.cigref.fr/wp/wp-content/uploads/2025/09/Rapport-strategies-Numerique-Responsable-des-grandes-organisations-septembre-2025-VDEF.pdf			
+23/10/2025	Emmanuel Péru	ia Google	https://www.skills.google/			
+30/10/2025	Emmanuel Péru	ai Oss	https://handy.computer/			
+30/10/2025	Ludovic Dussart	Vault OpenSource	https://openbao.org/			
+31/10/2025	Emilien Ferrandi	tutorial web : visualisation interactive d'algorithmes	https://algorithm-visualizer.org/			true
+31/10/2025	Emmanuel Péru	protocol ecoconception	https://ghgprotocol.org			
+04/11/2025	Germain Lefebvre	Open Source alternative à Vercel/Heroku/Netlify	https://github.com/raghavyuva/nixopus			
+05/11/2025	Emmanuel Péru	greenit	https://opensourcegreenops.cloud/			
+05/11/2025	Germain Lefebvre	Free IDE for Kubernetes	https://github.com/freelensapp/freelens			
+05/11/2025	Nicolas Lefebvre	Angular et l'IA : outil de contrôle qualité du code généré	https://blog.angular.dev/beyond-the-horizon-how-angular-is-embracing-ai-for-next-gen-apps-7a7ed706e1a3			
+06/11/2025	Germain Lefebvre	Classement des modèles LLM de génération d'image	https://artificialanalysis.ai/image/leaderboard/text-to-image			
+09/11/2025	Germain Lefebvre	Multi-agent framework, runtime and control plane	https://github.com/agno-agi/agno			
+09/11/2025	Germain Lefebvre	Open-source AI hackers for your apps	https://github.com/usestrix/strix			
+14/11/2025	Emmanuel Péru	redis sql data	https://github.com/nalgeon/redka			
+22/11/2025	Emmanuel Péru	Oss signature document fr	https://github.com/btouchard/ackify-ce/blob/main/README_FR.md			
+22/11/2025	Emmanuel Péru	AI vibecoding Google	https://www.lesnumeriques.com/intelligence-artificielle/google-antigravity-l-ia-qui-code-a-votre-place-est-la-le-metier-de-developpeur-ne-sera-plus-jamais-le-meme-n245972.html			
+25/11/2025	Emmanuel Péru	green courses	https://www.isit-academy.org			
+25/11/2025	Emmanuel Péru	trend language	https://devecosystem-2025.jetbrains.com/tools-and-trends			
+04/12/2025	Emmanuel Péru	git github	https://www.trygitwrap.com/			
+07/12/2025	Emmanuel Péru	AI courses GitHub copilot	https://github.com/microsoft/ML-For-Beginners			
+10/12/2025	Emmanuel Péru	ia	https://proton.me/fr/blog/lumo-ai			
+14/12/2025	Emmanuel Péru	ecoconception greenit	https://www.green-coding.io/products/green-metrics-tool/			
+18/12/2025	Germain Lefebvre	awesome-copilot	https://github.com/github/awesome-copilot			
+22/12/2025	Guillaume Gayot	un bus de message en rust (interface web intégrée)	https://github.com/apache/iggy			
+22/12/2025	Emmanuel Péru	ia green	https://ecologits.ai/latest/			
+22/12/2025	Emmanuel Péru	ecoconception tool green	https://e-footprint.boavizta.org/			
+24/12/2025	Emmanuel Péru	security oss	https://github.com/ossf/security-baseline			
+24/12/2025	Emmanuel Péru	chat collaborative oss	https://github.com/zulip/zulip			
+28/12/2025	Emmanuel Péru	Oss drawing schema	https://github.com/stan-smith/FossFLOW			
+06/01/2026	Emmanuel Péru	greenit	https://greenspector.com			
+06/01/2026	Emmanuel Péru	github oss	https://githubwrapped.xyz			
+06/01/2026	Emmanuel Péru	oss fr	https://www.courtbouillon.org/projects/			
+08/01/2026	Emmanuel Péru	AI chat security	https://www.promptfoo.dev/			
+14/01/2026	Emmanuel Péru	oss alternative gouvernance	https://www.goeuropean.org			
+16/01/2026	Emmanuel Péru	storage oss	https://www.plakar.io			
+20/01/2026	Emmanuel Péru	gouvernance et souveraineté numérique : indice de résilience (IRN)	https://www.itforbusiness.fr/indice-de-resilience-numerique-irn-le-thermometre-pour-gouverner-ses-dependances-99428			true
+20/01/2026	Emmanuel Péru	ia code oss	https://ollama.com/blog/claude			
+21/01/2026	Ludovic Dussart	The open source AI coding agent	https://opencode.ai/			
+25/01/2026	Germain Lefebvre	GitHub Agentic Workflows	https://githubnext.github.io/gh-aw/			
+26/01/2026	Emmanuel Péru	ia tool	https://yoanbernabeu.github.io/grepai/			
+26/01/2026	Emmanuel Péru	media numerique responsable	https://les-enovateurs.com			
+28/01/2026	Emmanuel Péru	ia oss	https://github.com/clawdbot/clawdbot			
+28/01/2026	Paul Verbeke	orchestrateur IA utilisant open code	https://github.com/code-yeongyu/oh-my-opencode			
+28/01/2026	Paul Verbeke	proxy de traduction entre formats d'API LLM (format OpenAI)	https://github.com/BerriAI/litellm			
+29/01/2026	Emmanuel Péru	k8s Oss docusaurus	https://keploy.io/docs/			
+30/01/2026	Lucas Perreau	Prompt to generate instructions	https://docs.github.com/fr/copilot/how-tos/configure-custom-instructions/add-repository-instructions			
+30/01/2026	Emmanuel Péru	web design	https://github.com/LayoutitStudio/voxcss			
+31/01/2026	Emmanuel Péru	web dev test oss	https://github.com/responsively-org/responsively-app			
+01/02/2026	Nicolas Lefebvre	thread du fondateur de Claude avec des astuces IA	https://x.com/i/status/2017742741636321619			
+02/02/2026	Ludovic Dussart	Local AI, on Your Computer	https://lmstudio.ai/			
+03/02/2026	Emmanuel Péru	IA method code-assist	https://www.hoko.team/blog/spec-driven-development-frameworks-aidd-2026			
+03/02/2026	Paul Verbeke	toolkit pour scénarios produit et résultats prévisibles (vs vibe coding)	https://github.com/github/spec-kit			
+03/02/2026	Ludovic Dussart	framework spec-driven open source pour agents de code	https://openspec.dev/			true
+03/02/2026	Emmanuel Péru	ia LLM prompt	https://github.com/glittercowboy/get-shit-done			
+03/02/2026	Emmanuel Péru	knowledge api	https://consensus.app/home/api/			
+03/02/2026	Emmanuel Péru	light LLM	https://github.com/lyogavin/airllm			
+05/02/2026	Nicolas Lefebvre	vscode	https://aka.ms/VSCode/109			
+06/02/2026	Ludovic Dussart	Command Multiple AI Coding Agents	https://vibecraft.build/			
+09/02/2026	Paul Verbeke	chrome-devtools-mcp	https://github.com/ChromeDevTools/chrome-devtools-mcp			
+09/02/2026	Paul Verbeke	playwright-mcp	https://github.com/microsoft/playwright-mcp			
+09/02/2026	Paul Verbeke	serveur MCP : contrôler le navigateur depuis une app IA	https://github.com/browsermcp/mcp			true
+10/02/2026	Emmanuel Péru	mesure oss	https://fondation-sahar.fr/trackcarbon			
+12/02/2026	Emmanuel Péru	Oss tool (Trilium notes hiérarchiques)	https://www.cachem.fr/trilium-notes-alternative-open-source-pour-les-notes-hierarchique/			
+12/02/2026	Emmanuel Péru	ia codeassist google gemini	https://developers.googleblog.com/conductor-introducing-context-driven-development-for-gemini-cli/			
+12/02/2026	Emmanuel Péru	llm empreinte	https://github.com/sipeed/picoclaw			
+16/02/2026	Emmanuel Péru	ia codeassist manifesto	https://o16g.com			
+16/02/2026	Ludovic Dussart	réduire le bruit en CLI pour réduire les tokens LLM (80% de gains)	https://github.com/rtk-ai/rtk			
+17/02/2026	Emmanuel Péru	openApi arazzo workflow documentation	https://github.com/frankkilcommins/arazzo2openapi			
+21/02/2026	Emmanuel Péru	os k8s linux	https://kairos.io/			
+27/02/2026	Emmanuel Péru	graph data oss	https://hugegraph.apache.org/			
+28/02/2026	Emmanuel Péru	open source	https://code.gouv.fr/sill/list			
+28/02/2026	Emmanuel Péru	doc Oss mkdoc web	https://zensical.org/			
+01/03/2026	Paul Verbeke	jeu vidéo de sensibilisation à l'écoconception (ADEME)	https://www.trois-rivieres.net/			true
+01/03/2026	Quentin Burg	ecoconception	https://simbios.fr/ressources			
+03/03/2026	Emmanuel Péru	green referentiel (ROI sobriété numérique AGIT)	https://alliancegreenit.org/media/page-groupe-de-travail/roi-mpact-methodologie-lb-roi-sobriete-numerique-agit.pdf			
+04/03/2026	Germain Lefebvre	outil GUI pour piloter le hardware du laptop Framework	https://github.com/ozturkkl/framework-control			true
+04/03/2026	Emmanuel Péru	icons design documentation	https://gcp-icons.svg.zone			
+05/03/2026	Emmanuel Péru	rex greenit	https://www.infoq.com/presentations/green-it/			
+06/03/2026	Emmanuel Péru	IA agent	https://github.com/openai/symphony/blob/main/SPEC.md			
+10/03/2026	Ludovic Dussart	pdf tool	https://bentopdf.com/index.html			
+10/03/2026	Emmanuel Péru	GitHub alternative	https://codeberg.org/			
+11/03/2026	Ludovic Dussart	plateforme open source de metadata et data catalog	https://open-metadata.org/			true
+17/03/2026	Ludovic Dussart	cli llm : trouver les modèles adaptés à sa machine	https://github.com/AlexsJones/llmfit			true
+18/03/2026	Nicolas Lefebvre	npm	https://npmx.dev/			
+20/03/2026	Nicolas Lefebvre	angular	https://github.com/angular/angular/tree/main/skills/dev-skills/angular-developer			
+20/03/2026	Nicolas Lefebvre	skillgrade: évaluer les skills d'agent et éviter les régressions	https://github.com/mgechev/skillgrade			
+22/03/2026	Emmanuel Péru	agent ai package manager	https://github.com/microsoft/apm			
+24/03/2026	Germain Lefebvre	Liste des videos du FOSDEM	https://gpages.juszkiewicz.com.pl/fosdem-videos/			
+24/03/2026	Ludovic Dussart	The AI Framework for Full-Stack Apps	https://genkit.dev/			
+24/03/2026	Jerome Vasseur	Le guide complet pour créer des skills pour vos agents (Anthropic)	https://resources.anthropic.com/hubfs/The-Complete-Guide-to-Building-Skill-for-Claude.pdf			
+26/03/2026	Germain Lefebvre	prompt minimal et rapide pour n'importe quel shell	https://starship.rs/			
+27/03/2026	Jerome Vasseur	Un guide très complet sur claude code	https://cc.bruniaux.com/			
+27/03/2026	Quentin Burg	comparer du JSON ou YAML en ligne de commande	https://github.com/josephburnett/jd			
+02/04/2026	Emmanuel Péru	openapi arazzo	https://jentic.com/arazzo-editor			
+02/04/2026	Germain Lefebvre	Le remplaçant de WordPress en Astro, secure by design	https://github.com/emdash-cms/emdash			
+03/04/2026	Germain Lefebvre	Privacy-first API platform (Tauri v2), alternative légère à Postman	https://github.com/berbicanes/apiark			
+03/04/2026	Nicolas Fourré	rebuild de Next.js avec l'IA sur Vite, frontend web	https://blog.cloudflare.com/vinext/			true
+08/04/2026	Quentin Burg	attacher le contexte d'une session agent à un commit git	https://entire.io/			
+10/04/2026	Emmanuel Péru	IA agentic	https://getbaton.dev/			
+10/04/2026	Ludovic Dussart	Open-source orchestration for zero-human companies	https://github.com/paperclipai/paperclip			
+17/04/2026	Emmanuel Péru	catalogue solutions opensource	https://korben.info/selfh-st-apps-annuaire-self-hosting.html			
+17/04/2026	Emmanuel Péru	catalogue solution opensource	https://selfh.st/apps/			
+23/04/2026	Paul Verbeke	Copilot : serveurs saturés par l'IA agentique, changements de plans	https://github.blog/news-insights/company-news/changes-to-github-copilot-individual-plans/			
+24/04/2026	Paul Verbeke	supply chain attack : CLI Bitwarden vérolé via npm	https://next.ink/235095/la-saga-continue-un-paquet-npm-verole-de-bitwarden-cli-a-derobe-des-secrets/			
+27/04/2026	Germain Lefebvre	événement cybersécurité et craft beer	https://cyberbrew.tech/			
+28/04/2026	Quentin Burg	multi agent coding	https://github.com/liza-mas/liza			
+29/04/2026	Emmanuel Péru	markdown pdf web	https://github.com/iamgio/quarkdown			
+30/04/2026	Quentin Burg	outil dev : URLs .localhost nommées à la place des ports	https://portless.sh/			true
+04/05/2026	Emmanuel Péru	cli pour mettre à jour tout son système	https://github.com/topgrade-rs/topgrade			true
+05/05/2026	Emmanuel Péru	greenit datacenter map	https://dcwatch.hubblo.org			
+05/05/2026	Ludovic Dussart	codebase en knowledge graph interactif, documentation exploration	https://understand-anything.com/			true
+08/05/2026	Nicolas Lefebvre	URL to markdown for agents	https://curl.md/			
+12/05/2026	Emmanuel Péru	AI agent orchestration	https://github.com/mattpocock/sandcastle			
+13/05/2026	Quentin Burg	cours complet TypeScript Effect	https://www.typeonce.dev/course/effect-beginners-complete-getting-started			true
+26/05/2026	Germain Lefebvre	Skills pour agents IA spécialisés dans la bureaucratie française	https://github.com/romainsimon/paperasse			
+29/05/2026	Ludovic Dussart	tooling local pour l'observabilité LLM (Datadog test agent)	https://github.com/DataDog/dd-apm-test-agent/tree/master/lapdog			
+08/06/2026	Emmanuel Péru	skill AI token killer	https://github.com/juliusbrussee/caveman			
+08/06/2026	Emmanuel Péru	IA MCP documentation snippet	https://github.com/upstash/context7			
+10/06/2026	Germain Lefebvre	benchmark agentique : construire un émulateur GBA from scratch	https://benchlm.ai/benchmarks/gbaEval			
+10/06/2026	Ludovic Dussart	right-size les modèles LLM selon RAM/CPU/GPU	https://www.llmfit.org/			
+11/06/2026	Mehdi Slimani	CopilotKit : réunir utilisateurs et agents IA dans les apps	https://share.google/sAttbwvk0DHXSwqH7			
+11/06/2026	Mehdi Slimani	CopilotKit : réunir utilisateurs et agents IA dans les apps	https://www.copilotkit.ai/			
+11/06/2026	Ludovic Dussart	Docker Buildx Bake : build déclaratif et concurrent	https://docs.docker.com/build/bake			
+11/06/2026	Germain Lefebvre	MemFuse : couche mémoire persistante open-source pour LLM	https://github.com/memfuse/memfuse			
+11/06/2026	Nicolas Lefebvre	sbx : solution Docker pour agents en env local sandboxé	https://www.docker.com/products/docker-sandboxes/			
+11/06/2026	Quentin Burg	LLM pour détecter les erreurs sémantiques web (accessibilité)	https://github.com/NadeenAhmad/AccessGuruLLM			
+18/06/2026	Emmanuel Péru	wiki doc ai	https://github.com/GoogleCloudPlatform/knowledge-catalog/tree/main/okf			
+21/06/2026	Germain Lefebvre	companion OpenCode : économie de tokens llm	https://github.com/MrGray17/opentoken			true
+24/06/2026	Emmanuel Péru	souveraineté technologique européenne, score des dépendances	https://eu-score.tech			true
+28/06/2026	Germain Lefebvre	Linux Foundation : Agent Name Service (identité pour agents IA)	https://www.linuxfoundation.org/press/linux-foundation-announces-intent-to-launch-agent-name-service-to-establish-trusted-identity-infrastructure-for-ai-agents			
+01/07/2026	Germain Lefebvre	Arrivée de Claude Sonnet 5	https://www.anthropic.com/news/claude-sonnet-5			
+01/07/2026	Ludovic Dussart	monitoring de tokens pour suivre vos consos	https://github.com/ccusage/ccusage			
+04/07/2026	Germain Lefebvre	Code généré par IA : le paradoxe de la productivité	https://www.blogdumoderateur.com/code-genere-ia-developpeurs-paradoxe-productivite/			
+04/07/2026	Germain Lefebvre	Build a Managed Tech Digest Agent with the Gemini API	https://codelabs.developers.google.com/tech-digest-managed-agent			

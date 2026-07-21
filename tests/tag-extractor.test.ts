@@ -28,6 +28,35 @@ describe("extractTags", () => {
     expect(extractTags("Lorem ipsum dolor sit amet")).toEqual(["Other"]);
   });
 
+  it("extracts Craft tags from craftsmanship and quality vocabulary", () => {
+    expect(extractTags("openapi api test quality craftman")).toContain("Craft");
+    expect(extractTags("software craftsmanship principles")).toContain("Craft");
+    expect(extractTags("la qualité logicielle au quotidien")).toContain("Craft");
+  });
+
+  it("does not tag 'craft beer' as Craft", () => {
+    expect(extractTags("événement cybersécurité et craft beer")).not.toContain("Craft");
+  });
+
+  it("extracts Events tags", () => {
+    expect(extractTags("Calendrier talks et cfp (mondial)")).toContain("Events");
+    expect(extractTags("Liste des videos du FOSDEM")).toContain("Events");
+  });
+
+  it("matches aliases inside hyphenated tokens", () => {
+    expect(extractTags("playwright-mcp")).toContain("AI");
+    expect(extractTags("chrome-devtools-mcp")).toContain("AI");
+  });
+
+  it("extracts Sovereignty tags", () => {
+    expect(extractTags("souveraineté technologique européenne")).toContain("Sovereignty");
+    expect(extractTags("indice de résilience numérique")).toContain("Sovereignty");
+  });
+
+  it("extracts Hardware tags", () => {
+    expect(extractTags("instabilités hardware laptop Framework")).toContain("Hardware");
+  });
+
   it("returns sorted tags", () => {
     const tags = extractTags("Docker et IA pour le cloud");
     const sorted = [...tags].sort();

@@ -2,12 +2,12 @@
 /**
  * Download the tech watch Google Sheet and normalize it into
  * data/tech-watch-v1.tsv: canonical English header, LF line endings,
- * exactly 6 columns per row, invalid rows skipped with a warning.
+ * exactly 7 columns per row, invalid rows skipped with a warning.
  *
  * Remote mode (default) — requires env vars:
  *   SHEET_ID              spreadsheet id (from the sheet URL)
  *   GOOGLE_SHEETS_SA_KEY  service account key JSON (share the sheet with its client_email)
- *   SHEET_RANGE           optional A1 range, default "A:F" (e.g. "Feuille 1!A:F")
+ *   SHEET_RANGE           optional A1 range, default "A:G" (e.g. "Feuille 1!A:G")
  *
  * Local mode (normalize an existing export, no network):
  *   node scripts/sync-tech-watch-data.mjs --from-file path/to/export.tsv
@@ -17,7 +17,7 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 
 const OUTPUT_PATH = fileURLToPath(new URL("../data/tech-watch-v1.tsv", import.meta.url));
-const CANONICAL_HEADER = ["Date", "Contributors", "Topics", "Links", "Tags", "Comment"];
+const CANONICAL_HEADER = ["Date", "Contributors", "Topics", "Links", "Tags", "Comment", "AiEnriched"];
 const COLUMN_COUNT = CANONICAL_HEADER.length;
 const DATE_RE = /^\d{2}\/\d{2}\/\d{4}$/;
 
@@ -62,7 +62,7 @@ async function fetchSheetRows() {
     console.error("SHEET_ID and GOOGLE_SHEETS_SA_KEY env vars are required (or use --from-file <path>)");
     process.exit(1);
   }
-  const range = process.env.SHEET_RANGE ?? "A:F";
+  const range = process.env.SHEET_RANGE ?? "A:G";
   const token = await getAccessToken(JSON.parse(saKey));
   const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${encodeURIComponent(range)}?majorDimension=ROWS`;
   const res = await fetch(url, { headers: { authorization: `Bearer ${token}` } });

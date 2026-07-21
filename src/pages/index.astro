@@ -8,9 +8,12 @@ import SearchIcon from "../assets/icons/search.svg";
 import FlaskIcon from "../assets/icons/flask.svg";
 import GridIcon from "../assets/icons/grid.svg";
 import ListIcon from "../assets/icons/list.svg";
+import { siteConfig } from "../config.ts";
 const entries = loadEntries();
 const allTags = [...new Set(entries.flatMap((e) => e.tags))].sort();
-const contributors = [...new Set(entries.map((e) => e.contributor))].sort();
+const contributors = siteConfig.showContributors
+  ? [...new Set(entries.map((e) => e.contributor))].sort()
+  : [];
 ---
 
 <Layout title="Zatsit Tech Watch">
@@ -52,7 +55,7 @@ const contributors = [...new Set(entries.map((e) => e.contributor))].sort();
             <option value="recent">Plus récent</option>
             <option value="oldest">Plus ancien</option>
             <option value="alpha">A-Z sujet</option>
-            <option value="contributor">Contributeur</option>
+            {siteConfig.showContributors && <option value="contributor">Contributeur</option>}
             <option value="tags">Nb. de tags</option>
           </select>
         </div>
@@ -77,10 +80,12 @@ const contributors = [...new Set(entries.map((e) => e.contributor))].sort();
           </div>
         </div>
         <div class="flex flex-wrap gap-3 items-center">
-          <select id="contributor-filter" aria-label="Filtrer par contributeur" class="text-sm rounded-lg px-3 py-2 glass border border-edge text-content bg-transparent focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-30">
-            <option value="">Tous les contributeurs</option>
-            {contributors.map((c) => <option value={c}>{c}</option>)}
-          </select>
+          {siteConfig.showContributors && (
+            <select id="contributor-filter" aria-label="Filtrer par contributeur" class="text-sm rounded-lg px-3 py-2 glass border border-edge text-content bg-transparent focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-30">
+              <option value="">Tous les contributeurs</option>
+              {contributors.map((c) => <option value={c}>{c}</option>)}
+            </select>
+          )}
           <button id="clear-filters" class="text-xs text-primary hover:underline hidden">Effacer les filtres</button>
         </div>
       </div>
@@ -125,7 +130,7 @@ const contributors = [...new Set(entries.map((e) => e.contributor))].sort();
   const sortSelect = document.getElementById('sort-select') as HTMLSelectElement;
   const resultCount = document.getElementById('result-count')!;
   const clearBtn = document.getElementById('clear-filters')!;
-  const contributorFilter = document.getElementById('contributor-filter') as HTMLSelectElement;
+  const contributorFilter = document.getElementById('contributor-filter') as HTMLSelectElement | null;
 
   // Parse entries from DOM
   const gridItems = Array.from(gridContainer.children) as HTMLElement[];
@@ -240,17 +245,19 @@ const contributors = [...new Set(entries.map((e) => e.contributor))].sort();
     applyFilters();
   });
 
-  contributorFilter.addEventListener('change', () => {
-    selectedContributor = contributorFilter.value;
-    applyFilters();
-  });
+  if (contributorFilter) {
+    contributorFilter.addEventListener('change', () => {
+      selectedContributor = contributorFilter.value;
+      applyFilters();
+    });
+  }
 
   clearBtn.addEventListener('click', () => {
     activeTags = [];
     searchQuery = '';
     selectedContributor = '';
     searchInput.value = '';
-    contributorFilter.value = '';
+    if (contributorFilter) contributorFilter.value = '';
     applyFilters();
   });
 

@@ -100,7 +100,7 @@ scripts/
 | `/mentions-legales/` | mentions-legales.astro | Legal notice |
 
 ## Feature Flags
-`src/config.ts` exposes `siteConfig.anonymizeContributors` (default `true`: contributor names replaced by stable pseudonyms at build time, ranking pages not built, forces showRanking off) and `siteConfig.showRanking`: when `false`, the contributor ranking is fully hidden (nav link, leaderboard, profile pages, contributor links, stats chart, contributor e2e tests skipped). Contributor names must always be rendered through `components/contributor-name.ts`.
+`src/config.ts` exposes `siteConfig.anonymizeContributors` (default `true`: contributor names replaced by stable pseudonyms at build time, ranking pages not built, forces showRanking off) and `siteConfig.showRanking`: when `false`, the contributor ranking is fully hidden (nav link, leaderboard, profile pages, contributor links, stats chart, contributor e2e tests skipped). It also derives `siteConfig.showContributors` (`!anonymizeContributors`): when `false`, contributor identity is not surfaced on entries at all — the home contributor filter and the "Contributeur" sort option are removed, and the contributor name is hidden on cards, list rows and the timeline. Contributor names must always be rendered through `components/contributor-name.ts` (which returns an empty string when `showContributors` is off).
 
 ## Architecture Details
 See `.claude/architecture.md` for full file listing and data flow.

@@ -5,6 +5,7 @@ import { groupByDate, monthKey, monthLabel, weekKey } from "../utils/date.ts";
 import { renderTagBadge } from "../components/tag-badge.ts";
 import { renderContributorName } from "../components/contributor-name.ts";
 import { escapeHtml } from "../utils/format.ts";
+import { siteConfig } from "../config.ts";
 import type { TechWatchEntry } from "../types.ts";
 
 const entries = loadEntries();
@@ -24,8 +25,7 @@ function renderEntry(entry: TechWatchEntry): string {
         <span class="text-xs text-content-muted shrink-0">${escapeHtml(entry.dateStr)}</span>
       </div>
       <div class="flex items-center gap-2 flex-wrap">
-        ${renderContributorName(entry.contributor)}
-        <span class="text-xs text-content-muted">·</span>
+        ${siteConfig.showContributors ? renderContributorName(entry.contributor) + '<span class="text-xs text-content-muted">·</span>' : ""}
         <span class="text-xs text-content-muted">${escapeHtml(entry.domain)}</span>
         <span class="text-xs text-content-muted">·</span>
         <div class="flex gap-1">${entry.tags.map((t) => renderTagBadge(t, false, false)).join("")}</div>

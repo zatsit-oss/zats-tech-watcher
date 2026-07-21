@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { siteConfig } from "../src/config.ts";
 
 test.describe("Home - Search & Filters", () => {
   test.beforeEach(async ({ page }) => {
@@ -34,6 +35,7 @@ test.describe("Home - Search & Filters", () => {
   });
 
   test("contributor dropdown filters entries", async ({ page }) => {
+    test.skip(!siteConfig.showContributors, "contributor filter is hidden");
     const countBefore = await page.locator("#result-count").textContent();
     const select = page.locator("#contributor-filter");
     // Select the second option (first contributor)

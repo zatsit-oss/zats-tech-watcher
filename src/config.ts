@@ -14,4 +14,11 @@ const flags = {
 export const siteConfig = {
   ...flags,
   showRanking: flags.showRanking && !flags.anonymizeContributors,
+  /**
+   * Surface contributor identity on entries (name on cards/list/timeline,
+   * the home contributor filter, the "Contributeur" sort). Forced off when
+   * contributors are anonymized: showing "Contributeur 37" or filtering by it
+   * carries no meaning, so those surfaces are hidden entirely.
+   */
+  showContributors: !flags.anonymizeContributors,
 };

@@ -2,6 +2,7 @@ import type { TechWatchEntry } from "../types.ts";
 import { escapeHtml } from "../utils/format.ts";
 import { renderTagBadge } from "./tag-badge.ts";
 import { renderContributorName } from "./contributor-name.ts";
+import { siteConfig } from "../config.ts";
 
 export function renderListItem(entry: TechWatchEntry, index: number): string {
   return `
@@ -17,8 +18,7 @@ export function renderListItem(entry: TechWatchEntry, index: number): string {
         ${entry.comment ? `<p class="entry-comment text-xs italic text-content/70 mt-1">${escapeHtml(entry.comment)}</p>` : ""}
         <div class="flex items-center gap-2 mt-1.5 flex-wrap">
           <span class="text-xs text-content-muted">${escapeHtml(entry.dateStr)}</span>
-          <span class="text-xs text-content-muted">·</span>
-          ${renderContributorName(entry.contributor)}
+          ${siteConfig.showContributors ? `<span class="text-xs text-content-muted">·</span>${renderContributorName(entry.contributor)}` : ""}
           <span class="text-xs text-content-muted">·</span>
           <div class="flex gap-1 flex-wrap">
             ${entry.tags.map((t) => renderTagBadge(t, false, true)).join("")}

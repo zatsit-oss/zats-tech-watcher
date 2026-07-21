@@ -50,10 +50,10 @@ Date	Contributors	Topics	Links	Tags	Comment	AiEnriched
 24/07/2025	Germain Lefebvre	Calendrier des événements Tech en France	https://developers.events			
 26/07/2025	Emmanuel Péru	matériel écoconception	https://share.google/ov91tf2PAzfyZ4Cv3			
 26/07/2025	Germain Lefebvre	reverse proxy avec authentification (Google, Azure, OIDC...)	https://github.com/oauth2-proxy/oauth2-proxy			
-26/07/2025	Ludovic Dussart	guide ebook pour CTO, leadership technique	https://kdelfour.github.io/Ebook_To_be_Or_not_to_be_CTO/			true
+26/07/2025	Ludovic Dussart	CTO or not CTO	https://kdelfour.github.io/Ebook_To_be_Or_not_to_be_CTO/			
 30/07/2025	Emmanuel Péru	language	https://www.ponylang.io/			
 19/08/2025	Emmanuel Péru	api test documentation	https://voiden.md/blog/migrate-postman-collections-to-voiden			
-19/08/2025	Paul Verbeke	instabilités hardware laptop Framework : webcam USB externe sous W11 24H2	https://community.frame.work/t/external-webcam-causing-system-instability-and-crashes/68518/3			true
+19/08/2025	Paul Verbeke	instabilités W11 24H2 sur PC framework avec webcam USB externe	https://community.frame.work/t/external-webcam-causing-system-instability-and-crashes/68518/3			
 01/09/2025	Germain Lefebvre	Open-source Infrastructure as Code orchestration platform	https://github.com/terramate-io/terramate			
 01/09/2025	Ludovic Dussart	L'avenir de git ?	https://korben.info/jj-jujutsu-version-control-alternative.html			
 04/09/2025	Emmanuel Péru	web écoconception	https://korben.info/obs-harry-roberts-transforme-votre-site.html			
@@ -62,12 +62,12 @@ Date	Contributors	Topics	Links	Tags	Comment	AiEnriched
 29/09/2025	Emmanuel Péru	social opensource	https://atproto.com/			
 02/10/2025	Emmanuel Péru	opensource stockage	https://garagehq.deuxfleurs.fr/			
 07/10/2025	Emmanuel Péru	opensource payment ecommerce	https://hyperswitch.io/			
-07/10/2025	Germain Lefebvre	carte web temps réel des trains, open data OpenStreetMap	https://carto.tchoo.net			true
+07/10/2025	Germain Lefebvre	Carte en live des trains	https://carto.tchoo.net			
 15/10/2025	Emmanuel Péru	green (rapport Cigref numérique responsable)	https://www.cigref.fr/wp/wp-content/uploads/2025/09/Rapport-strategies-Numerique-Responsable-des-grandes-organisations-septembre-2025-VDEF.pdf			
 23/10/2025	Emmanuel Péru	ia Google	https://www.skills.google/			
 30/10/2025	Emmanuel Péru	ai Oss	https://handy.computer/			
 30/10/2025	Ludovic Dussart	Vault OpenSource	https://openbao.org/			
-31/10/2025	Emilien Ferrandi	tutorial web : visualisation interactive d'algorithmes	https://algorithm-visualizer.org/			true
+31/10/2025	Emilien Ferrandi	algorithmes expliqués avec démo visuelle	https://algorithm-visualizer.org/			
 31/10/2025	Emmanuel Péru	protocol ecoconception	https://ghgprotocol.org			
 04/11/2025	Germain Lefebvre	Open Source alternative à Vercel/Heroku/Netlify	https://github.com/raghavyuva/nixopus			
 05/11/2025	Emmanuel Péru	greenit	https://opensourcegreenops.cloud/			
@@ -98,7 +98,7 @@ Date	Contributors	Topics	Links	Tags	Comment	AiEnriched
 08/01/2026	Emmanuel Péru	AI chat security	https://www.promptfoo.dev/			
 14/01/2026	Emmanuel Péru	oss alternative gouvernance	https://www.goeuropean.org			
 16/01/2026	Emmanuel Péru	storage oss	https://www.plakar.io			
-20/01/2026	Emmanuel Péru	gouvernance et souveraineté numérique : indice de résilience (IRN)	https://www.itforbusiness.fr/indice-de-resilience-numerique-irn-le-thermometre-pour-gouverner-ses-dependances-99428			true
+20/01/2026	Emmanuel Péru	gouvernance souverain (indice résilience numérique)	https://www.itforbusiness.fr/indice-de-resilience-numerique-irn-le-thermometre-pour-gouverner-ses-dependances-99428			
 20/01/2026	Emmanuel Péru	ia code oss	https://ollama.com/blog/claude			
 21/01/2026	Ludovic Dussart	The open source AI coding agent	https://opencode.ai/			
 25/01/2026	Germain Lefebvre	GitHub Agentic Workflows	https://githubnext.github.io/gh-aw/			
@@ -115,7 +115,7 @@ Date	Contributors	Topics	Links	Tags	Comment	AiEnriched
 02/02/2026	Ludovic Dussart	Local AI, on Your Computer	https://lmstudio.ai/			
 03/02/2026	Emmanuel Péru	IA method code-assist	https://www.hoko.team/blog/spec-driven-development-frameworks-aidd-2026			
 03/02/2026	Paul Verbeke	toolkit pour scénarios produit et résultats prévisibles (vs vibe coding)	https://github.com/github/spec-kit			
-03/02/2026	Ludovic Dussart	framework spec-driven open source pour agents de code	https://openspec.dev/			true
+03/02/2026	Ludovic Dussart	lightweight spec-driven framework	https://openspec.dev/			
 03/02/2026	Emmanuel Péru	ia LLM prompt	https://github.com/glittercowboy/get-shit-done			
 03/02/2026	Emmanuel Péru	knowledge api	https://consensus.app/home/api/			
 03/02/2026	Emmanuel Péru	light LLM	https://github.com/lyogavin/airllm			
@@ -123,7 +123,7 @@ Date	Contributors	Topics	Links	Tags	Comment	AiEnriched
 06/02/2026	Ludovic Dussart	Command Multiple AI Coding Agents	https://vibecraft.build/			
 09/02/2026	Paul Verbeke	chrome-devtools-mcp	https://github.com/ChromeDevTools/chrome-devtools-mcp			
 09/02/2026	Paul Verbeke	playwright-mcp	https://github.com/microsoft/playwright-mcp			
-09/02/2026	Paul Verbeke	serveur MCP : contrôler le navigateur depuis une app IA	https://github.com/browsermcp/mcp			true
+09/02/2026	Paul Verbeke	browsermcp	https://github.com/browsermcp/mcp			
 10/02/2026	Emmanuel Péru	mesure oss	https://fondation-sahar.fr/trackcarbon			
 12/02/2026	Emmanuel Péru	Oss tool (Trilium notes hiérarchiques)	https://www.cachem.fr/trilium-notes-alternative-open-source-pour-les-notes-hierarchique/			
 12/02/2026	Emmanuel Péru	ia codeassist google gemini	https://developers.googleblog.com/conductor-introducing-context-driven-development-for-gemini-cli/			
@@ -135,17 +135,17 @@ Date	Contributors	Topics	Links	Tags	Comment	AiEnriched
 27/02/2026	Emmanuel Péru	graph data oss	https://hugegraph.apache.org/			
 28/02/2026	Emmanuel Péru	open source	https://code.gouv.fr/sill/list			
 28/02/2026	Emmanuel Péru	doc Oss mkdoc web	https://zensical.org/			
-01/03/2026	Paul Verbeke	jeu vidéo de sensibilisation à l'écoconception (ADEME)	https://www.trois-rivieres.net/			true
+01/03/2026	Paul Verbeke	game impact ademe	https://www.trois-rivieres.net/			
 01/03/2026	Quentin Burg	ecoconception	https://simbios.fr/ressources			
 03/03/2026	Emmanuel Péru	green referentiel (ROI sobriété numérique AGIT)	https://alliancegreenit.org/media/page-groupe-de-travail/roi-mpact-methodologie-lb-roi-sobriete-numerique-agit.pdf			
-04/03/2026	Germain Lefebvre	outil GUI pour piloter le hardware du laptop Framework	https://github.com/ozturkkl/framework-control			true
+04/03/2026	Germain Lefebvre	framework laptop	https://github.com/ozturkkl/framework-control			
 04/03/2026	Emmanuel Péru	icons design documentation	https://gcp-icons.svg.zone			
 05/03/2026	Emmanuel Péru	rex greenit	https://www.infoq.com/presentations/green-it/			
 06/03/2026	Emmanuel Péru	IA agent	https://github.com/openai/symphony/blob/main/SPEC.md			
 10/03/2026	Ludovic Dussart	pdf tool	https://bentopdf.com/index.html			
 10/03/2026	Emmanuel Péru	GitHub alternative	https://codeberg.org/			
-11/03/2026	Ludovic Dussart	plateforme open source de metadata et data catalog	https://open-metadata.org/			true
-17/03/2026	Ludovic Dussart	cli llm : trouver les modèles adaptés à sa machine	https://github.com/AlexsJones/llmfit			true
+11/03/2026	Ludovic Dussart	metadata platform	https://open-metadata.org/			
+17/03/2026	Ludovic Dussart	Hundreds of models & providers. One command to find what runs on your hardware	https://github.com/AlexsJones/llmfit			
 18/03/2026	Nicolas Lefebvre	npm	https://npmx.dev/			
 20/03/2026	Nicolas Lefebvre	angular	https://github.com/angular/angular/tree/main/skills/dev-skills/angular-developer			
 20/03/2026	Nicolas Lefebvre	skillgrade: évaluer les skills d'agent et éviter les régressions	https://github.com/mgechev/skillgrade			
@@ -159,7 +159,7 @@ Date	Contributors	Topics	Links	Tags	Comment	AiEnriched
 02/04/2026	Emmanuel Péru	openapi arazzo	https://jentic.com/arazzo-editor			
 02/04/2026	Germain Lefebvre	Le remplaçant de WordPress en Astro, secure by design	https://github.com/emdash-cms/emdash			
 03/04/2026	Germain Lefebvre	Privacy-first API platform (Tauri v2), alternative légère à Postman	https://github.com/berbicanes/apiark			
-03/04/2026	Nicolas Fourré	rebuild de Next.js avec l'IA sur Vite, frontend web	https://blog.cloudflare.com/vinext/			true
+03/04/2026	Nicolas Fourré	forker un framework pour l'héberger soi-même (Cloudflare)	https://blog.cloudflare.com/vinext/			
 08/04/2026	Quentin Burg	attacher le contexte d'une session agent à un commit git	https://entire.io/			
 10/04/2026	Emmanuel Péru	IA agentic	https://getbaton.dev/			
 10/04/2026	Ludovic Dussart	Open-source orchestration for zero-human companies	https://github.com/paperclipai/paperclip			
@@ -170,13 +170,13 @@ Date	Contributors	Topics	Links	Tags	Comment	AiEnriched
 27/04/2026	Germain Lefebvre	événement cybersécurité et craft beer	https://cyberbrew.tech/			
 28/04/2026	Quentin Burg	multi agent coding	https://github.com/liza-mas/liza			
 29/04/2026	Emmanuel Péru	markdown pdf web	https://github.com/iamgio/quarkdown			
-30/04/2026	Quentin Burg	outil dev : URLs .localhost nommées à la place des ports	https://portless.sh/			true
-04/05/2026	Emmanuel Péru	cli pour mettre à jour tout son système	https://github.com/topgrade-rs/topgrade			true
+30/04/2026	Quentin Burg	générer des urls locales liées aux ports (myapp.localhost)	https://portless.sh/			
+04/05/2026	Emmanuel Péru	linux update	https://github.com/topgrade-rs/topgrade			
 05/05/2026	Emmanuel Péru	greenit datacenter map	https://dcwatch.hubblo.org			
-05/05/2026	Ludovic Dussart	codebase en knowledge graph interactif, documentation exploration	https://understand-anything.com/			true
+05/05/2026	Ludovic Dussart	transformer du code/knowledge base en knowledge graph interactif	https://understand-anything.com/			
 08/05/2026	Nicolas Lefebvre	URL to markdown for agents	https://curl.md/			
 12/05/2026	Emmanuel Péru	AI agent orchestration	https://github.com/mattpocock/sandcastle			
-13/05/2026	Quentin Burg	cours complet TypeScript Effect	https://www.typeonce.dev/course/effect-beginners-complete-getting-started			true
+13/05/2026	Quentin Burg	cours sur Effect plutôt complet	https://www.typeonce.dev/course/effect-beginners-complete-getting-started			
 26/05/2026	Germain Lefebvre	Skills pour agents IA spécialisés dans la bureaucratie française	https://github.com/romainsimon/paperasse			
 29/05/2026	Ludovic Dussart	tooling local pour l'observabilité LLM (Datadog test agent)	https://github.com/DataDog/dd-apm-test-agent/tree/master/lapdog			
 08/06/2026	Emmanuel Péru	skill AI token killer	https://github.com/juliusbrussee/caveman			
@@ -190,10 +190,13 @@ Date	Contributors	Topics	Links	Tags	Comment	AiEnriched
 11/06/2026	Nicolas Lefebvre	sbx : solution Docker pour agents en env local sandboxé	https://www.docker.com/products/docker-sandboxes/			
 11/06/2026	Quentin Burg	LLM pour détecter les erreurs sémantiques web (accessibilité)	https://github.com/NadeenAhmad/AccessGuruLLM			
 18/06/2026	Emmanuel Péru	wiki doc ai	https://github.com/GoogleCloudPlatform/knowledge-catalog/tree/main/okf			
-21/06/2026	Germain Lefebvre	companion OpenCode : économie de tokens llm	https://github.com/MrGray17/opentoken			true
-24/06/2026	Emmanuel Péru	souveraineté technologique européenne, score des dépendances	https://eu-score.tech			true
+21/06/2026	Germain Lefebvre	Token-saving companion for OpenCode	https://github.com/MrGray17/opentoken			
+24/06/2026	Emmanuel Péru	sovereignty	https://eu-score.tech			
 28/06/2026	Germain Lefebvre	Linux Foundation : Agent Name Service (identité pour agents IA)	https://www.linuxfoundation.org/press/linux-foundation-announces-intent-to-launch-agent-name-service-to-establish-trusted-identity-infrastructure-for-ai-agents			
 01/07/2026	Germain Lefebvre	Arrivée de Claude Sonnet 5	https://www.anthropic.com/news/claude-sonnet-5			
 01/07/2026	Ludovic Dussart	monitoring de tokens pour suivre vos consos	https://github.com/ccusage/ccusage			
 04/07/2026	Germain Lefebvre	Code généré par IA : le paradoxe de la productivité	https://www.blogdumoderateur.com/code-genere-ia-developpeurs-paradoxe-productivite/			
 04/07/2026	Germain Lefebvre	Build a Managed Tech Digest Agent with the Gemini API	https://codelabs.developers.google.com/tech-digest-managed-agent			
+08/07/2026	Nicolas Lefebvre	A language-agnostic reference for modern API design.	https://apiguide.dev/			
+09/07/2026	Emmanuel Péru	ai caveman et les tokens	https://blog.jetbrains.com/ai/2026/07/speak-to-ai-agents-like-cavemen-tosave-tokens/			
+09/07/2026	Emmanuel Péru	wiki ai code	https://www.langchain.com/blog/introducing-openwiki-an-open-source-agent-for-repo-documentation			
